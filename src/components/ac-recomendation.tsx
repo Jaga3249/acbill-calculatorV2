@@ -44,10 +44,10 @@ const products: Product[] = [
   },
 ];
 
-const ProductCard = () => {
+const AcRecomendation = () => {
   return (
-    <div className="flex justify-center mt-10 ">
-      <div className=" flex flex-col gap-5">
+    <div className="flex justify-center md:mt-16 ">
+      <div className=" flex flex-col gap-[16px]">
         {/* top section */}
         <div className="flex justify-between items-center">
           <span className="text-primaryBlack text-base font-medium">
@@ -61,7 +61,7 @@ const ProductCard = () => {
         <div className="flex justify-between w-[1030px]">
           {products.map((item: Product, i) => (
             <div
-              className="w-[316px] rounded-[12px]  border border-querternaryWhite flex flex-col gap-2 pb-3 "
+              className="w-[316px] rounded-[12px]  border border-querternaryWhite flex flex-col gap-[11px] pb-3 "
               key={i}
             >
               <div className="h-[169px] flex justify-center items-center">
@@ -71,9 +71,9 @@ const ProductCard = () => {
                   className="w-[227px] h-[91px]"
                 />
               </div>
-              <div className=" h-[153px] flex flex-col justify-between mx-4">
+              <div className=" flex flex-col mx-3 md:gap-[9px]">
                 <div className="flex justify-between items-center">
-                  <span className="bg-primaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-senaryWhite">
+                  <span className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-secondaryGreen font-medium border border-secondaryGreen">
                     Energy Saver
                   </span>
                   <span
@@ -87,17 +87,12 @@ const ProductCard = () => {
                   <span className="text-xl font-semibold text-primaryBlack">
                     ₹{item.price}
                   </span>
-                  <span className="text-xs font-medium text-primaryBlack  line-through">
-                    {item.originalPrice}
-                  </span>
                 </div>
                 <p className="text-sm font-semibold text-primaryBlack">
                   {item.name}
                 </p>
-                <p className="text-septenaryGray text-xs font-medium">
-                  {item.description}
-                </p>
-                <p className="text-septenaryGray text-xs font-bold">
+
+                <p className="text-septenaryGray text-[12px] leading-[18px] font-medium">
                   Estimated Monthly Cost:{" "}
                   <span className="text-primaryBlack">
                     ₹{item.estimatedMonthlyCost}
@@ -107,7 +102,7 @@ const ProductCard = () => {
 
                 {/*  */}
               </div>
-              <div className="px-4">
+              <div className="px-3">
                 <Button
                   className="text-sm font-medium text-septenaryWhite w-full"
                   size={"sm"}
@@ -122,4 +117,4 @@ const ProductCard = () => {
     </div>
   );
 };
-export default ProductCard;
+export default AcRecomendation;

@@ -1,4 +1,3 @@
-import { Colors } from "@/constants/color";
 import GaugeChart from "react-gauge-chart";
 
 const ACUsageComparison = () => {
@@ -9,7 +8,7 @@ const ACUsageComparison = () => {
           Your Daily AC Usage vs. India’s Average 🌞
         </h1>
         <div className="flex">
-          <div className=" h-[200px] border-primaryWhite flex border rounded-[12px]">
+          <div className=" w-[621px] border-primaryWhite flex border rounded-[12px]">
             <div className="flex flex-col justify-center items-center">
               {/* <GaugeChart
                 id="gauge-chart1"
@@ -37,15 +36,22 @@ const ACUsageComparison = () => {
               <GaugeChart
                 id="gauge-chart2"
                 nrOfLevels={2}
-                colors={[Colors.colorOne, Colors.colorTwo]}
-                textColor={Colors.colorThree}
+                // colors={[Colors.colorOne, Colors.colorTwo]}
+                // textColor={Colors.colorThree}
                 formatTextValue={(value) => `${value}hrs`}
                 percent={0.08}
               />
               <p className="text-base font-medium">You usage in a day</p>
             </div>
           </div>
-          <div className="w-[400px] border-2">1</div>
+          <div className="w-[400px] h-auto border-2 flex ">
+            <div>gggggggggggggg</div>
+            <p>
+              Your monthly usage of 180 units produces 165.6 kg of CO₂, needing
+              95 trees a year to offset. Switching to an efficient appliance can
+              cut this to 63 trees—saving energy and money!
+            </p>
+          </div>
         </div>
       </div>
     </div>

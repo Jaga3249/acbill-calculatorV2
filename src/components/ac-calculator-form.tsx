@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { brands, electricity_rates } from "../../data";
 import {
   Select,
   SelectContent,
@@ -14,8 +15,10 @@ import { Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import ACCapacitySlider from "./ac-capacity-slider";
 import { imagePath } from "@/constants/imagePath";
+import TimePicker from "./time-picker";
 
 const AcCalculatorForm = () => {
+  const [color, setClor] = useState("white");
   const [rating, setRating] = useState(0); // Selected rating
   const [hoverRating, setHoverRating] = useState(0);
   const [selectedAcType, setSelectedAcType] = useState("");
@@ -37,12 +40,12 @@ const AcCalculatorForm = () => {
   console.log("selectedACType", selectedAcType);
 
   return (
-    <section className="flex md:items-center items-start md:mt-[5%] mt-[5%] flex-col">
-      <h1 className="text-primaryBlack text-base font-medium md:text-center text-start md:mb-10 mb-5">
+    <section className="flex md:items-center items-start md:mt-[5%] mt-[5%] flex-col md:gap-9">
+      <h1 className="text-primaryBlack text-base font-medium md:text-center text-start ">
         Your Guide to Smarter AC Choices 🌟 Calculate and save on your bills
         today!
       </h1>
-      <div className="flex  md:flex-row flex-col w-[773px] border-2 ">
+      <div className="flex  md:flex-row flex-col w-[773px] md:gap-[66px] ">
         <div className="w-[352px] flex flex-col gap-5">
           <div className="flex flex-col gap-[6px]">
             <label htmlFor="" className="text-sm font-medium">
@@ -50,16 +53,20 @@ const AcCalculatorForm = () => {
             </label>
             <Select>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a fruit" />
+                <SelectValue placeholder="Select brand" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
+                  {brands.map((item: brands, i: number) => (
+                    <SelectItem value={item.value} key={i}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                  {/* <SelectItem value="apple">Apple</SelectItem>
                   <SelectItem value="banana">Banana</SelectItem>
                   <SelectItem value="blueberry">Blueberry</SelectItem>
                   <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                  <SelectItem value="pineapple">Pineapple</SelectItem> */}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -92,16 +99,14 @@ const AcCalculatorForm = () => {
             </label>
             <Select>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a fruit" />
+                <SelectValue placeholder="Select Temperature" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                  <SelectItem value="apple">16-22</SelectItem>
+                  <SelectItem value="banana">20-22</SelectItem>
+                  <SelectItem value="blueberry">24</SelectItem>
+                  <SelectItem value="grapes">&gt;24</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -112,16 +117,17 @@ const AcCalculatorForm = () => {
             </label>
             <Select>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a fruit" />
+                <SelectValue placeholder="Select a  city" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                  {electricity_rates.map(
+                    (item: electricity_rates, i: number) => (
+                      <SelectItem value={item.state} key={i}>
+                        {item.state}
+                      </SelectItem>
+                    )
+                  )}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -131,237 +137,102 @@ const AcCalculatorForm = () => {
           </div>
         </div>
 
-        <div className="w-[352px]">
+        <div className="w-[352px] md:flex flex-col gap-[20px]">
           <div className="flex flex-col gap-[6px]">
-            <p>
+            <p className="text-xs font-medium">
               AC Capacity in ton <span className="text-red-700">*</span>
             </p>
             <ACCapacitySlider />
           </div>
-
           <div className="flex flex-col gap-[6px]">
             <p>
               Ac Type<span className="text-red-700">*</span>
             </p>
-            <div>
-              <div className="w-[127px]">
-                <div className="w-9 h-9 flex items-center justify-center border-2">
-                  <img src={imagePath.window_ac} alt="" />
+            <div className="flex gap-[11px]">
+              <div
+                className={`w-[127px] p-[2px] border  ${
+                  selectedAcType === "window"
+                    ? " border-quaternaryBlack"
+                    : "border-secondaryWhite "
+                } rounded-[8px] flex items-center gap-1`}
+                onClick={() => handleSelectAcType("window")}
+              >
+                <div
+                  className={`w-9 h-9 flex items-center justify-center
+                 ${
+                   selectedAcType === "window"
+                     ? " bg-primaryBlack"
+                     : "bg-senaryWhite"
+                 } py-[3px] px-[1px] rounded-[6px]`}
+                >
+                  <img
+                    src={
+                      color === "white"
+                        ? imagePath.windowAc
+                        : imagePath.darkWindowAc
+                    }
+                    alt=""
+                    className="h-[13.14px] w-[17.74px]"
+                  />
                 </div>
-                <span></span>
+                <span className="text-sm font-medium text-tertiaryBlack">
+                  Window
+                </span>
               </div>
-              <div>
-                <div>
-                  <img src="" alt="" />
+
+              <div
+                className={`w-[127px] p-[2px] border  ${
+                  selectedAcType === "split"
+                    ? " border-quaternaryBlack"
+                    : "border-secondaryWhite "
+                } rounded-[8px] flex items-center gap-1`}
+                onClick={() => handleSelectAcType("split")}
+              >
+                <div
+                  className={`w-9 h-9 flex items-center justify-center py-[3px] px-[1px]
+                    ${
+                      selectedAcType === "split"
+                        ? " bg-primaryBlack"
+                        : "bg-senaryWhite"
+                    }  rounded-[6px]`}
+                >
+                  <img
+                    src={imagePath.splitAc}
+                    alt=""
+                    className="h-[13.14px] w-[17.74px]"
+                  />
                 </div>
-                <span></span>
+                <span className="text-sm font-medium text-tertiaryBlack">
+                  Split AC
+                </span>
               </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-[6px]">
+            <p className="text-xs font-medium">
+              Hours of usage per day * <span className="text-red-700">*</span>
+            </p>
+            <div
+              id="usage-hours"
+              className=" flex gap-2 items-center justify-between rounded-[6px] border-[1px] border-tertiaryWhite p-2"
+              aria-label="Hours of usage per day"
+            >
+              {/* <TimePicker onChange={(time) => console.log(time)} /> */}
+              <span className="text-secondaryGray text-sm font-normal">
+                8 hr
+              </span>
+              <Clock className="text-secondaryBlack" aria-hidden="true" />
             </div>
           </div>
         </div>
       </div>
-
-      {/* <form className="sm:w-[773px] w-full" aria-labelledby="ac-selection-form">
-        <div className="flex flex-col gap-5">
-        
-          <div className="flex sm:items-center  sm:flex-row flex-col sm:gap-[64px] gap-2">
-            <div className="flex flex-col gap-2 ">
-              <label
-                htmlFor="ac-brand"
-                className="text-sm font-medium leading-4"
-              >
-                AC Brand <span className="text-red-600">*</span>
-              </label>
-              <Select>
-                <SelectTrigger
-                  id="ac-brand"
-                  className="sm:w-[352px]  outline-none"
-                  aria-label="Select AC Brand"
-                >
-                  <SelectValue placeholder="LG" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="lg">LG</SelectItem>
-                  <SelectItem value="samsung">Samsung</SelectItem>
-                  <SelectItem value="hitachi">Hitachi</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <span className="text-sm font-medium leading-4">
-                Star Rating <span className="text-red-600">*</span>
-              </span>
-            
-              <div className="flex space-x-2  -mt-3">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    className={`cursor-pointer text-4xl flex  ${
-                      hoverRating >= star || rating >= star
-                        ? "text-yellow-500"
-                        : "text-gray-300"
-                    }`}
-                    onClick={() => handleRatingClick(star)}
-                    onMouseEnter={() => handleRatingHover(star)}
-                    onMouseLeave={handleRatingHoverLeave}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          
-          <div className="flex sm:flex-row flex-col sm:gap-[64px] gap-2">
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="temp-preference"
-                className="text-sm font-medium leading-4"
-              >
-                Temperature Preference <span className="text-red-600">*</span>
-              </label>
-              <Select>
-                <SelectTrigger
-                  id="temp-preference"
-                  className="sm:w-[352px] outline-none"
-                  aria-label="Select Temperature Preference"
-                >
-                  <SelectValue placeholder="22-24°C" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="22-24">22-24°C</SelectItem>
-                  <SelectItem value="25-27">25-27°C</SelectItem>
-                  <SelectItem value="28-30">28-30°C</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <fieldset className="flex flex-col gap-2 ">
-              <label className="text-sm font-medium leading-4">
-                AC Type <span className="text-red-600">*</span>
-              </label>
-              <div
-                className="flex space-x-4"
-                role="radiogroup"
-                aria-label="AC Type"
-              >
-                <label
-                  className={`flex items-center justify-start
-                 border-[1px]  rounded-[8px] gap-1 w-[127px] cursor-pointer ${
-                   selectedAcType === "window"
-                     ? "border-primaryBlack"
-                     : "border-secondaryWhite"
-                 }`}
-                  onClick={() => handleSelectAcType("window")}
-                >
-                  <span
-                    className={`flex justify-center items-center  h-9 w-9 py-1 px-[1px] rounded-[6px]
-                     ${
-                       selectedAcType === "window"
-                         ? "bg-primaryBlack"
-                         : "bg-senaryWhite"
-                     }`}
-                  >
-                    <img
-                      src={windowAc}
-                      alt="Window Air Conditioner"
-                      className="w-[21px] h-[15px]"
-                    />
-                  </span>
-                  <span className="text-sm font-medium leading-4">
-                    Window AC
-                  </span>
-                </label>
-
-                <label
-                  className={`flex items-center border-[1px] rounded-[8px] gap-1 w-[134px] cursor-pointer ${
-                    selectedAcType === "split"
-                      ? "border-primaryBlack"
-                      : "border-secondaryWhite"
-                  }`}
-                  onClick={() => handleSelectAcType("split")}
-                >
-                  <span
-                    className={`flex justify-center items-center  ${
-                      selectedAcType === "split"
-                        ? "bg-primaryBlack"
-                        : "bg-senaryWhite"
-                    } h-9 w-9 py-3 px-[1px] rounded-[6px]`}
-                  >
-                    <img
-                      src={splitAc}
-                      alt="Split Air Conditioner"
-                      className="w-9 p-[1.5px]"
-                    />
-                  </span>
-                  <span className="text-sm font-medium leading-4">
-                    Split AC
-                  </span>
-                </label>
-              </div>
-            </fieldset>
-          </div>
-
-          
-          <div className="flex sm:flex-row flex-col sm:gap-[64px] gap-2">
-            <div className="flex flex-col gap-2">
-              <label htmlFor="state" className="text-sm font-medium leading-4">
-                Choose your State <span className="text-red-600">*</span>
-              </label>
-              <Select>
-                <SelectTrigger
-                  id="state"
-                  className="sm:w-[352px] outline-none"
-                  aria-label="Select State"
-                >
-                  <SelectValue placeholder="West Bengal" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="west-bengal">West Bengal</SelectItem>
-                  <SelectItem value="delhi">Delhi</SelectItem>
-                  <SelectItem value="maharashtra">Maharashtra</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="flex flex-col gap-2 flex-1">
-              <label
-                htmlFor="usage-hours"
-                className="text-sm font-medium leading-4"
-              >
-                Hours of usage per day <span className="text-red-600">*</span>
-              </label>
-              <div
-                id="usage-hours"
-                className=" flex gap-2 items-center justify-between rounded-[6px] border-[1px] border-tertiaryWhite p-2"
-                aria-label="Hours of usage per day"
-              >
-                <span className="text-secondaryGray text-sm font-normal">
-                  8 hr
-                </span>
-                <Clock className="text-secondaryBlack" aria-hidden="true" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-    
-        <div className="flex gap-3 mt-10 justify-center">
-          <Button
-            size="xl"
-            variant="outline"
-            type="reset"
-            aria-label="Reset form"
-          >
-            Reset
-          </Button>
-          <Button size="xl" type="submit" aria-label="Calculate AC efficiency">
-            Calculate
-          </Button>
-        </div>
-      </form> */}
+      <div className="flex gap-5">
+        <Button size={"lg"} variant={"outline"}>
+          Reset
+        </Button>
+        <Button size={"lg"}>Calculate</Button>
+      </div>
     </section>
   );
 };

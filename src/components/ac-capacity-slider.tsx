@@ -1,61 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-type ACCapacitySliderProps = {
-  min?: number;
-  max?: number;
-  step?: number;
-  defaultValue?: number;
+type SliderPoint = {
+  value: number;
+  label: string;
 };
 
-const ACCapacitySlider: React.FC<ACCapacitySliderProps> = ({
-  min = 0.8,
-  max = 2,
-  step = 0.1,
-  defaultValue = 1,
-}) => {
-  const [value, setValue] = useState<number>(defaultValue);
+const ACCapacitySlider: React.FC = () => {
+  const points: SliderPoint[] = [
+    { value: 0.8, label: "0.8" },
+    { value: 1, label: "1" },
+    { value: 1.2, label: "1.2" },
+    { value: 1.5, label: "1.5" },
+    { value: 2, label: "2" },
+  ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(parseFloat(e.target.value));
+  const [active, setActive] = useState<number>(1);
+
+  const handleClick = (value: number) => {
+    setActive(value);
   };
 
   return (
-    <div className="w-full max-w-md mx-auto text-center font-sans">
-      <label htmlFor="ac-slider" className="text-lg font-medium mb-2 block">
-        AC Capacity in ton<span className="text-red-500">*</span>
-      </label>
-      <div className="relative w-full mt-4">
-        <input
-          type="range"
-          id="ac-slider"
-          className="w-full h-1 bg-gray-300 rounded-full appearance-none focus:outline-none focus:ring-2 focus:ring-black"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={handleChange}
-        />
-        <div className="flex justify-between mt-2">
-          {[0.8, 1, 1.2, 1.5, 2].map((mark) => (
-            <div key={mark} className="text-sm text-gray-500">
-              {mark}
-            </div>
-          ))}
-        </div>
-        <div className="relative mt-1">
-          {[0.8, 1, 1.2, 1.5, 2].map((mark) => (
+    <div className="flex items-center w-72 ">
+      {points.map((point, index) => (
+        <React.Fragment key={index}>
+          <div className="flex flex-col items-center">
+            {/* Label */}
+            <span className="mb-2 text-xs text-gray-700">{point.label}</span>
+            {/* Point */}
             <div
-              key={mark}
-              className={`absolute w-3 h-3 bg-white border-2 rounded-full ${value === mark ? 'bg-black border-black' : 'border-gray-300'}`}
-              style={{ left: `${((mark - min) / (max - min)) * 100}%`, transform: 'translateX(-50%)' }}
+              className={`h-4 w-4 rounded-full cursor-pointer flex items-center justify-center ${
+                active === point.value
+                  ? "bg-black text-white"
+                  : "bg-white border-2 border-[#D9D9D9]"
+              }`}
+              onClick={() => handleClick(point.value)}
             ></div>
-          ))}
-        </div>
-      </div>
+          </div>
+          {/* Connecting Line */}
+          {index < points.length - 1 && (
+            <div className="flex-1 h-[2px] bg-[#D9D9D9] mt-6"></div>
+          )}
+        </React.Fragment>
+      ))}
     </div>
   );
 };
 
 export default ACCapacitySlider;
-
-// Tailwind CSS used for styling. Exact UI alignment and spacing are handled using Tailwind classes.

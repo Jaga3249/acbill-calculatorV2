@@ -2,7 +2,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 const BottomCarosel = () => {
-  // Sample data for the carousel (you can expand this)
+  // Sample data for the carousel
   const carouselItems = [
     "Set your AC temperature to 24-26°C for optimal cooling and energy efficiency, saving up to 10% on your electricity bill!",
     "Switch off lights when not in use to save energy and reduce electricity costs.",
@@ -11,19 +11,16 @@ const BottomCarosel = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right">("right"); // To track the transition direction
 
-  // Handle left button click
+  // Handle left button click (previous item)
   const handlePrev = () => {
-    setDirection("left");
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1
     );
   };
 
-  // Handle right button click
+  // Handle right button click (next item)
   const handleNext = () => {
-    setDirection("right");
     setCurrentIndex((prevIndex) =>
       prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
     );
@@ -35,17 +32,18 @@ const BottomCarosel = () => {
         Want to lower your bills? Check out our energy-saving tips! 🛠
       </h1>
       <div
-        className={`text-sm font-medium text-center text-primaryBlack border border-querternaryWhite
-        rounded-[12px] py-[10px] px-[50px] h-[138px] flex justify-center items-center
-        transition-transform duration-500 ease-in-out transform ${
-          direction === "left" ? "translate-x-full" : "translate-x-0"
-        }
-        ${direction === "right" ? "translate-x-0" : "translate-x-full"}`}
+        className="text-sm font-medium text-center text-primaryBlack border border-querternaryWhite
+          rounded-[12px] py-[10px] px-[50px] h-[138px] flex justify-center items-center"
       >
         {carouselItems[currentIndex]}
       </div>
       <div className="flex justify-center items-center gap-10 mt-4">
         <ChevronLeft onClick={handlePrev} className="cursor-pointer" />
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <ChevronRight onClick={handleNext} className="cursor-pointer" />
       </div>
     </div>

@@ -8,7 +8,7 @@ import { Copyright } from "lucide-react";
 const Footer = () => {
   return (
     <>
-      <div className=" hidden bg-primaryBlack py-[52px] px-[240px]  sm:flex mt-10 ">
+      <div className=" hidden bg-primaryBlack py-[52px] px-[200px]  sm:flex mt-10 ">
         {/* left side */}
         <div className="flex-1 flex flex-col gap-2">
           <div className="flex flex-col gap-3">
@@ -47,7 +47,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 ">
           <ul className="flex flex-col gap-[18px]">
             <li className="text-sm font-semibold text-septenaryWhite">
               Other Pages

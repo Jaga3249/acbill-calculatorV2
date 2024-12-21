@@ -4,14 +4,14 @@ import { Button } from "./ui/button";
 
 const ContactUs = () => {
   return (
-    <div className=" border-2 sm:mx-20 bg-primaryBlue py-8 sm:px-[72px] px-6 flex sm:flex-row flex-col gap-3 rounded-[20px] mt-10">
-      <div className="flex-1 flex sm:items-center ">
-        <p className="text-primaryWhite sm:max-w-[380px] text-2xl font-medium">
-          Boost your brand visibility! 🚀 Contact us today to place your ads and
-          reach the right audience
+    <div className=" border-2 sm:mx-28 bg-primaryBlack py-8 sm:px-[72px] px-6 flex flex-col gap-3 rounded-[20px] mt-10 sm:flex-row">
+      <div className="flex-1 flex md:items-center ">
+        <p className=" text-primaryWhite sm:max-w-[380px] text-[28px] leading-[42px] font-medium">
+          Have questions or need support? 💬 Reach out to us, and we'll be happy
+          to assist!
         </p>
       </div>
-      <div className="flex-1 max-w-[284px] flex flex-col gap-4">
+      <div className="flex-1  flex flex-col items-end gap-4">
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label
             htmlFor="Name"

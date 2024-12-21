@@ -13,13 +13,11 @@ const Header = () => {
     setActiveTab(tab);
   };
 
-  console.log(imagePath.company_logo);
-
   return (
     <>
       <header className="mt-6 hidden md:flex md:items-center md:justify-between">
         <img
-          src={imagePath?.company_logo}
+          src={imagePath?.companyLogo}
           alt="Company Logo"
           className="w-[55px] h-[37.15px]"
         />
