@@ -1,103 +1,61 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const ACCapacitySlider: React.FC = () => {
-  const [value, setValue] = useState<number>(1); // Default value (1)
-  const points: number[] = [0.8, 1, 1.2, 1.5, 2];
+type ACCapacitySliderProps = {
+  min?: number;
+  max?: number;
+  step?: number;
+  defaultValue?: number;
+};
 
-  const handleDrag = (event: React.MouseEvent<HTMLDivElement>) => {
-    const slider = event.currentTarget; // The slider div
-    const rect = slider.getBoundingClientRect();
-    const offsetX = event.clientX - rect.left; // Click position relative to the slider
-    const percentage = offsetX / rect.width; // Position as a percentage of the slider width
+const ACCapacitySlider: React.FC<ACCapacitySliderProps> = ({
+  min = 0.8,
+  max = 2,
+  step = 0.1,
+  defaultValue = 1,
+}) => {
+  const [value, setValue] = useState<number>(defaultValue);
 
-    // Set the value directly based on the percentage of the slider width
-    const positionValue =
-      percentage * (points[points.length - 1] - points[0]) + points[0];
-    setValue(positionValue); // Update the slider value directly
-  };
-
-  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-    const slider = event.currentTarget;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = slider.getBoundingClientRect();
-      const offsetX = e.clientX - rect.left;
-      const percentage = offsetX / rect.width;
-
-      const positionValue =
-        percentage * (points[points.length - 1] - points[0]) + points[0];
-      setValue(positionValue); // Update the slider value directly
-    };
-
-    const handleMouseUp = () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-  };
-
-  // Calculate the position for the thumb based on the closest point
-  const thumbPosition = (value: number) => {
-    const closestPoint = points.reduce((prev, curr) =>
-      Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
-    );
-    return (
-      ((closestPoint - points[0]) / (points[points.length - 1] - points[0])) *
-      100
-    );
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(parseFloat(e.target.value));
   };
 
   return (
-    <div className="relative w-96 mx-auto mt-10">
-      {/* Marks (Numbers above the slider) */}
-      <div className="relative mb-2">
-        {points.map((point, index) => (
-          <span
-            key={index}
-            className="absolute transform -translate-x-1/2 text-gray-700 text-sm"
-            style={{
-              left: `${(index / (points.length - 1)) * 100}%`,
-              top: "-20px",
-            }}
-          >
-            {point}
-          </span>
-        ))}
-      </div>
-
-      {/* Slider Track */}
-      <div
-        className="relative h-1 bg-gray-300 rounded cursor-pointer"
-        onClick={handleDrag}
-        onMouseDown={handleMouseDown}
-      >
-        {/* Slider Points */}
-        {points.map((point, index) => (
-          <div
-            key={index}
-            className={`absolute top-1/2 w-4 h-4 border-2 rounded-full transform -translate-y-1/2 ${
-              value === point
-                ? "bg-black border-black"
-                : "bg-white border-gray-400"
-            }`}
-            style={{
-              left: `${(index / (points.length - 1)) * 100}%`,
-            }}
-          ></div>
-        ))}
-
-        {/* Slider Thumb */}
-        <div
-          className="absolute top-1/2 w-5 h-5 bg-black rounded-full transform -translate-y-1/2"
-          style={{
-            left: `${thumbPosition(value)}%`, // Align thumb exactly on the point
-          }}
-        ></div>
+    <div className="w-full max-w-md mx-auto text-center font-sans">
+      <label htmlFor="ac-slider" className="text-lg font-medium mb-2 block">
+        AC Capacity in ton<span className="text-red-500">*</span>
+      </label>
+      <div className="relative w-full mt-4">
+        <input
+          type="range"
+          id="ac-slider"
+          className="w-full h-1 bg-gray-300 rounded-full appearance-none focus:outline-none focus:ring-2 focus:ring-black"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={handleChange}
+        />
+        <div className="flex justify-between mt-2">
+          {[0.8, 1, 1.2, 1.5, 2].map((mark) => (
+            <div key={mark} className="text-sm text-gray-500">
+              {mark}
+            </div>
+          ))}
+        </div>
+        <div className="relative mt-1">
+          {[0.8, 1, 1.2, 1.5, 2].map((mark) => (
+            <div
+              key={mark}
+              className={`absolute w-3 h-3 bg-white border-2 rounded-full ${value === mark ? 'bg-black border-black' : 'border-gray-300'}`}
+              style={{ left: `${((mark - min) / (max - min)) * 100}%`, transform: 'translateX(-50%)' }}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
 export default ACCapacitySlider;
+
+// Tailwind CSS used for styling. Exact UI alignment and spacing are handled using Tailwind classes.

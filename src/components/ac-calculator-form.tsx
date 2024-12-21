@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
@@ -10,8 +12,10 @@ import windowAc from "@/assets/window-ac.png";
 import splitAc from "@/assets/split-ac.png";
 import { Clock } from "lucide-react";
 import { Button } from "./ui/button";
+import ACCapacitySlider from "./ac-capacity-slider";
+import { imagePath } from "@/constants/imagePath";
 
-const AcSelectionForm = () => {
+const AcCalculatorForm = () => {
   const [rating, setRating] = useState(0); // Selected rating
   const [hoverRating, setHoverRating] = useState(0);
   const [selectedAcType, setSelectedAcType] = useState("");
@@ -33,15 +37,133 @@ const AcSelectionForm = () => {
   console.log("selectedACType", selectedAcType);
 
   return (
-    <section className="flex sm:items-center items-start sm:mt-[5%] mt-[5%] flex-col">
-      <h1 className="text-primaryBlack text-base font-medium sm:text-center text-start sm:mb-10 mb-5">
+    <section className="flex md:items-center items-start md:mt-[5%] mt-[5%] flex-col">
+      <h1 className="text-primaryBlack text-base font-medium md:text-center text-start md:mb-10 mb-5">
         Your Guide to Smarter AC Choices 🌟 Calculate and save on your bills
         today!
       </h1>
+      <div className="flex  md:flex-row flex-col w-[773px] border-2 ">
+        <div className="w-[352px] flex flex-col gap-5">
+          <div className="flex flex-col gap-[6px]">
+            <label htmlFor="" className="text-sm font-medium">
+              AC Brand <span className="text-red-700">*</span>
+            </label>
+            <Select>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Fruits</SelectLabel>
+                  <SelectItem value="apple">Apple</SelectItem>
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="blueberry">Blueberry</SelectItem>
+                  <SelectItem value="grapes">Grapes</SelectItem>
+                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <label htmlFor="" className="text-sm font-medium">
+              Star Rating *<span className="text-red-700">*</span>
+            </label>
+            <div className="flex space-x-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  className={`cursor-pointer text-4xl flex  ${
+                    hoverRating >= star || rating >= star
+                      ? "text-yellow-500"
+                      : "text-gray-300"
+                  }`}
+                  onClick={() => handleRatingClick(star)}
+                  onMouseEnter={() => handleRatingHover(star)}
+                  onMouseLeave={handleRatingHoverLeave}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-[6px]">
+            <label htmlFor="" className="text-sm font-medium">
+              Temperature Preference<span className="text-red-700">*</span>
+            </label>
+            <Select>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Fruits</SelectLabel>
+                  <SelectItem value="apple">Apple</SelectItem>
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="blueberry">Blueberry</SelectItem>
+                  <SelectItem value="grapes">Grapes</SelectItem>
+                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-[6px]">
+            <label htmlFor="" className="text-sm font-medium">
+              Choose your State<span className="text-red-700">*</span>
+            </label>
+            <Select>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Fruits</SelectLabel>
+                  <SelectItem value="apple">Apple</SelectItem>
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="blueberry">Blueberry</SelectItem>
+                  <SelectItem value="grapes">Grapes</SelectItem>
+                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <p className="text-xs font-medium">
+              *Cost per unit is ₹5.3 in your state{" "}
+            </p>
+          </div>
+        </div>
 
-      <form className="sm:w-[773px] w-full" aria-labelledby="ac-selection-form">
+        <div className="w-[352px]">
+          <div className="flex flex-col gap-[6px]">
+            <p>
+              AC Capacity in ton <span className="text-red-700">*</span>
+            </p>
+            <ACCapacitySlider />
+          </div>
+
+          <div className="flex flex-col gap-[6px]">
+            <p>
+              Ac Type<span className="text-red-700">*</span>
+            </p>
+            <div>
+              <div className="w-[127px]">
+                <div className="w-9 h-9 flex items-center justify-center border-2">
+                  <img src={imagePath.window_ac} alt="" />
+                </div>
+                <span></span>
+              </div>
+              <div>
+                <div>
+                  <img src="" alt="" />
+                </div>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <form className="sm:w-[773px] w-full" aria-labelledby="ac-selection-form">
         <div className="flex flex-col gap-5">
-          {/* AC Brand and Star Rating */}
+        
           <div className="flex sm:items-center  sm:flex-row flex-col sm:gap-[64px] gap-2">
             <div className="flex flex-col gap-2 ">
               <label
@@ -70,7 +192,7 @@ const AcSelectionForm = () => {
               <span className="text-sm font-medium leading-4">
                 Star Rating <span className="text-red-600">*</span>
               </span>
-              {/* Customized Rating Component */}
+            
               <div className="flex space-x-2  -mt-3">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
@@ -91,7 +213,7 @@ const AcSelectionForm = () => {
             </div>
           </div>
 
-          {/* Temperature Preference and AC Type */}
+          
           <div className="flex sm:flex-row flex-col sm:gap-[64px] gap-2">
             <div className="flex flex-col gap-2">
               <label
@@ -182,7 +304,7 @@ const AcSelectionForm = () => {
             </fieldset>
           </div>
 
-          {/* State and Hours of Usage */}
+          
           <div className="flex sm:flex-row flex-col sm:gap-[64px] gap-2">
             <div className="flex flex-col gap-2">
               <label htmlFor="state" className="text-sm font-medium leading-4">
@@ -225,7 +347,7 @@ const AcSelectionForm = () => {
           </div>
         </div>
 
-        {/* Buttons */}
+    
         <div className="flex gap-3 mt-10 justify-center">
           <Button
             size="xl"
@@ -239,9 +361,9 @@ const AcSelectionForm = () => {
             Calculate
           </Button>
         </div>
-      </form>
+      </form> */}
     </section>
   );
 };
 
-export default AcSelectionForm;
+export default AcCalculatorForm;
