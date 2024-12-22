@@ -11,7 +11,7 @@ import { Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import ACCapacitySlider from "./ac-capacity-slider";
 import { imagePath } from "@/constants/imagePath";
-
+//
 import { Label } from "./ui/label";
 import { SearchableSelect } from "./searchable-select";
 import usePredictAndRecommend from "@/hooks/use-predict-and-recomend-ac";
