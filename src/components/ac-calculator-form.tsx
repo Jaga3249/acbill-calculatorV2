@@ -58,7 +58,7 @@ const AcCalculatorForm = () => {
   const handleRatingHover = (rate: number) => {
     setHoverRating(rate); // Set the hovered rating
   };
-
+  //
   const handleRatingHoverLeave = () => {
     setHoverRating(0); // Reset hover state on mouse leave
   };
