@@ -1,6 +1,5 @@
 import { ACUsageData } from "@/type/type";
 import { Plus } from "lucide-react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const AcComparision = ({
   predictRecomenedAc,

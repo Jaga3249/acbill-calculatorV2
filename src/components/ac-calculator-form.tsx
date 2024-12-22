@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   brands,
   electricity_rates,
@@ -6,32 +6,21 @@ import {
   hours,
   temperature_preferences,
 } from "../../data";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
-import windowAc from "@/assets/window-ac.png";
-import splitAc from "@/assets/split-ac.png";
-import { Clock, Loader2 } from "lucide-react";
+
+import { Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import ACCapacitySlider from "./ac-capacity-slider";
 import { imagePath } from "@/constants/imagePath";
-import TimePicker from "./time-picker";
+
 import { Label } from "./ui/label";
-import { Option, SearchableSelect } from "./searchable-select";
+import { SearchableSelect } from "./searchable-select";
 import usePredictAndRecommend from "@/hooks/use-predict-and-recomend-ac";
-import { ACUsageData } from "@/type/type";
 
 const url = import.meta.env.VITE_API_URL;
 
 const AcCalculatorForm = () => {
-  const [color, setClor] = useState("white");
-  const [predictData, setPredictData] = useState<ACUsageData | null>(null);
+  const [color, setColor] = useState("white");
+
   const [rating, setRating] = useState(0); // Selected rating
   const [hoverRating, setHoverRating] = useState(0);
   const [selectedAcType, setSelectedAcType] = useState("");
@@ -42,7 +31,7 @@ const AcCalculatorForm = () => {
   const [capacity, setCapacity] = useState<number>(1);
   const [stateUnitPrice, setStateUnitPrice] = useState<number>(0);
 
-  const { fetchPrediction, error, loading } = usePredictAndRecommend({
+  const { fetchPrediction, loading } = usePredictAndRecommend({
     url: url as string,
     data: {
       brand: selectedBrand,
@@ -75,6 +64,7 @@ const AcCalculatorForm = () => {
   };
   const handleSelectAcType = (acType: string) => {
     setSelectedAcType((prevType) => (prevType === acType ? "" : acType));
+    changeColor();
   };
   const handleReset = () => {
     setSelectedBrand("");
@@ -85,6 +75,9 @@ const AcCalculatorForm = () => {
     setHoverRating(0);
     setSelectedAcType("");
     setCapacity(0.8);
+  };
+  const changeColor = () => {
+    setColor("blue"); // Example usage of setColor
   };
   useEffect(() => {
     const unitPrice = electricity_rates.filter(

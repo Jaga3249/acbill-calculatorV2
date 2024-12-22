@@ -1,7 +1,6 @@
 import footerlogo from "@/assets/footer-logo.png";
 import instagram from "@/assets/instagram.png";
 import linkedin from "@/assets/linkedin.png";
-import twitter from "@/assets/twitter.png";
 import facebook from "@/assets/facebook.png";
 import { Copyright } from "lucide-react";
 

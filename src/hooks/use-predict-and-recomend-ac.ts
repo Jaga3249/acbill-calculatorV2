@@ -1,5 +1,4 @@
 import { useAcContext } from "@/context/use-context";
-import { ACUsageData } from "@/type/type";
 import { useState } from "react";
 import toast from "react-hot-toast";
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AcCalculatorForm from "./components/ac-calculator-form";
 import AcComparision from "./components/ac-comparision";
 import BottomCarousel from "./components/bottom-carosel";
@@ -8,9 +8,9 @@ import Header from "./components/header";
 import { HeroSection } from "./components/hero-section";
 import { imagePath } from "./constants/imagePath";
 import { X } from "lucide-react";
-import ACUsageComparison from "./components/ac-usageComparison";
-import toast from "react-hot-toast";
-import { ACUsageData } from "./type/type";
+// import ACUsageComparison from "./components/ac-usageComparison";
+// import toast from "react-hot-toast";
+// import { ACUsageData } from "./type/type";
 import { useAcContext } from "./context/use-context";
 
 const App = () => {
