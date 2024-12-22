@@ -1,3 +1,5 @@
+import { Option } from "@/components/searchable-select";
+
 export interface electricity_rates {
   state: string;
   unit_price: number;
@@ -221,4 +223,108 @@ export const brands: brands[] = [
   { value: "LLoyd", label: "LLoyd" },
   { value: "Marq", label: "Marq" },
   { value: "Croma", label: "Croma" },
+];
+
+export const electricity_states: Option[] = [
+  { value: "Andaman & Nicobar Island", label: "Andaman & Nicobar Island" },
+  { value: "Andhra Pradesh", label: "Andhra Pradesh" },
+  { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
+  { value: "Assam", label: "Assam" },
+  { value: "Bihar (Urban Areas)", label: "Bihar (Urban Areas)" },
+  { value: "Bihar (Rural Areas)", label: "Bihar (Rural Areas)" },
+  { value: "Chandigarh", label: "Chandigarh" },
+  { value: "Chhattisgarh", label: "Chhattisgarh" },
+  { value: "Dadra & Nagar Haveli", label: "Dadra & Nagar Haveli" },
+  { value: "Daman & Diu", label: "Daman & Diu" },
+  { value: "Delhi-(BYPL/BRPL/TPDDL)", label: "Delhi-(BYPL/BRPL/TPDDL)" },
+  { value: "Delhi-(NDMC)", label: "Delhi-(NDMC)" },
+  { value: "Goa", label: "Goa" },
+  { value: "Gujarat (Urban Areas)", label: "Gujarat (Urban Areas)" },
+  {
+    value: "Gujarat-(Torrent Power Ltd., Ahmedabad)",
+    label: "Gujarat-(Torrent Power Ltd., Ahmedabad)",
+  },
+  {
+    value: "Gujarat-(Torrent Power Ltd., Surat)",
+    label: "Gujarat-(Torrent Power Ltd., Surat)",
+  },
+  { value: "Haryana", label: "Haryana" },
+  { value: "Himachal Pradesh", label: "Himachal Pradesh" },
+  { value: "Jammu & Kashmir", label: "Jammu & Kashmir" },
+  { value: "Jharkhand (Urban Areas)", label: "Jharkhand (Urban Areas)" },
+  { value: "Jharkhand (Rural Areas)", label: "Jharkhand (Rural Areas)" },
+  { value: "Karnataka", label: "Karnataka" },
+  { value: "Kerala", label: "Kerala" },
+  { value: "Ladakh", label: "Ladakh" },
+  { value: "Lakshadweep", label: "Lakshadweep" },
+  {
+    value: "Madhya Pradesh (Urban Areas)",
+    label: "Madhya Pradesh (Urban Areas)",
+  },
+  {
+    value: "Madhya Pradesh (Rural Areas)",
+    label: "Madhya Pradesh (Rural Areas)",
+  },
+  { value: "Maharashtra", label: "Maharashtra" },
+  {
+    value: "Maharashtra-Mumbai (B.E.S.T)",
+    label: "Maharashtra-Mumbai (B.E.S.T)",
+  },
+  {
+    value: "Maharashtra-Mumbai-Adani Electricity",
+    label: "Maharashtra-Mumbai-Adani Electricity",
+  },
+  { value: "Maharashtra-Mumbai 'TATA's", label: "Maharashtra-Mumbai 'TATA's" },
+  { value: "Manipur", label: "Manipur" },
+  { value: "Meghalaya", label: "Meghalaya" },
+  { value: "Mizoram", label: "Mizoram" },
+  { value: "Nagaland", label: "Nagaland" },
+  { value: "Odisha", label: "Odisha" },
+  { value: "Puducherry", label: "Puducherry" },
+  { value: "Punjab", label: "Punjab" },
+  { value: "Rajasthan", label: "Rajasthan" },
+  { value: "Sikkim", label: "Sikkim" },
+  { value: "Tamil Nadu", label: "Tamil Nadu" },
+  { value: "Telangana", label: "Telangana" },
+  { value: "Tripura", label: "Tripura" },
+  { value: "Uttarakhand", label: "Uttarakhand" },
+  { value: "Uttar Pradesh (Urban)", label: "Uttar Pradesh (Urban)" },
+  { value: "Uttar Pradesh (Rural)", label: "Uttar Pradesh (Rural)" },
+  { value: "West Bengal (Urban)", label: "West Bengal (Urban)" },
+  { value: "West Bengal (Rural)", label: "West Bengal (Rural)" },
+  { value: "D.V.C. (Jharkhand Area)", label: "D.V.C. (Jharkhand Area)" },
+];
+
+export const hours: Option[] = [
+  { value: "1", label: "1 hr" },
+  { value: "2", label: "2 hr" },
+  { value: "3", label: "3 hr" },
+  { value: "4", label: "4 hr" },
+  { value: "5", label: "5 hr" },
+  { value: "6", label: "6 hr" },
+  { value: "7", label: "7 hr" },
+  { value: "8", label: "8 hr" },
+  { value: "9", label: "9 hr" },
+  { value: "10", label: "10 hr" },
+  { value: "11", label: "11 hr" },
+  { value: "12", label: "12 hr" },
+  { value: "13", label: "13 hr" },
+  { value: "14", label: "14 hr" },
+  { value: "15", label: "15 hr" },
+  { value: "16", label: "16 hr" },
+  { value: "17", label: "17 hr" },
+  { value: "18", label: "18 hr" },
+  { value: "19", label: "19 hr" },
+  { value: "20", label: "20 hr" },
+  { value: "21", label: "21 hr" },
+  { value: "22", label: "22 hr" },
+  { value: "23", label: "23 hr" },
+  { value: "24", label: "24 hr" },
+];
+
+export const temperature_preferences: Option[] = [
+  { value: "16-22", label: "16-22" },
+  { value: "20-22", label: "20-22" },
+  { value: "24", label: "24" },
+  { value: ">24", label: ">24" },
 ];

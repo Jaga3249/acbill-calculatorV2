@@ -1,13 +1,13 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
-const BottomCarosel = () => {
+const BottomCarousel = () => {
   // Sample data for the carousel
   const carouselItems = [
     "Set your AC temperature to 24-26°C for optimal cooling and energy efficiency, saving up to 10% on your electricity bill!",
     "Switch off lights when not in use to save energy and reduce electricity costs.",
     "Use energy-efficient appliances to save up to 30% on your monthly utility bills.",
-    "Seal windows and doors properly to prevent air leaks and reduce cooling costs.",
+    // "Seal windows and doors properly to prevent air leaks and reduce cooling costs.",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,8 +26,13 @@ const BottomCarosel = () => {
     );
   };
 
+  // Handle dot click
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
-    <div className="mx-28 px-10 flex flex-col gap-7 mt-10">
+    <div className="md:mx-28 md:px-10 flex flex-col gap-7 mt-10">
       <h1 className="text-base font-medium text-center text-primaryBlack">
         Want to lower your bills? Check out our energy-saving tips! 🛠
       </h1>
@@ -38,16 +43,27 @@ const BottomCarosel = () => {
         {carouselItems[currentIndex]}
       </div>
       <div className="flex justify-center items-center gap-10 mt-4">
+        {/* Left button */}
         <ChevronLeft onClick={handlePrev} className="cursor-pointer" />
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
+
+        {/* Dots */}
+        <div className="flex gap-2">
+          {carouselItems.map((_, index) => (
+            <div
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={`w-3 h-3 rounded-full cursor-pointer ${
+                currentIndex === index ? "bg-black" : "bg-gray-300"
+              }`}
+            ></div>
+          ))}
         </div>
+
+        {/* Right button */}
         <ChevronRight onClick={handleNext} className="cursor-pointer" />
       </div>
     </div>
   );
 };
 
-export default BottomCarosel;
+export default BottomCarousel;

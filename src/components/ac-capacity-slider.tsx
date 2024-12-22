@@ -4,8 +4,12 @@ type SliderPoint = {
   value: number;
   label: string;
 };
+interface activeProp {
+  setCapacity: React.Dispatch<React.SetStateAction<number>>;
+  capacity: number;
+}
 
-const ACCapacitySlider: React.FC = () => {
+const ACCapacitySlider = ({ capacity, setCapacity }: activeProp) => {
   const points: SliderPoint[] = [
     { value: 0.8, label: "0.8" },
     { value: 1, label: "1" },
@@ -14,14 +18,16 @@ const ACCapacitySlider: React.FC = () => {
     { value: 2, label: "2" },
   ];
 
-  const [active, setActive] = useState<number>(1);
+  // const [active, setActive] = useState<number>(1);
 
   const handleClick = (value: number) => {
-    setActive(value);
+    setCapacity(value);
   };
 
+  // console.log("active", active);
+
   return (
-    <div className="flex items-center w-72 ">
+    <div className="flex items-center md:w-72 w-full ">
       {points.map((point, index) => (
         <React.Fragment key={index}>
           <div className="flex flex-col items-center">
@@ -30,7 +36,7 @@ const ACCapacitySlider: React.FC = () => {
             {/* Point */}
             <div
               className={`h-4 w-4 rounded-full cursor-pointer flex items-center justify-center ${
-                active === point.value
+                capacity === point.value
                   ? "bg-black text-white"
                   : "bg-white border-2 border-[#D9D9D9]"
               }`}

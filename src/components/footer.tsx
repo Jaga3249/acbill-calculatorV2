@@ -22,10 +22,20 @@ const Footer = () => {
             </span>
           </div>
           <div className="flex gap-5">
-            <img src={facebook} alt="facebook" className="w-5 h-5" />
-            <img src={instagram} alt="instagram" className="w-5 h-5" />
-            <img src={twitter} alt="twitter" className="w-5 h-5" />
-            <img src={linkedin} alt="linkedin" className="w-5 h-5" />
+            <a href="https://www.facebook.com/techligator/" target="_blank">
+              <img src={facebook} alt="facebook" className="w-5 h-5" />
+            </a>
+            <a href="  https://www.instagram.com/techligator/" target="_blank">
+              <img src={instagram} alt="instagram" className="w-5 h-5" />
+            </a>
+            {/* <img src={twitter} alt="twitter" className="w-5 h-5" /> */}
+
+            <a
+              href=" https://www.linkedin.com/company/techligator/"
+              target="_blank"
+            >
+              <img src={linkedin} alt="linkedin" className="w-5 h-5" />
+            </a>
           </div>
           <div className="flex gap-1 ">
             <span className="text-sm font-normal text-septenaryWhite">
@@ -33,7 +43,7 @@ const Footer = () => {
             </span>
             <span className="w-[13px] h-[13px] text-septenaryWhite">@</span>
             <span className="text-sm font-normal text-septenaryWhite">
-              Company name
+              AcBillCalculator
             </span>
           </div>
         </div>
@@ -72,10 +82,23 @@ const Footer = () => {
             </span>
 
             <div className="flex gap-5">
-              <img src={facebook} alt="facebook" className="w-5 h-5" />
-              <img src={instagram} alt="instagram" className="w-5 h-5" />
-              <img src={twitter} alt="twitter" className="w-5 h-5" />
-              <img src={linkedin} alt="linkedin" className="w-5 h-5" />
+              <a href="https://www.facebook.com/techligator/" target="_blank">
+                <img src={facebook} alt="facebook" className="w-5 h-5" />
+              </a>
+              <a
+                href="  https://www.instagram.com/techligator/"
+                target="_blank"
+              >
+                <img src={instagram} alt="instagram" className="w-5 h-5" />
+              </a>
+              {/* <img src={twitter} alt="twitter" className="w-5 h-5" /> */}
+
+              <a
+                href=" https://www.linkedin.com/company/techligator/"
+                target="_blank"
+              >
+                <img src={linkedin} alt="linkedin" className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
@@ -96,13 +119,13 @@ const Footer = () => {
             </span>
           </div>
         </div>
-        <div className="flex justify-center mt-3">
+        <div className="flex justify-center items-center mt-3">
           <span className="text-sm text-primaryWhite font-normal ">
             Copyright
           </span>
-          <Copyright color="white" />
+          <Copyright color="white" className="mx-1" size={16} />
           <span className="text-sm text-primaryWhite font-normal ">
-            Company name
+            AcBillCalculator
           </span>
         </div>
       </div>

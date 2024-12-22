@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import companyLogo from "@/assets/company-logo.png";
 import { Menu } from "lucide-react";
 import { imagePath } from "@/constants/imagePath";
+import toast from "react-hot-toast";
+type HeaderProps = {
+  setIsMenuOpen: React.Dispatch<SetStateAction<boolean>>;
+};
 
-const Header = () => {
+const Header = ({ setIsMenuOpen }: HeaderProps) => {
   // State to track the active list item
   const [activeTab, setActiveTab] = useState("home");
 
@@ -12,6 +16,10 @@ const Header = () => {
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
   };
+
+  useEffect(() => {
+    toast.success("Welcome to AcBillCalculator");
+  });
 
   return (
     <>
@@ -39,7 +47,10 @@ const Header = () => {
             </span>
           ))}
         </div>
-        <Button className="w-[136px] rounded-xl">Contact Us</Button>
+        <a href="#contact">
+          {" "}
+          <Button className="w-[136px] rounded-xl">Contact Us</Button>
+        </a>
         {/* <nav
           aria-label="Main Navigation"
           className="flex-1 bg-primaryWhite rounded-[20px] p-2 flex justify-between items-center"
@@ -64,10 +75,14 @@ const Header = () => {
           <Button>Contact Us</Button>
         </nav> */}
       </header>
-      <header className="sm:hidden flex  mt-5">
-        <Menu />
+      <header className="md:hidden flex mt-5">
+        <Menu
+          onClick={() => setIsMenuOpen(true)}
+          size={30}
+          className="w-8 h-8"
+        />
         <div className="flex-1 flex items-center justify-center">
-          <img src={companyLogo} alt="logo" className="w-8 h-8" />
+          <img src={companyLogo} alt="logo" className="w-10 h-9" />
         </div>
       </header>
     </>

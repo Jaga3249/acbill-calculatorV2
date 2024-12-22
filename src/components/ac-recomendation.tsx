@@ -46,10 +46,10 @@ const products: Product[] = [
 
 const AcRecomendation = () => {
   return (
-    <div className="flex justify-center md:mt-16 ">
+    <div className="flex md:justify-center justify-start  md:mt-16 ">
       <div className=" flex flex-col gap-[16px]">
         {/* top section */}
-        <div className="flex justify-between items-center">
+        <div className="flex md:justify-between items-center">
           <span className="text-primaryBlack text-base font-medium">
             Smart Picks for Cool Comfort & Energy Savings ❄️
           </span>
@@ -58,7 +58,7 @@ const AcRecomendation = () => {
           </span>
         </div>
 
-        <div className="flex justify-between w-[1030px]">
+        <div className="flex justify-between md:w-[1030px]">
           {products.map((item: Product, i) => (
             <div
               className="w-[316px] rounded-[12px]  border border-querternaryWhite flex flex-col gap-[11px] pb-3 "
