@@ -14,8 +14,9 @@ const Home = () => {
       <HeroSection />
       <AcCalculatorForm />
       {predictRecomenedAc && predictRecomenedAc.length > 0 && <AcComparision />}
-      <AcRecomendation />
+      {/* <AcRecomendation /> */}
       <BottomCarousel />
+
       <ContactUs />
     </Layout>
   );

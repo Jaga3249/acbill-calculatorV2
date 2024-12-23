@@ -80,6 +80,7 @@ const usePredictAndRecommend = ({
       setSelectHours("");
     } catch (err: any) {
       setError(err.message);
+      toast.error(err.message);
     } finally {
       setLoading(false);
     }

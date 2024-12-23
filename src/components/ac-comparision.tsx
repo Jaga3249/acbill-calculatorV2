@@ -1,6 +1,6 @@
 import { useAcContext } from "@/context/use-context";
 import { ACUsageData } from "@/type/type";
-import { Plus, Trash2 } from "lucide-react";
+import { CircleX, Plus, Trash2 } from "lucide-react";
 
 const AcComparision = () => {
   const { predictRecomenedAc, setPredictRecomenedAc } = useAcContext();
@@ -126,12 +126,10 @@ const AcComparision = () => {
                 </div>
               </div>
 
-              {/* delete button */}
-              <Trash2
-                className="absolute top-0 right-0 cursor-pointer"
-                color="red"
-                fill="red
-              "
+              <CircleX
+                className="absolute -top-4 -right-2 cursor-pointer text-senaryWhite rounded-full"
+                fill="red"
+                size={30}
               />
             </div>
           ))}
