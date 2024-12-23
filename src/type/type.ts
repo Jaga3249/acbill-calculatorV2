@@ -12,7 +12,7 @@ interface Predictions {
   yearlyCost: string;
 }
 // Interface for Chat Data
-interface ChatData {
+export interface ChatData {
   userHourlyUsage: number;
   averageUserHourlyUsage: number;
 }

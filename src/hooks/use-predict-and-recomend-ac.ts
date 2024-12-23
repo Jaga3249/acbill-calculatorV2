@@ -71,13 +71,13 @@ const usePredictAndRecommend = ({
       setPredictRecomenedAc((prev) =>
         prev ? [...prev, updatedRes] : [updatedRes]
       );
-      setHoverRating(0);
-      setRating(0.8);
-      setSelectedAcType("");
-      setSelectedBrand("");
-      setSelectTemperature("");
-      setSelectState("");
-      setSelectHours("");
+      // setHoverRating(0);
+      // setRating(0.8);
+      // setSelectedAcType("");
+      // setSelectedBrand("");
+      // setSelectTemperature("");
+      // setSelectState("");
+      // setSelectHours("");
     } catch (err: any) {
       setError(err.message);
     } finally {

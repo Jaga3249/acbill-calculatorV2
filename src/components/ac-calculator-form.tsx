@@ -83,7 +83,7 @@ const AcCalculatorForm = () => {
     const unitPrice = electricity_rates.filter(
       (item) => item.state === selectState
     );
-    setStateUnitPrice(unitPrice[0]?.unit_price);
+    setStateUnitPrice(unitPrice[0]?.unit_price / 100);
   }, [selectState]);
 
   return (
