@@ -79,6 +79,7 @@ export default {
         lightGray: "#6A6A6A",
         secondaryGreen: "#299219",
         tertiaryGreen: "#EBFFDD",
+        primaryRed: "#FF4E4E",
       },
     },
   },

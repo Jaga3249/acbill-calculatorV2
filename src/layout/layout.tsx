@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <div className="font-poppins select-none w-screen h-auto md:px-10 px-4  overflow-hidden">
+      <div className="font-poppins select-none h-auto md:px-20 px-4  overflow-hidden">
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>

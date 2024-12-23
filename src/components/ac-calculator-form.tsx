@@ -28,7 +28,7 @@ const AcCalculatorForm = () => {
   const [selectTemperature, setSelectTemperature] = useState("");
   const [selectState, setSelectState] = useState("");
   const [selectHours, setSelectHours] = useState("");
-  const [capacity, setCapacity] = useState<number>(1);
+  const [capacity, setCapacity] = useState<number>(0);
   const [stateUnitPrice, setStateUnitPrice] = useState<number>(0);
 
   const { fetchPrediction, loading } = usePredictAndRecommend({
@@ -74,7 +74,7 @@ const AcCalculatorForm = () => {
     setRating(0);
     setHoverRating(0);
     setSelectedAcType("");
-    setCapacity(0.8);
+    setCapacity(0);
   };
   const changeColor = () => {
     setColor("blue"); // Example usage of setColor
@@ -88,7 +88,7 @@ const AcCalculatorForm = () => {
 
   return (
     <section
-      className="flex items-center  md:mt-[5%] mt-[5%] flex-col md:gap-9 gap-7 "
+      className="flex items-center  md:mt-[2%] mt-[5%] flex-col md:gap-9 gap-7 "
       id="calculatorForm"
     >
       <h1 className="text-primaryBlacktext-base font-medium md:text-center text-start ">
@@ -239,7 +239,7 @@ const AcCalculatorForm = () => {
             </Label>
             <SearchableSelect
               options={hours}
-              placeholder="Select time"
+              placeholder="Select hour"
               selectedValue={selectHours}
               onSelect={setSelectHours}
             />

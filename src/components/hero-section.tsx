@@ -12,6 +12,7 @@ import {
 
 import heroImg from "@/assets/heroImg.jpg";
 import { imagePath } from "@/constants/imagePath";
+import { Button } from "./ui/button";
 
 // DotButton Component
 function DotButton({
@@ -23,7 +24,7 @@ function DotButton({
 }) {
   return (
     <button
-      className={`w-3 h-3 rounded-full border-2 ${
+      className={`w-2 h-2 rounded-full border-2 ${
         selected
           ? "bg-primaryBlack border-primaryBlack"
           : "bg-gray-300 border-gray-400"
@@ -41,7 +42,11 @@ export function HeroSection() {
 
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const images = [imagePath.carousel1, imagePath.carousel2, heroImg];
+  const images = [
+    imagePath.carousel1,
+    imagePath.carousel2,
+    imagePath.carousel3,
+  ];
 
   React.useEffect(() => {
     if (!api) {
@@ -55,21 +60,34 @@ export function HeroSection() {
 
   return (
     <>
-      <div className="w-full max-w-full md:h-[300px] h-[200px] rounded-[20px] overflow-hidden mt-5">
+      <div className="w-full  md:h-[300px] h-[200px] rounded-[20px] overflow-hidden mt-5">
         <Carousel
           setApi={setApi}
           plugins={[plugin.current]}
-          className="w-full h-full"
+          className="w-full h-full "
         >
-          <CarouselContent className="flex">
-            {images.map((image, index) => (
+          <CarouselContent className="flex w-full h-full">
+            {images?.map((image, index) => (
               <CarouselItem key={index} className="">
-                <div className="w-full h-full">
+                <div className="w-full h-full relative">
                   <img
                     src={image}
                     alt={`hero-img-${index}`}
                     className="w-full h-full object-cover"
                   />
+                  {index === 2 && (
+                    <div className=" hidden sm:block absolute top-10 left-10">
+                      <h1 className="text-septenaryWhite text-[50px] font-semibold leading-[75px]">
+                        Contact Us
+                      </h1>
+                      <h1 className="text-septenaryWhite text-[50px] font-semibold leading-[75px] mb-6">
+                        To place your Add here
+                      </h1>
+                      <Button className="bg-white text-primaryBlack">
+                        Contact Us
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </CarouselItem>
             ))}
