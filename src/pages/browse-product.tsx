@@ -13,7 +13,7 @@ import useGetProducts from "@/hooks/use-get-products";
 import Layout from "@/layout/layout";
 import { Product } from "@/type/type";
 import { Loader2, X } from "lucide-react";
-
+//
 const url = import.meta.env.VITE_API_URL;
 
 const BroserProduct = () => {
