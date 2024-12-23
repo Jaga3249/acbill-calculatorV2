@@ -6,71 +6,64 @@ import emailjs from "@emailjs/browser";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Loader2 } from "lucide-react";
 
-interface ContactUsProps {
-  userName: string;
-  userEmail: string;
-  contactNumber: string;
-}
-const initialState: ContactUsProps = {
-  userName: "",
-  userEmail: "",
-  contactNumber: "",
-};
-
 const ContactUs = () => {
-  const [formData, setFormData] = useState<ContactUsProps>(initialState);
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      formData.userName === "" ||
-      formData.userEmail === "" ||
-      formData.contactNumber === ""
-    ) {
-      toast.error("fields can't be empty");
+
+    if (!userName || !userEmail || !contactNumber) {
+      toast.error("Fields can't be empty");
       return;
     }
+
     const serviceId = "service_q6nrpyk";
     const templateId = "template_hwr9m4m";
     const publicKey = "zUhor_ZB76eleR8al";
+
     try {
       setLoading(true);
 
-      await emailjs.sendForm(
-        serviceId as string,
-        templateId as string,
-        e.target as HTMLFormElement,
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
         {
-          publicKey: publicKey as string,
-        }
+          userName, // Pass individual state variables
+          userEmail,
+          contactNumber,
+        },
+        publicKey
       );
-      setFormData(initialState);
-      toast.success("message send sucessfully");
+
+      console.log("EmailJS Response: ", response); // Debugging log
+      setUserName("");
+      setUserEmail("");
+      setContactNumber("");
+      toast.success("Message sent successfully!");
     } catch (error: any) {
-      console.log("error", error);
+      console.error("EmailJS Error: ", error);
+      toast.error("Failed to send message. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
-  };
+
   return (
     <div
-      className=" border-2 sm:mx-28 bg-primaryBlack py-8 sm:px-[72px] px-6 flex flex-col gap-3 rounded-[20px] mt-10 sm:flex-row"
+      className="border-2 sm:mx-28 bg-primaryBlack py-8 sm:px-[72px] px-6 flex flex-col gap-3 rounded-[20px] mt-10 sm:flex-row"
       id="contact"
     >
-      <div className="flex-1 flex md:items-center items-start ">
-        <p className=" text-primaryWhite sm:max-w-[380px] text-[28px] md:leading-[42px] font-medium ">
+      <div className="flex-1 flex md:items-center items-start">
+        <p className="text-primaryWhite sm:max-w-[380px] text-[28px] md:leading-[42px] font-medium">
           Have questions or need support? 💬 Reach out to us, and we'll be happy
           to assist!
         </p>
       </div>
       <form
-        className="flex-1  flex flex-col md:items-end items-center gap-4"
+        className="flex-1 flex flex-col md:items-end items-center gap-4"
         onSubmit={handleSubmit}
       >
         <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -85,9 +78,8 @@ const ContactUs = () => {
             type="text"
             placeholder="Rohit Sharma"
             className="text-customBlack text-sm"
-            name="userName"
-            value={formData.userName}
-            onChange={handleChange}
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
             required
           />
         </div>
@@ -100,12 +92,11 @@ const ContactUs = () => {
           </Label>
           <Input
             id="Email ID"
-            type="text"
+            type="email"
             placeholder="rohitsharma44@gmail.com"
             className="text-customBlack text-sm"
-            name="userEmail"
-            value={formData.userEmail}
-            onChange={handleChange}
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
             required
           />
         </div>
@@ -117,28 +108,27 @@ const ContactUs = () => {
             Contact No.
           </Label>
           <Input
-            id="Contact No."
+            id="contactNumber"
             type="text"
             placeholder="8965323265"
             className="text-customBlack text-sm"
-            name="contactNumber"
-            value={formData.contactNumber}
-            onChange={handleChange}
+            value={contactNumber}
+            onChange={(e) => setContactNumber(e.target.value)}
             required
           />
         </div>
-        {/* <div className="flex justify-center"> */}
         <Button
-          className=" border border-primaryWhite rounded-[12px] w-[119px] text-white "
+          className="border border-primaryWhite rounded-[12px] w-[119px] text-white"
           variant={"ghost"}
           type="submit"
+          disabled={loading}
         >
           {loading && <Loader2 className="animate-spin" />}
           Submit
         </Button>
-        {/* </div> */}
       </form>
     </div>
   );
 };
+
 export default ContactUs;

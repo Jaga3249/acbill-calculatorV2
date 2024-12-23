@@ -46,7 +46,7 @@ export const SearchableSelectForFilter: React.FC<SearchableSelectProps> = ({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="md:w-[295px] justify-between"
+          className="md:w-[295px] w-full justify-between"
         >
           {selectedValue
             ? options.find((option) => option.value === selectedValue)?.label
@@ -54,7 +54,7 @@ export const SearchableSelectForFilter: React.FC<SearchableSelectProps> = ({
           <ChevronDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="md:w-auto p-0">
+      <PopoverContent className="md:w-[295px] w-full p-0">
         <Command>
           <CommandInput
             placeholder={`Search ${placeholder.toLowerCase()}...`}

@@ -17,54 +17,6 @@ const AcComparision = () => {
         Here’s What Your AC Costs You! 💡
       </h1>
       <div className="flex sm:flex-row  flex-col gap-4 ">
-        {/* <div className="border border-querternaryWhite rounded-[12px] p-3 flex gap-6 flex-col">
-          <div className="flex justify-between">
-            <div className="flex  flex-col gap-2">
-              <h1 className="text-primaryBlack text-sm sm:font-semibold font-medium">
-                LG 1 Ton split Ac, 5⭐ rating
-              </h1>
-              <p className="text-tertiaryGray text-sm font-medium">
-                temperature at 20 - 22 C
-              </p>
-              <p className="text-tertiaryGray text-sm font-medium">
-                Used for 7hr a day
-              </p>
-            </div>
-            <div className="flex  flex-col  items-end gap-[1px]">
-              <span className="text-[26px] leading-[39px] font-semibold">
-                54
-              </span>
-              <p className="text-lightGray text-sm font-medium">Units/month</p>
-            </div>
-          </div>
-          <div className="flex flex-col justify-center items-center gap-1">
-            <h1 className="text-[34px] leading-[51px] font-bold text-center">
-              ₹123
-            </h1>
-            <p className="text-sm font-medium">
-              Estimated Cost for 30 Days of Usage
-            </p>
-            <p className="text-sm font-medium text-tertiaryGray text-center">
-              ₹5.3 per unit
-            </p>
-          </div>
-
-          <div className="flex md:gap-4 justify-between md:justify-start">
-            <div className=" bg-quinaryWhite p-3 rounded-[8px]">
-              <h1 className="text-[24px] leading-[36px] font-bold">₹123</h1>
-              <p className="text-sm font-medium text-quinaryGray w-[140px]">
-                Estimated Cost per day
-              </p>
-            </div>
-            <div className="bg-quinaryWhite p-3 rounded-[8px] w-[150px] sm:w-full">
-              <h1 className="text-2xl font-bold ">₹123</h1>
-              <p className="text-sm font-medium text-quinaryGray w-[140px]">
-                Estimated Cost for a year (*8 months)
-              </p>
-            </div>
-          </div>
-        </div> */}
-
         {predictRecomenedAc &&
           predictRecomenedAc.map((data: ACUsageData, index: number) => (
             <div
@@ -95,6 +47,7 @@ const AcComparision = () => {
                   </p>
                 </div>
               </div>
+
               <div className="flex flex-col justify-center items-center gap-1">
                 <h1 className="text-[27px] leading-[51px] font-bold text-center">
                   ₹ {data.predictions.monthlyCost}
@@ -107,20 +60,20 @@ const AcComparision = () => {
                 </p>
               </div>
 
-              <div className="flex  md:gap-4 md:justify-start justify-between">
-                <div className=" bg-quinaryWhite p-3 rounded-[8px]">
-                  <h1 className="text-[20px] leading-[36px] font-bold">
+              <div className="flex  md:justify-between gap-5">
+                <div className=" bg-quinaryWhite p-3 rounded-[8px] md:w-[174px] w-full flex flex-col justify-start">
+                  <h1 className="md:text-[20px] text-sm md:leading-[36px] font-bold">
                     ₹{data.predictions.dailyCost}
                   </h1>
-                  <p className="text-sm font-medium text-quinaryGray w-[140px]">
+                  <p className="md:text-sm text-xs font-medium text-quinaryGray ">
                     Estimated Cost per day
                   </p>
                 </div>
-                <div className="bg-quinaryWhite p-3 rounded-[8px] w-[150px] sm:w-full">
-                  <h1 className="text-lg font-bold ">
+                <div className="bg-quinaryWhite md:p-3 p-2 rounded-[8px] md:w-[174px] w-full ">
+                  <h1 className="md:text-lg text-sm font-bold ">
                     ₹{data.predictions.yearlyCost}
                   </h1>
-                  <p className="text-sm font-medium text-quinaryGray w-[140px]">
+                  <p className="md:text-sm text-xs leading-[21px] font-medium text-quinaryGray ">
                     Estimated Cost for a year (*8 months)
                   </p>
                 </div>

@@ -89,8 +89,8 @@ const FilterModal = ({
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg w-96 p-3 gap-10 shadow-lg relative">
+        <div className="fixed md:inset-0 bottom-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg md:w-96 w-full p-3 gap-10 shadow-lg relative">
             <div className="flex justify-between items-center">
               {/* Modal Content */}
               <h2 className="text-xl font-semibold ">Filter by</h2>
@@ -106,7 +106,7 @@ const FilterModal = ({
             <div className="p-6 flex flex-col gap-[10px]">
               {/* Dropdown */}
               <div className="">
-                <div className="grid w-[352px] items-center gap-1.5">
+                <div className="grid md:w-[352px] w-full items-center gap-1.5">
                   <Label htmlFor="brand">
                     Brand <span className="text-red-700">*</span>
                   </Label>

@@ -296,11 +296,11 @@ const AcCalculatorForm = () => {
             <div className="flex gap-[11px]">
               <div
                 className={`w-[127px] p-[2px] border  ${
-                  selectedAcType === "window"
+                  selectedAcType === "windows"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
                 } rounded-[8px] flex items-center gap-1`}
-                onClick={() => handleSelectAcType("windows AC")}
+                onClick={() => handleSelectAcType("windows")}
               >
                 <div
                   className={`w-9 h-9 flex items-center justify-center

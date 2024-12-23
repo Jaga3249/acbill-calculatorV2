@@ -211,7 +211,7 @@ const BroserProduct = () => {
 
                 {/* Product List */}
                 {products && (
-                  <div className="grid grid-cols-3 gap-9">
+                  <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-9 gap-4">
                     {products
                       ?.slice(
                         (currentPage - 1) * perPageProduct,
@@ -239,7 +239,7 @@ const BroserProduct = () => {
                               </span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="text-xl font-semibold text-primaryBlack">
+                              <span className="text-xl font-semibold text-primaryBlack my-2">
                                 ₹{item.price}
                               </span>
                             </div>
