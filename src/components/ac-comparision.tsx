@@ -1,6 +1,6 @@
 import { useAcContext } from "@/context/use-context";
 import { ACUsageData } from "@/type/type";
-import { CircleX, Plus, Trash2 } from "lucide-react";
+import { CircleX, Plus } from "lucide-react";
 
 const AcComparision = () => {
   const { predictRecomenedAc, setPredictRecomenedAc } = useAcContext();

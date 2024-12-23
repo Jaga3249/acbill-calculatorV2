@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { SetStateAction } from "react";
 import { Button } from "./ui/button";
 import companyLogo from "@/assets/company-logo.png";
 import { Menu } from "lucide-react";

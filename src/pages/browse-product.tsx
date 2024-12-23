@@ -6,7 +6,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -24,14 +23,9 @@ const BroserProduct = () => {
   const [capacity, setCapacity] = useState<number>(0);
   const [selectedAcType, setSelectedAcType] = useState("");
   const [rating, setRating] = useState(0);
-  const {
-    products,
-    updatedProducts,
-    setProducts,
-    loading,
-    error,
-    getProducts,
-  } = useGetProducts(url as string);
+  const { products, updatedProducts, setProducts, loading } = useGetProducts(
+    url as string
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const perPageProduct = 9;

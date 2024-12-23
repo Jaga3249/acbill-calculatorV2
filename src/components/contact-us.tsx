@@ -3,7 +3,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import toast from "react-hot-toast";
 import emailjs from "@emailjs/browser";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Loader2 } from "lucide-react";
 
 const ContactUs = () => {

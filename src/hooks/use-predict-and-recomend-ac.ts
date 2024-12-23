@@ -23,17 +23,7 @@ interface propType {
   setSelectHours: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const usePredictAndRecommend = ({
-  data,
-  url,
-  setHoverRating,
-  setRating,
-  setSelectedAcType,
-  setSelectedBrand,
-  setSelectTemperature,
-  setSelectState,
-  setSelectHours,
-}: propType) => {
+const usePredictAndRecommend = ({ data, url }: propType) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const { setPredictRecomenedAc } = useAcContext();

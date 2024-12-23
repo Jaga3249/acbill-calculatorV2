@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { brands } from "../../data";
 import { Label } from "./ui/label";
 import ACCapacitySlider from "./ac-capacity-slider";
