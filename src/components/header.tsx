@@ -1,25 +1,42 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
 import companyLogo from "@/assets/company-logo.png";
 import { Menu } from "lucide-react";
 import { imagePath } from "@/constants/imagePath";
-import toast from "react-hot-toast";
+import { useNavigate, useLocation } from "react-router-dom";
+
 type HeaderProps = {
   setIsMenuOpen: React.Dispatch<SetStateAction<boolean>>;
 };
 
 const Header = ({ setIsMenuOpen }: HeaderProps) => {
-  // State to track the active list item
-  const [activeTab, setActiveTab] = useState("home");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Determine active tab based on the current path
+  const activeTab = (() => {
+    switch (location.pathname) {
+      case "/":
+        return "Home";
+      case "/blog":
+        return "Blog";
+      case "/browse-ac":
+        return "Bowse AC";
+      default:
+        return "";
+    }
+  })();
 
   // Handler for changing active tab
   const handleTabClick = (tab: string) => {
-    setActiveTab(tab);
+    if (tab === "Home") {
+      navigate("/");
+    } else if (tab === "Blog") {
+      navigate("/blog");
+    } else if (tab === "Bowse AC") {
+      navigate("/browse-ac");
+    }
   };
-
-  useEffect(() => {
-    toast.success("Welcome to AcBillCalculator");
-  });
 
   return (
     <>
@@ -27,10 +44,11 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
         <img
           src={imagePath?.companyLogo}
           alt="Company Logo"
-          className="w-[55px] h-[37.15px]"
+          className="w-[55px] h-[37.15px] cursor-pointer"
+          onClick={() => navigate("/")}
         />
         <div className="flex items-center gap-12 font-medium text-sm">
-          {["Home", "Blog", "Bowse AC"].map((tab) => (
+          {["Home", "Bowse AC"].map((tab) => (
             <span
               key={tab}
               className={`flex flex-col items-center gap-2 cursor-pointer ${
@@ -48,32 +66,8 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
           ))}
         </div>
         <a href="#contact">
-          {" "}
           <Button className="w-[136px] rounded-xl">Contact Us</Button>
         </a>
-        {/* <nav
-          aria-label="Main Navigation"
-          className="flex-1 bg-primaryWhite rounded-[20px] p-2 flex justify-between items-center"
-        >
-          <ul className="flex gap-10 items-center cursor-pointer">
-            {["home", "blog", "browse-ac"].map((tab) => (
-              <li key={tab}>
-                <a
-                  href={`#${tab}`}
-                  onClick={() => handleTabClick(tab)}
-                  className={`w-[135px] h-[41px] text-center rounded-xl p-[10px] text-sm font-semibold leading-5 inline-block transition-colors duration-300 ease-in-out ${
-                    activeTab === tab
-                      ? "bg-primaryGray text-primaryBlack"
-                      : "bg-transparent text-gray-600"
-                  }`}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <Button>Contact Us</Button>
-        </nav> */}
       </header>
       <header className="md:hidden flex mt-5">
         <Menu

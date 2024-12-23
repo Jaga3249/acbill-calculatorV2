@@ -1,13 +1,18 @@
+import { useAcContext } from "@/context/use-context";
 import { ACUsageData } from "@/type/type";
-import { Plus } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 
-const AcComparision = ({
-  predictRecomenedAc,
-}: {
-  predictRecomenedAc: ACUsageData[];
-}) => {
+const AcComparision = () => {
+  const { predictRecomenedAc, setPredictRecomenedAc } = useAcContext();
+  const handleRemoveAc = (id: string) => {
+    console.log("id", id);
+    setPredictRecomenedAc(
+      (prev) => prev && prev.filter((item) => item.id !== id)
+    );
+  };
+  console.log("predictRecomenedAc", predictRecomenedAc);
   return (
-    <div className=" flex md:justify-center flex-col md:items-center justify-start gap-4 md:mt-16 mt-10">
+    <div className="  flex md:justify-center flex-col md:items-center justify-start gap-4 md:mt-16 mt-10">
       <h1 className="text-base font-medium sm:text-center text-start">
         Here’s What Your AC Costs You! 💡
       </h1>
@@ -63,8 +68,9 @@ const AcComparision = ({
         {predictRecomenedAc &&
           predictRecomenedAc.map((data: ACUsageData, index: number) => (
             <div
-              className="border border-querternaryWhite rounded-[12px] p-3 flex gap-6 flex-col"
+              className=" relative border border-querternaryWhite rounded-[12px] px-3 py-[15px] flex gap-6 flex-col"
               key={index}
+              onClick={() => handleRemoveAc(data?.id)}
             >
               <div className="flex justify-between">
                 <div className="flex  flex-col gap-2">
@@ -119,9 +125,17 @@ const AcComparision = ({
                   </p>
                 </div>
               </div>
+
+              {/* delete button */}
+              <Trash2
+                className="absolute top-0 right-0 cursor-pointer"
+                color="red"
+                fill="red
+              "
+              />
             </div>
           ))}
-        {predictRecomenedAc.length < 3 && (
+        {predictRecomenedAc && predictRecomenedAc.length < 3 && (
           <div
             className="md:w-[214px] h-[137px] md:h-auto border border-querternaryWhite
          p-3 rounded-[12px] flex justify-center items-center flex-col gap-[23px] "

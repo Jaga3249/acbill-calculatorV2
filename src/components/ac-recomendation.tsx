@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
   price: number;
   originalPrice: number;
   name: string;
@@ -11,7 +11,7 @@ interface Product {
 import acImg from "@/assets/acImg.png";
 import { Button } from "./ui/button";
 
-const products: Product[] = [
+export const products: Product[] = [
   {
     price: 12000,
     originalPrice: 18900,

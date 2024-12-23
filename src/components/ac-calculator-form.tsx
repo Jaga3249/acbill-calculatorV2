@@ -180,12 +180,12 @@ const AcCalculatorForm = () => {
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
                 } rounded-[8px] flex items-center gap-1`}
-                onClick={() => handleSelectAcType("windows AC")}
+                onClick={() => handleSelectAcType("windows")}
               >
                 <div
                   className={`w-9 h-9 flex items-center justify-center
                  ${
-                   selectedAcType === "windows AC"
+                   selectedAcType === "windows"
                      ? " bg-primaryBlack"
                      : "bg-senaryWhite"
                  } py-[3px] px-[1px] rounded-[6px]`}

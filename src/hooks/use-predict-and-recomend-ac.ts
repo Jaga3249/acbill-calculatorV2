@@ -1,6 +1,7 @@
 import { useAcContext } from "@/context/use-context";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
 
 interface propType {
   url: string;
@@ -38,7 +39,6 @@ const usePredictAndRecommend = ({
   const { setPredictRecomenedAc } = useAcContext();
 
   const fetchPrediction = async () => {
-    console.log("fetchPrediction", data);
     setLoading(true);
     setError("");
     const hasEmptyValue = Object.values(data).some((value) => value === "");
@@ -64,7 +64,13 @@ const usePredictAndRecommend = ({
       }
 
       const res = await response.json();
-      setPredictRecomenedAc((prev) => (prev ? [...prev, res] : [res]));
+      const updatedRes = {
+        ...res,
+        id: uuidv4(),
+      };
+      setPredictRecomenedAc((prev) =>
+        prev ? [...prev, updatedRes] : [updatedRes]
+      );
       setHoverRating(0);
       setRating(0.8);
       setSelectedAcType("");
