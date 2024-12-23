@@ -175,7 +175,7 @@ const AcCalculatorForm = () => {
             </p>
             <div className="flex gap-[11px]">
               <div
-                className={`w-[127px] p-[2px] border  ${
+                className={`w-[127px] p-[2px] border cursor-pointer  ${
                   selectedAcType === "window"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
@@ -206,7 +206,7 @@ const AcCalculatorForm = () => {
               </div>
 
               <div
-                className={`w-[127px] p-[2px] border  ${
+                className={`w-[127px] p-[2px] border cursor-pointer  ${
                   selectedAcType === "Split AC"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "

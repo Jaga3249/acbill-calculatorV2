@@ -14,13 +14,23 @@ const Home = () => {
     <Layout>
       <HeroSection />
       <AcCalculatorForm />
+
+      {predictRecomenedAc && predictRecomenedAc.length > 0 && <AcComparision />}
       {predictRecomenedAc && predictRecomenedAc.length > 0 && (
         <ACUsageComparison
           chatdata={predictRecomenedAc[predictRecomenedAc.length - 1].chatData}
         />
       )}
-      {predictRecomenedAc && predictRecomenedAc.length > 0 && <AcComparision />}
-      {/* <AcRecomendation /> */}
+      {predictRecomenedAc &&
+        predictRecomenedAc.length > 0 &&
+        predictRecomenedAc[predictRecomenedAc.length - 1].recommendations
+          .length > 0 && (
+          <AcRecomendation
+            products={
+              predictRecomenedAc[predictRecomenedAc.length - 1].recommendations
+            }
+          />
+        )}
       <BottomCarousel />
 
       <ContactUs />
