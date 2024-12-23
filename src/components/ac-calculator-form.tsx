@@ -305,7 +305,7 @@ const AcCalculatorForm = () => {
                 <div
                   className={`w-9 h-9 flex items-center justify-center
                  ${
-                   selectedAcType === "windows AC"
+                   selectedAcType === "windows"
                      ? " bg-primaryBlack"
                      : "bg-senaryWhite"
                  } py-[3px] px-[1px] rounded-[6px]`}
