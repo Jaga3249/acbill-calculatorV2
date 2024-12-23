@@ -12,7 +12,7 @@ const AcComparision = () => {
   };
   console.log("predictRecomenedAc", predictRecomenedAc);
   return (
-    <div className="  flex md:justify-center flex-col md:items-center justify-start gap-4 md:mt-16 mt-10">
+    <div className="  flex md:justify-center flex-col md:items-center justify-start gap-4 md:mt-10 mt-10">
       <h1 className="text-base font-medium sm:text-center text-start">
         Here’s What Your AC Costs You! 💡
       </h1>

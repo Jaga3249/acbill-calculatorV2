@@ -1,6 +1,7 @@
 import AcCalculatorForm from "@/components/ac-calculator-form";
 import AcComparision from "@/components/ac-comparision";
 import AcRecomendation from "@/components/ac-recomendation";
+import ACUsageComparison from "@/components/ac-usageComparison";
 import BottomCarousel from "@/components/bottom-carosel";
 import ContactUs from "@/components/contact-us";
 import { HeroSection } from "@/components/hero-section";
@@ -13,8 +14,23 @@ const Home = () => {
     <Layout>
       <HeroSection />
       <AcCalculatorForm />
+
       {predictRecomenedAc && predictRecomenedAc.length > 0 && <AcComparision />}
-      {/* <AcRecomendation /> */}
+      {predictRecomenedAc && predictRecomenedAc.length > 0 && (
+        <ACUsageComparison
+          chatdata={predictRecomenedAc[predictRecomenedAc.length - 1].chatData}
+        />
+      )}
+      {predictRecomenedAc &&
+        predictRecomenedAc.length > 0 &&
+        predictRecomenedAc[predictRecomenedAc.length - 1].recommendations
+          .length > 0 && (
+          <AcRecomendation
+            products={
+              predictRecomenedAc[predictRecomenedAc.length - 1].recommendations
+            }
+          />
+        )}
       <BottomCarousel />
 
       <ContactUs />

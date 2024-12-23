@@ -12,7 +12,7 @@ interface Predictions {
   yearlyCost: string;
 }
 // Interface for Chat Data
-interface ChatData {
+export interface ChatData {
   userHourlyUsage: number;
   averageUserHourlyUsage: number;
 }
@@ -27,11 +27,23 @@ export interface Product {
   estimatedMonthlyCost: string; // Estimated monthly cost (can be an empty string)
   buttonText: string; // Text for the button (e.g., "Flipkart")
 }
+export interface Product {
+  Image: string;
+  starRating: number;
+  tagline: string;
+  price: number;
+  brand: string;
+  capacity: number;
+  type: string;
+  estimatedMonthlyCost: string;
+  buttonText: string;
+  ProductLink: string;
+}
 
 // Main Interface
 export interface ACUsageData {
   id: string;
   predictions: Predictions;
   chatData: ChatData;
-  recommendations: string[]; // Array for recommendations
+  recommendations: Product[]; // Array for recommendations
 }

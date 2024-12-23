@@ -42,9 +42,13 @@ const BottomCarousel = () => {
       >
         {carouselItems[currentIndex]}
       </div>
-      <div className="flex justify-center items-center gap-10 mt-4">
+      <div className="flex justify-center items-center gap-8 mt-4">
         {/* Left button */}
-        <ChevronLeft onClick={handlePrev} className="cursor-pointer" />
+        <ChevronLeft
+          onClick={handlePrev}
+          className="cursor-pointer"
+          size={20}
+        />
 
         {/* Dots */}
         <div className="flex gap-2">
@@ -52,7 +56,7 @@ const BottomCarousel = () => {
             <div
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`w-3 h-3 rounded-full cursor-pointer ${
+              className={`w-2 h-2 rounded-full cursor-pointer ${
                 currentIndex === index ? "bg-black" : "bg-gray-300"
               }`}
             ></div>
@@ -60,7 +64,11 @@ const BottomCarousel = () => {
         </div>
 
         {/* Right button */}
-        <ChevronRight onClick={handleNext} className="cursor-pointer" />
+        <ChevronRight
+          onClick={handleNext}
+          className="cursor-pointer"
+          size={20}
+        />
       </div>
     </div>
   );
