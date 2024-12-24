@@ -32,8 +32,10 @@ const ACUsageComparison = ({ product }: { product: ACUsageData }) => {
           />
           <p className="text-sm text-[#797979] font-medium tracking-wider leading-6">
             Your monthly usage of{" "}
-            <span className="text-[#262626]">180 units</span> produces{" "}
-            {product?.predictions?.co2_emmision_kg_annualy}
+            <span className="text-[#262626]">
+              {product?.predictions?.monthlyUnitConsumption} units
+            </span>{" "}
+            produces {product?.predictions?.co2_emmision_kg_annualy}
             <span className="text-[#FC5D5D]">{""} kg of CO₂</span>, needing
             <span className="text-[#262626]">
               {" "}

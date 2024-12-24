@@ -6,12 +6,12 @@ import { imagePath } from "@/constants/imagePath";
 import { SearchableSelectForFilter } from "./searchable-filter-select";
 import { Button } from "./ui/button";
 import { Product } from "@/type/type";
+import { useAcContext } from "@/context/use-context";
 
 interface FilterModalProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-  updatedProducts: Product[];
+
   selectedBrand: string;
   setSelectedBrand: React.Dispatch<React.SetStateAction<string>>;
   capacity: number;
@@ -24,8 +24,7 @@ interface FilterModalProps {
 const FilterModal = ({
   isOpen,
   setIsOpen,
-  setProducts,
-  updatedProducts,
+
   selectedBrand,
   setSelectedBrand,
   capacity,
@@ -36,8 +35,9 @@ const FilterModal = ({
   setRating,
 }: FilterModalProps) => {
   const [color, setColor] = useState("white");
-
   const [hoverRating, setHoverRating] = useState(0);
+  const { updatedProducts, setProducts } = useAcContext();
+
   const handleRatingClick = (rate: number) => {
     setRating(rate); // Set the clicked rating
   };
@@ -58,7 +58,6 @@ const FilterModal = ({
   };
 
   const handleFilter = () => {
-    // console.log(selectedAcType, selectedBrand, capacity, rating);
     if (selectedAcType || selectedBrand || capacity || rating) {
       const filteredProducts = updatedProducts.filter((product: Product) => {
         return (
@@ -79,12 +78,6 @@ const FilterModal = ({
     setCapacity(0);
     setRating(0);
   };
-
-  // useEffect(() => {
-  //   if ((!isOpen && selectedAcType) || selectedBrand || capacity || rating) {
-  //     handleFilter();
-  //   }
-  // }, [selectedBrand, capacity, rating, selectedAcType]);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">

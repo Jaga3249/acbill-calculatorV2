@@ -13,6 +13,7 @@ import useGetProducts from "@/hooks/use-get-products";
 import Layout from "@/layout/layout";
 import { Product } from "@/type/type";
 import { Loader2, X } from "lucide-react";
+import { useAcContext } from "@/context/use-context";
 //
 const url = import.meta.env.VITE_API_URL;
 
@@ -24,12 +25,11 @@ const BroserProduct = () => {
   const [selectedAcType, setSelectedAcType] = useState("");
   const [rating, setRating] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const { products, updatedProducts, setProducts, loading } = useGetProducts(
-    url as string
-  );
+  const { loading } = useGetProducts(url as string);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const perPageProduct = 9;
+  const { products, setProducts, updatedProducts } = useAcContext();
+  const perPageProduct = 12;
   const totalPages = Math.ceil((products?.length || 0) / perPageProduct);
 
   const handleFilter = (
@@ -38,6 +38,7 @@ const BroserProduct = () => {
     capacity: number,
     rating: number
   ) => {
+    console.log("functioncall", "functioncall");
     const filteredProducts = updatedProducts.filter((product: Product) => {
       return (
         (selectedAcType ? product.type === selectedAcType : true) &&
@@ -46,7 +47,8 @@ const BroserProduct = () => {
         (rating ? product.starRating === rating : true)
       );
     });
-    console.log(filteredProducts);
+    console.log("filterProducrs", filteredProducts);
+
     setProducts(filteredProducts);
     setIsOpen(false);
   };
@@ -332,20 +334,21 @@ const BroserProduct = () => {
                 </div>
 
                 {/* Product List */}
-                {loading ? (
-                  <div className="flex flex-col justify-center items-center h-[50vh] w-full  rounded-md shadow-md">
-                    <span className="text-4xl mb-4">😞</span>{" "}
-                    {/* Emoji for "No Results Found" */}
-                    <h2 className="text-lg font-semibold text-gray-700">
-                      No ACs Found
-                    </h2>
-                    <p className="text-sm text-gray-500 mt-2">
-                      Try adjusting your filters or search criteria.
-                    </p>
-                  </div>
-                ) : (
-                  <div className=" w-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 sm:gap-3 gap-4 sm:justify-center ">
-                    {displayedProducts?.map((item: Product, i) => (
+
+                <div className=" w-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 sm:gap-3 gap-4 sm:justify-center ">
+                  {displayedProducts?.length === 0 ? (
+                    <div className="flex flex-col justify-center items-center h-[50vh] w-full  rounded-md shadow-md">
+                      <span className="text-4xl mb-4">😞</span>{" "}
+                      {/* Emoji for "No Results Found" */}
+                      <h2 className="text-lg font-semibold text-gray-700">
+                        No ACs Found
+                      </h2>
+                      <p className="text-sm text-gray-500 mt-2">
+                        Try adjusting your filters or search criteria.
+                      </p>
+                    </div>
+                  ) : (
+                    displayedProducts?.map((item: Product, i) => (
                       <div
                         className="w-full  rounded-[12px] border border-querternaryWhite
                            flex flex-col gap-[11px] pb-3 "
@@ -397,12 +400,12 @@ const BroserProduct = () => {
                           </a>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                )}
+                    ))
+                  )}
+                </div>
 
                 {/* Pagination */}
-                {!loading && (
+                {!loading && displayedProducts?.length > 0 && (
                   <div className="hidden  sm:flex justify-center items-center mt-4 gap-2">
                     {/* Previous Button */}
                     <button
@@ -471,8 +474,6 @@ const BroserProduct = () => {
               <FilterModal
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
-                setProducts={setProducts}
-                updatedProducts={updatedProducts}
                 selectedBrand={selectedBrand}
                 setSelectedBrand={setSelectedBrand}
                 capacity={capacity}
