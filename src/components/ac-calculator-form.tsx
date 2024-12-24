@@ -15,6 +15,7 @@ import { imagePath } from "@/constants/imagePath";
 import { Label } from "./ui/label";
 import { SearchableSelect } from "./searchable-select";
 import usePredictAndRecommend from "@/hooks/use-predict-and-recomend-ac";
+import { useAcContext } from "@/context/use-context";
 
 const url = import.meta.env.VITE_API_URL;
 
@@ -30,6 +31,7 @@ const AcCalculatorForm = () => {
   const [selectHours, setSelectHours] = useState("");
   const [capacity, setCapacity] = useState<number>(0);
   const [stateUnitPrice, setStateUnitPrice] = useState<number>(0);
+  const { predictRecomenedAc } = useAcContext();
 
   const { fetchPrediction, loading } = usePredictAndRecommend({
     url: url as string,
@@ -176,7 +178,7 @@ const AcCalculatorForm = () => {
             <div className="flex gap-[11px]">
               <div
                 className={`w-[127px] p-[2px] border cursor-pointer  ${
-                  selectedAcType === "window"
+                  selectedAcType === "windows"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
                 } rounded-[8px] flex items-center gap-1`}
@@ -412,7 +414,11 @@ const AcCalculatorForm = () => {
         <Button size={"lg"} variant={"outline"} onClick={handleReset}>
           Reset
         </Button>
-        <Button size={"lg"} onClick={fetchPrediction} disabled={loading}>
+        <Button
+          size={"lg"}
+          onClick={fetchPrediction}
+          disabled={loading || predictRecomenedAc?.length === 3}
+        >
           {loading && <Loader2 className="animate-spin" />}
           Calculate
         </Button>

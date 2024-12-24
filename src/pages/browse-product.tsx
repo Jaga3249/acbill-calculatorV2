@@ -23,6 +23,7 @@ const BroserProduct = () => {
   const [capacity, setCapacity] = useState<number>(0);
   const [selectedAcType, setSelectedAcType] = useState("");
   const [rating, setRating] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const { products, updatedProducts, setProducts, loading } = useGetProducts(
     url as string
   );
@@ -56,6 +57,16 @@ const BroserProduct = () => {
     }
   }, [selectedSort]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Mobile breakpoint
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const sortProducts = (sortOrder: string) => {
     const sortedProducts = [...products]; // Create a copy to avoid mutating the state directly
     if (sortOrder === "low-to-high") {
@@ -65,12 +76,17 @@ const BroserProduct = () => {
     }
     setProducts(sortedProducts);
   };
-  console.log("brand", selectedBrand);
   const handlePageChange = (page: number) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
+  const displayedProducts = isMobile
+    ? products // Show all products on mobile
+    : products?.slice(
+        (currentPage - 1) * perPageProduct,
+        currentPage * perPageProduct
+      );
 
   return (
     <Layout>
@@ -81,11 +97,11 @@ const BroserProduct = () => {
           </div>
         ) : (
           <>
-            <div className="flex md:justify-center justify-start md:mt-16">
-              <div className="flex flex-col gap-[16px]">
+            <div className="flex sm:justify-center md:justify-center md:mt-16 mt-5">
+              <div className=" w-full flex flex-col gap-[16px]">
                 {/* Top Section */}
                 <div className="flex flex-col gap-2">
-                  <div className="flex justify-between items-center">
+                  <div className=" hidden sm:flex justify-between ">
                     <div className="flex flex-col gap-2">
                       <span className="text-primaryBlack text-base font-medium">
                         {`${
@@ -185,6 +201,7 @@ const BroserProduct = () => {
                         )}
                       </div>
                     </div>
+
                     <Select onValueChange={(value) => setSelectedSort(value)}>
                       <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Sort by" />
@@ -201,70 +218,188 @@ const BroserProduct = () => {
                       </SelectContent>
                     </Select>
                   </div>
+                  {/* Mobile view */}
+                  <div className="sm:hidden">
+                    <h1 className="text-primaryBlack text-base font-medium mb-2">
+                      {" "}
+                      {`${(currentPage - 1) * perPageProduct + 1} - ${Math.min(
+                        currentPage * perPageProduct,
+                        products?.length || 0
+                      )} of ${products?.length || 0} ACs to browse from`}
+                    </h1>
+                    <div className="flex justify-end mb-2">
+                      <Select onValueChange={(value) => setSelectedSort(value)}>
+                        <SelectTrigger className="w-[180px]">
+                          <SelectValue placeholder="Sort by" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectGroup>
+                            <SelectItem value="low-to-high">
+                              Price low to high
+                            </SelectItem>
+                            <SelectItem value="high-to-low">
+                              Price high to low
+                            </SelectItem>
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex gap-[13px]">
+                      <div
+                        className="  bg-septenaryWhite rounded-[30px] py-[6px] px-[12px] border border-primaryBlack text-xs font-medium cursor-pointer"
+                        onClick={() => setIsOpen(true)}
+                      >
+                        Filter by
+                      </div>
+                      {selectedBrand && !isOpen && (
+                        <div className="bg-septenaryWhite rounded-[30px] py-[6px] px-[12px] border border-primaryBlack text-xs font-medium cursor-pointer flex gap-[10px] items-center">
+                          {selectedBrand}
+                          <X
+                            size={18}
+                            className="text-gray-900 stroke-[3]"
+                            onClick={() => {
+                              setSelectedBrand("");
+                              handleFilter(
+                                selectedAcType,
+                                "",
+                                capacity,
+                                rating
+                              );
+                            }}
+                          />
+                        </div>
+                      )}
+                      {capacity != 0 && !isOpen && (
+                        <div
+                          className="bg-septenaryWhite rounded-[30px] py-[6px] px-[12px] border border-primaryBlack text-xs font-medium cursor-pointer flex gap-[10px] items-center"
+                          onClick={() => setCapacity(0)}
+                        >
+                          {`${capacity} Ton`}
+                          <X
+                            size={18}
+                            className="text-gray-900 stroke-[3]"
+                            onClick={() => {
+                              setCapacity(0);
+                              handleFilter(
+                                selectedAcType,
+                                selectedBrand,
+                                0,
+                                rating
+                              );
+                            }}
+                          />
+                        </div>
+                      )}
+                      {rating != 0 && !isOpen && (
+                        <div
+                          className="bg-septenaryWhite rounded-[30px] py-[6px] px-[12px] border border-primaryBlack text-xs font-medium cursor-pointer flex gap-[10px] items-center"
+                          onClick={() => setRating(0)}
+                        >
+                          {`${rating} Stars`}
+                          <X
+                            size={18}
+                            className="text-gray-900 stroke-[3]"
+                            onClick={() => {
+                              setRating(0);
+                              handleFilter(
+                                selectedAcType,
+                                selectedBrand,
+                                capacity,
+                                0
+                              );
+                            }}
+                          />
+                        </div>
+                      )}
+                      {selectedAcType && !isOpen && (
+                        <div
+                          className="bg-septenaryWhite rounded-[30px] py-[6px] px-[12px] border border-primaryBlack text-xs font-medium cursor-pointer flex gap-[10px] items-center"
+                          onClick={() => setSelectedAcType("")}
+                        >
+                          {`${selectedAcType} `}
+                          <X
+                            size={18}
+                            className="text-gray-900 stroke-[3]"
+                            onClick={() => {
+                              setSelectedAcType("");
+                              handleFilter("", selectedBrand, capacity, rating);
+                            }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Product List */}
-                {products && (
-                  <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-9 gap-4">
-                    {products
-                      ?.slice(
-                        (currentPage - 1) * perPageProduct,
-                        currentPage * perPageProduct
-                      )
-                      .map((item: Product, i) => (
-                        <div
-                          className="w-[316px] rounded-[12px] border border-querternaryWhite flex flex-col gap-[11px] pb-3"
-                          key={i}
-                        >
-                          <div className="h-[169px] flex justify-center items-center">
-                            <img
-                              src={item?.image}
-                              alt="acImg"
-                              className="w-[227px] h-[91px]"
-                            />
-                          </div>
-                          <div className="flex flex-col mx-3 md:gap-[9px]">
-                            <div className="flex justify-between items-center">
-                              <span className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-secondaryGreen font-medium border border-secondaryGreen">
-                                {item?.tagline}
-                              </span>
-                              <span className="py-[6px] px-[12px] bg-senaryGray rounded-[30px] text-primaryBlack text-xs font-medium">
-                                {item.starRating}⭐
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-xl font-semibold text-primaryBlack my-2">
-                                ₹{item.price}
-                              </span>
-                            </div>
-                            <p className="text-sm font-semibold text-primaryBlack">
-                              {`${item.brand} ${item.capacity} Ton  ${item.type}`}
-                            </p>
-                            {!item.capacity && (
-                              <p className="text-septenaryGray text-[12px] leading-[18px] font-medium">
-                                Estimated Monthly Cost:{" "}
-                                <span className="text-primaryBlack">
-                                  ₹{item.estimatedMonthlyCost}
-                                </span>{" "}
-                                as per your data
-                              </p>
-                            )}
-                          </div>
-                          <div className="px-3">
-                            <Button
-                              className="text-sm font-medium text-septenaryWhite w-full"
-                              size={"sm"}
-                            >
-                              {item.buttonText}
-                            </Button>
-                          </div>
+                {loading ? (
+                  <div className="flex flex-col justify-center items-center h-[50vh] w-full  rounded-md shadow-md">
+                    <span className="text-4xl mb-4">😞</span>{" "}
+                    {/* Emoji for "No Results Found" */}
+                    <h2 className="text-lg font-semibold text-gray-700">
+                      No ACs Found
+                    </h2>
+                    <p className="text-sm text-gray-500 mt-2">
+                      Try adjusting your filters or search criteria.
+                    </p>
+                  </div>
+                ) : (
+                  <div className=" w-full grid sm:grid-cols-2 md:grid-cols-3  grid-cols-1 sm:gap-3 gap-4 sm:justify-center ">
+                    {displayedProducts?.map((item: Product, i) => (
+                      <div
+                        className="w-full  rounded-[12px] border border-querternaryWhite
+                           flex flex-col gap-[11px] pb-3 "
+                        key={i}
+                      >
+                        <div className="h-[169px] flex justify-center items-center">
+                          <img
+                            src={item?.image}
+                            alt="acImg"
+                            className="w-[227px] h-[91px]"
+                          />
                         </div>
-                      ))}
+                        <div className="flex flex-col mx-3 md:gap-[9px]">
+                          <div className="flex justify-between items-center">
+                            <span className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-secondaryGreen font-medium border border-secondaryGreen">
+                              {item?.tagline}
+                            </span>
+                            <span className="py-[6px] px-[12px] bg-senaryGray rounded-[30px] text-primaryBlack text-xs font-medium">
+                              {item.starRating}⭐
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xl font-semibold text-primaryBlack my-2">
+                              ₹{item.price}
+                            </span>
+                          </div>
+                          <p className="text-sm font-semibold text-primaryBlack">
+                            {`${item.brand} ${item.capacity} Ton  ${item.type}`}
+                          </p>
+                          {!item.capacity && (
+                            <p className="text-septenaryGray text-[12px] leading-[18px] font-medium">
+                              Estimated Monthly Cost:{" "}
+                              <span className="text-primaryBlack">
+                                ₹{item.estimatedMonthlyCost}
+                              </span>{" "}
+                              as per your data
+                            </p>
+                          )}
+                        </div>
+                        <div className="px-3">
+                          <Button
+                            className="text-sm font-medium text-septenaryWhite w-full"
+                            size={"sm"}
+                          >
+                            {item.buttonText}
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
 
                 {/* Pagination */}
-                <div className="flex justify-center items-center mt-4 gap-2">
+                <div className="hidden  sm:flex justify-center items-center mt-4 gap-2">
                   {/* Previous Button */}
                   <button
                     className={`px-3 py-1 border rounded ${

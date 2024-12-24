@@ -18,7 +18,7 @@ const Home = () => {
       {predictRecomenedAc && predictRecomenedAc.length > 0 && <AcComparision />}
       {predictRecomenedAc && predictRecomenedAc.length > 0 && (
         <ACUsageComparison
-          chatdata={predictRecomenedAc[predictRecomenedAc.length - 1].chatData}
+          product={predictRecomenedAc[predictRecomenedAc.length - 1]}
         />
       )}
       {predictRecomenedAc &&

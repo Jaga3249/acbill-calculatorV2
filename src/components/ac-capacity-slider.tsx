@@ -21,7 +21,7 @@ const ACCapacitySlider = ({ capacity, setCapacity }: activeProp) => {
   // const [active, setActive] = useState<number>(1);
 
   const handleClick = (value: number) => {
-    setCapacity(value);
+    setCapacity((prev) => (prev === value ? 0 : value));
   };
 
   // console.log("active", active);

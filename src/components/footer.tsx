@@ -3,18 +3,21 @@ import instagram from "@/assets/instagram.png";
 import linkedin from "@/assets/linkedin.png";
 import facebook from "@/assets/facebook.png";
 import { Copyright } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const router = useNavigate();
   return (
     <>
       <div className=" hidden bg-primaryBlack py-[52px] px-[200px]  sm:flex mt-10 ">
         {/* left side */}
         <div className="flex-1 flex flex-col gap-2">
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 cursor-pointer">
             <img
               src={footerlogo}
               alt="footer logo"
               className="w-[47px] h-[32px]"
+              onClick={() => router("/")}
             />
             <span className="text-sm font-normal text-septenaryWhite">
               Follow Us
@@ -47,23 +50,31 @@ const Footer = () => {
           </div>
         </div>
         {/* middle side */}
-        <div className="flex-1">
-          <ul className="flex flex-col gap-5 h-full">
-            <li className="text-sm font-normal text-septenaryWhite">Home</li>
-            <li className="text-sm font-normal text-septenaryWhite">Blog</li>
-            <li className="text-sm font-normal text-septenaryWhite">
+        <div className="flex-1 ">
+          <ul className="flex flex-col gap-5 h-full cursor-pointer">
+            <li
+              className="text-sm font-normal text-septenaryWhite"
+              onClick={() => router("/")}
+            >
+              Home
+            </li>
+            {/* <li className="text-sm font-normal text-septenaryWhite">Blog</li> */}
+            <li
+              className="text-sm font-normal text-septenaryWhite "
+              onClick={() => router("/browse-ac")}
+            >
               Browse AC
             </li>
           </ul>
         </div>
         <div className="flex-1 ">
-          <ul className="flex flex-col gap-[18px]">
-            <li className="text-sm font-semibold text-septenaryWhite">
+          <ul className="flex flex-col gap-[18px] cursor-pointer">
+            {/* <li className="text-sm font-semibold text-septenaryWhite">
               Other Pages
-            </li>
-            <li className="text-sm font-semibold text-septenaryWhite">
+            </li> */}
+            {/* <li className="text-sm font-semibold text-septenaryWhite">
               AC ton calculator
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -104,18 +115,18 @@ const Footer = () => {
         <div className="flex justify-between mt-5">
           <div className="flex flex-col gap-5">
             <span className="text-sm font-normal text-primaryWhite">Home</span>
-            <span className="text-sm font-normal text-primaryWhite">Blog</span>
+            {/* <span className="text-sm font-normal text-primaryWhite">Blog</span> */}
             <span className="text-sm font-normal text-primaryWhite">
               Browse AC
             </span>
           </div>
           <div className="flex flex-col gap-[18px]">
-            <span className="text-sm font-normal text-primaryWhite">
+            {/* <span className="text-sm font-normal text-primaryWhite">
               Other Pages
-            </span>
-            <span className="text-sm font-normal text-primaryWhite">
+            </span> */}
+            {/* <span className="text-sm font-normal text-primaryWhite">
               AC ton calculator
-            </span>
+            </span> */}
           </div>
         </div>
         <div className="flex justify-center items-center mt-3">

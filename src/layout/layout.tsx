@@ -3,6 +3,7 @@ import Header from "@/components/header";
 import { imagePath } from "@/constants/imagePath";
 import { X } from "lucide-react";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,6 +11,32 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const activeTab = (() => {
+    switch (location.pathname) {
+      case "/":
+        return "Home";
+      case "/blog":
+        return "Blog";
+      case "/browse-ac":
+        return "Bowse AC";
+      default:
+        return "";
+    }
+  })();
+
+  // Handler for changing active tab
+  const handleTabClick = (tab: string) => {
+    if (tab === "Home") {
+      navigate("/");
+    } else if (tab === "Blog") {
+      navigate("/blog");
+    } else if (tab === "Bowse AC") {
+      navigate("/browse-ac");
+    }
+  };
 
   return (
     <>
@@ -17,7 +44,7 @@ const Layout = ({ children }: LayoutProps) => {
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>
-      <Footer />
+      {/* <Footer /> */}
       {isMenuOpen && (
         <>
           <div
@@ -33,7 +60,23 @@ const Layout = ({ children }: LayoutProps) => {
                 className="w-[55px] h-[37px]"
               />
               <div className="flex flex-col gap-[40px]">
-                <span className="text-sm font-semibold text-primaryBlack">
+                {["Home", "Bowse AC"].map((tab) => (
+                  <span
+                    key={tab}
+                    className={`flex items-center  gap-1 cursor-pointer ${
+                      activeTab === tab ? "font-semibold" : "font-medium"
+                    }`}
+                    onClick={() => handleTabClick(tab)}
+                  >
+                    <span
+                      className={` h-6  w-1 text-sm font-semibold text-primaryBlack ${
+                        activeTab === tab ? "bg-primary" : ""
+                      }`}
+                    ></span>
+                    {tab}
+                  </span>
+                ))}
+                {/* <span className="text-sm font-semibold text-primaryBlack">
                   Home
                 </span>
                 <span className="text-sm font-semibold text-primaryBlack">
@@ -41,7 +84,7 @@ const Layout = ({ children }: LayoutProps) => {
                 </span>
                 <span className="text-sm font-semibold text-primaryBlack">
                   Browse AC
-                </span>
+                </span> */}
               </div>
             </div>
             <X

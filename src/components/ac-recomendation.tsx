@@ -60,12 +60,14 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
               {/*  */}
             </div>
             <div className="px-3">
-              <Button
-                className="text-sm font-medium text-septenaryWhite w-full"
-                size={"sm"}
-              >
-                {item.buttonText}
-              </Button>
+              <a href={item.ProductLink} target="_blank">
+                <Button
+                  className="text-sm font-medium text-septenaryWhite w-full"
+                  size={"sm"}
+                >
+                  {item.buttonText}
+                </Button>
+              </a>
             </div>
           </div>
         ))}

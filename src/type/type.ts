@@ -1,14 +1,29 @@
 interface Predictions {
+  // brand: string;
+  // capacity: number;
+  // type: string;
+  // starRating: number;
+  // temperature: string;
+  // totalUsagesHour: number;
+  // monthlyUnitConsumption: string;
+  // monthlyCost: string;
+  // unitPrice: number;
+  // dailyCost: string;
+  // yearlyCost: string;
+
+  Tree_needed: number;
+  Tree_updated: number;
   brand: string;
   capacity: number;
-  type: string;
+  co2_emmision_kg_annualy: number;
+  dailyCost: string;
+  monthlyCost: string;
+  monthlyUnitConsumption: string;
   starRating: number;
   temperature: string;
   totalUsagesHour: number;
-  monthlyUnitConsumption: string;
-  monthlyCost: string;
+  type: string;
   unitPrice: number;
-  dailyCost: string;
   yearlyCost: string;
 }
 // Interface for Chat Data
