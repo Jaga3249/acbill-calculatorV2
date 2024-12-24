@@ -335,7 +335,7 @@ const BroserProduct = () => {
                 {/* Product List */}
 
                 <div className=" w-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 sm:gap-3 gap-4 sm:justify-center ">
-                  {true ? (
+                  {displayedProducts?.length === 0 ? (
                     <div className="flex flex-col justify-center items-center h-[50vh] w-screen  rounded-md">
                       <span className="text-4xl mb-4">😞</span>{" "}
                       {/* Emoji for "No Results Found" */}
