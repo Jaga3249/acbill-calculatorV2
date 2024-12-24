@@ -4,6 +4,7 @@ import companyLogo from "@/assets/company-logo.png";
 import { Menu } from "lucide-react";
 import { imagePath } from "@/constants/imagePath";
 import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 type HeaderProps = {
   setIsMenuOpen: React.Dispatch<SetStateAction<boolean>>;
@@ -37,37 +38,73 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
       navigate("/browse-ac");
     }
   };
-
+  const tabs = ["Home", "Bowse AC"];
   return (
     <>
-      <header className="mt-6 hidden md:flex md:items-center md:justify-between">
+      <header className="mt-6 hidden md:flex md:items-center w-full">
         <img
           src={imagePath?.companyLogo}
           alt="Company Logo"
           className="w-[55px] h-[37.15px] cursor-pointer"
           onClick={() => navigate("/")}
         />
-        <div className="flex items-center gap-12 font-medium text-sm">
-          {["Home", "Bowse AC"].map((tab) => (
-            <span
-              key={tab}
-              className={`flex flex-col items-center gap-2 cursor-pointer ${
-                activeTab === tab ? "font-semibold" : "font-medium"
-              }`}
-              onClick={() => handleTabClick(tab)}
-            >
-              {tab}
+        {/* <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px]">
+          <div className="flex items-center font-medium text-sm">
+            {["Home", "Bowse AC"].map((tab) => (
               <span
-                className={`h-[3px] w-[19px] rounded-[7px] ${
-                  activeTab === tab ? "bg-primary" : ""
+                key={tab}
+                className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] ${
+                  activeTab === tab
+                    ? "font-semibold bg-[#CDCDCD] rounded-xl p-[10px]"
+                    : "font-medium"
                 }`}
-              ></span>
-            </span>
-          ))}
+                onClick={() => handleTabClick(tab)}
+              >
+                {tab}
+              </span>
+            ))}
+          </div>
+          <a href="#contact">
+            <Button className="w-[136px] rounded-xl">Contact Us</Button>
+          </a>
+        </div> */}
+        <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px] relative">
+          <div className="flex items-center font-medium text-sm relative w-full">
+            {tabs.map((tab) => (
+              <div key={tab} className="relative">
+                <span
+                  className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] p-[10px] ${
+                    activeTab === tab ? "font-semibold" : "font-medium"
+                  } z-10 relative`}
+                  onClick={() => handleTabClick(tab)}
+                >
+                  {tab}
+                </span>
+                {activeTab === tab && (
+                  <motion.div
+                    className="absolute inset-0 bg-[#CDCDCD] rounded-xl"
+                    layoutId="activeTabBackground"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  ></motion.div>
+                )}
+              </div>
+            ))}
+          </div>
+          <a href="#contact">
+            <Button
+              className="w-[136px] rounded-xl"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Contact Us
+            </Button>
+          </a>
         </div>
-        <a href="#contact">
-          <Button className="w-[136px] rounded-xl">Contact Us</Button>
-        </a>
       </header>
       <header className="md:hidden flex mt-5">
         <Menu
@@ -76,7 +113,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
           className="w-8 h-8"
         />
         <div className="flex-1 flex items-center justify-center">
-          <img src={companyLogo} alt="logo" className="w-10 h-9" />
+          <img src={companyLogo} alt="logo" className="w-12 h-9" />
         </div>
       </header>
     </>

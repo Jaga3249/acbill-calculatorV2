@@ -61,7 +61,7 @@ export function HeroSection() {
 
   return (
     <>
-      <div className="w-full md:h-[300px] overflow-hidden mt-5 rounded-md">
+      <div className="w-full md:h-[300px] overflow-hidden mt-8 rounded-md">
         <Carousel
           setApi={setApi}
           plugins={[plugin.current]}
