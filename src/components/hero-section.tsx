@@ -35,7 +35,7 @@ function DotButton({
 export function HeroSection() {
   const plugin = React.useRef(
     Autoplay({
-      delay: 3000,
+      delay: 2000,
       stopOnInteraction: true,
       stopOnMouseEnter: true,
     })

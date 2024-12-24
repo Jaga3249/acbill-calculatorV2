@@ -53,6 +53,7 @@ export interface Product {
   estimatedMonthlyCost: string;
   buttonText: string;
   ProductLink: string;
+  productLink: string;
 }
 
 // Main Interface

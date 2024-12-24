@@ -45,7 +45,7 @@ const Footer = () => {
             </span>
             <span className="w-[13px] h-[13px] text-septenaryWhite">@</span>
             <span className="text-sm font-normal text-septenaryWhite">
-              AcBillCalculator
+              Techligtor
             </span>
           </div>
         </div>
@@ -135,7 +135,7 @@ const Footer = () => {
           </span>
           <Copyright color="white" className="mx-1" size={16} />
           <span className="text-sm text-primaryWhite font-normal ">
-            AcBillCalculator
+            Techligtor
           </span>
         </div>
       </div>

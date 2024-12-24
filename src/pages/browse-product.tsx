@@ -344,7 +344,7 @@ const BroserProduct = () => {
                     </p>
                   </div>
                 ) : (
-                  <div className=" w-full grid sm:grid-cols-2 md:grid-cols-3  grid-cols-1 sm:gap-3 gap-4 sm:justify-center ">
+                  <div className=" w-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 sm:gap-3 gap-4 sm:justify-center ">
                     {displayedProducts?.map((item: Product, i) => (
                       <div
                         className="w-full  rounded-[12px] border border-querternaryWhite
@@ -386,12 +386,15 @@ const BroserProduct = () => {
                           )}
                         </div>
                         <div className="px-3">
-                          <Button
-                            className="text-sm font-medium text-septenaryWhite w-full"
-                            size={"sm"}
-                          >
-                            {item.buttonText}
-                          </Button>
+                          <a href={item?.productLink} target="_blank">
+                            {" "}
+                            <Button
+                              className="text-sm font-medium text-septenaryWhite w-full"
+                              size={"sm"}
+                            >
+                              View at {item.buttonText}
+                            </Button>
+                          </a>
                         </div>
                       </div>
                     ))}
@@ -399,67 +402,69 @@ const BroserProduct = () => {
                 )}
 
                 {/* Pagination */}
-                <div className="hidden  sm:flex justify-center items-center mt-4 gap-2">
-                  {/* Previous Button */}
-                  <button
-                    className={`px-3 py-1 border rounded ${
-                      currentPage === 1
-                        ? "text-gray-400 cursor-not-allowed"
-                        : "text-black"
-                    }`}
-                    disabled={currentPage === 1}
-                    onClick={() => handlePageChange(currentPage - 1)}
-                  >
-                    Previous
-                  </button>
+                {!loading && (
+                  <div className="hidden  sm:flex justify-center items-center mt-4 gap-2">
+                    {/* Previous Button */}
+                    <button
+                      className={`px-3 py-1 border rounded ${
+                        currentPage === 1
+                          ? "text-gray-400 cursor-not-allowed"
+                          : "text-black"
+                      }`}
+                      disabled={currentPage === 1}
+                      onClick={() => handlePageChange(currentPage - 1)}
+                    >
+                      Previous
+                    </button>
 
-                  {/* Page Numbers */}
-                  {[...Array(totalPages)].map((_, index) => {
-                    if (
-                      index + 1 === currentPage || // Current page
-                      index + 1 === 1 || // First page
-                      index + 1 === totalPages || // Last page
-                      Math.abs(index + 1 - currentPage) <= 1 // Adjacent pages
-                    ) {
-                      return (
-                        <button
-                          key={index}
-                          className={`px-3 py-1 border rounded ${
-                            currentPage === index + 1
-                              ? "bg-primary text-white"
-                              : "text-black"
-                          }`}
-                          onClick={() => handlePageChange(index + 1)}
-                        >
-                          {index + 1}
-                        </button>
-                      );
-                    } else if (
-                      Math.abs(index + 1 - currentPage) === 2 && // Ellipsis points
-                      (index + 1 > 2 || index + 1 < totalPages - 1)
-                    ) {
-                      return (
-                        <span key={index} className="px-3 py-1 text-gray-400">
-                          ...
-                        </span>
-                      );
-                    }
-                    return null; // Hide non-adjacent pages
-                  })}
+                    {/* Page Numbers */}
+                    {[...Array(totalPages)].map((_, index) => {
+                      if (
+                        index + 1 === currentPage || // Current page
+                        index + 1 === 1 || // First page
+                        index + 1 === totalPages || // Last page
+                        Math.abs(index + 1 - currentPage) <= 1 // Adjacent pages
+                      ) {
+                        return (
+                          <button
+                            key={index}
+                            className={`px-3 py-1 border rounded ${
+                              currentPage === index + 1
+                                ? "bg-primary text-white"
+                                : "text-black"
+                            }`}
+                            onClick={() => handlePageChange(index + 1)}
+                          >
+                            {index + 1}
+                          </button>
+                        );
+                      } else if (
+                        Math.abs(index + 1 - currentPage) === 2 && // Ellipsis points
+                        (index + 1 > 2 || index + 1 < totalPages - 1)
+                      ) {
+                        return (
+                          <span key={index} className="px-3 py-1 text-gray-400">
+                            ...
+                          </span>
+                        );
+                      }
+                      return null; // Hide non-adjacent pages
+                    })}
 
-                  {/* Next Button */}
-                  <button
-                    className={`px-3 py-1 border rounded ${
-                      currentPage === totalPages
-                        ? "text-gray-400 cursor-not-allowed"
-                        : "text-black"
-                    }`}
-                    disabled={currentPage === totalPages}
-                    onClick={() => handlePageChange(currentPage + 1)}
-                  >
-                    Next
-                  </button>
-                </div>
+                    {/* Next Button */}
+                    <button
+                      className={`px-3 py-1 border rounded ${
+                        currentPage === totalPages
+                          ? "text-gray-400 cursor-not-allowed"
+                          : "text-black"
+                      }`}
+                      disabled={currentPage === totalPages}
+                      onClick={() => handlePageChange(currentPage + 1)}
+                    >
+                      Next
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
             {isOpen && (
