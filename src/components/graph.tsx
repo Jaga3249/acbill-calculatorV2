@@ -6,9 +6,16 @@ type GaugeProps = {
   max: number; // Maximum value (e.g., 12)
   label: string;
   color: string; // Color of the arc
+  actualValue: number;
 };
 
-const Gauge: React.FC<GaugeProps> = ({ value, max, label, color }) => {
+const Gauge: React.FC<GaugeProps> = ({
+  value,
+  max,
+  label,
+  color,
+  actualValue,
+}) => {
   const angle = (value / max) * 180;
 
   // Animation for the gauge's rotation
@@ -50,7 +57,7 @@ const Gauge: React.FC<GaugeProps> = ({ value, max, label, color }) => {
         </div>
         {/* Center Label */}
         <div className="absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-semibold">
-          {value}hr
+          {actualValue}hr
         </div>
       </div>
       <p className="mt-16 text-sm text-black font-medium">{label}</p>

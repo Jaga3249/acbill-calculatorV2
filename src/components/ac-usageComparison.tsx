@@ -12,16 +12,37 @@ const ACUsageComparison = ({ product }: { product: ACUsageData }) => {
       <div className="flex flex-col md:flex-row md:justify-center w-full gap-4">
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 p-8 border-[#c6c6c6] border rounded-md">
           <Gauge
-            value={product?.chatData?.userHourlyUsage || 0}
-            max={12}
+            value={
+              product?.chatData?.averageUserHourlyUsage
+                ? product.chatData.averageUserHourlyUsage > 16
+                  ? 16
+                  : product.chatData.averageUserHourlyUsage
+                : 0
+            }
+            actualValue={product?.chatData?.averageUserHourlyUsage}
+            max={16}
             label="Average usage in India in a day"
             color="#f59e0b"
           />
           <Gauge
-            value={product?.chatData?.averageUserHourlyUsage || 0}
-            max={12}
+            value={
+              product?.chatData?.userHourlyUsage
+                ? product.chatData.userHourlyUsage > 16
+                  ? 16
+                  : product.chatData.userHourlyUsage
+                : 0
+            }
+            actualValue={product?.chatData?.userHourlyUsage}
+            max={16}
             label="You usage in a day"
-            color="#ef4444"
+            // color="#ef4444"
+            color={
+              product?.chatData?.userHourlyUsage < 8
+                ? "#6FCC39"
+                : product?.chatData?.userHourlyUsage > 10
+                ? "#ef4444"
+                : "#f59e0b"
+            }
           />
         </div>
         <div className="md:max-w-[400px]  flex flex-col justify-center items-center gap-4 p-3 border-[#C6C6C6] border rounded-md">
@@ -32,19 +53,21 @@ const ACUsageComparison = ({ product }: { product: ACUsageData }) => {
           />
           <p className="text-sm text-[#797979] font-medium tracking-wider leading-6">
             Your monthly usage of{" "}
-            <span className="text-[#262626]">
+            <span className="text-[#262626] font-bold">
               {product?.predictions?.monthlyUnitConsumption} units
             </span>{" "}
-            produces {product?.predictions?.co2_emmision_kg_annualy}
-            <span className="text-[#FC5D5D]">{""} kg of CO₂</span> anually,
-            needing
-            <span className="text-[#262626]">
+            produces{" "}
+            <span className="text-[#FC5D5D] font-bold">
+              {product?.predictions?.co2_emmision_kg_annualy} kg of CO₂
+            </span>{" "}
+            anually, needing
+            <span className="text-[#262626] font-bold">
               {" "}
               {product?.predictions?.Tree_needed} trees
             </span>{" "}
             a year to offset. Switching to an efficient appliance can cut this
             to{" "}
-            <span className="text-[#7CAF00]">
+            <span className="text-[#7CAF00] font-bold">
               {product?.predictions?.Tree_updated} trees—saving energy and
               money!
             </span>
