@@ -98,8 +98,8 @@ const BroserProduct = () => {
           </div>
         ) : (
           <>
-            <div className="flex sm:justify-center md:justify-center md:mt-16 mt-5">
-              <div className=" w-full flex flex-col gap-[16px]">
+            <div className="flex sm:justify-center md:justify-center md:mt-16 mt-5 md:mx-22 lg:mx-36">
+              <div className="w-full flex flex-col gap-[16px]">
                 {/* Top Section */}
                 <div className="flex flex-col gap-2">
                   <div className=" hidden sm:flex justify-between ">
@@ -334,7 +334,7 @@ const BroserProduct = () => {
 
                 {/* Product List */}
 
-                <div className=" w-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 sm:gap-3 gap-4 sm:justify-center ">
+                <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-cols-1 sm:gap-9 gap-4 sm:justify-center ">
                   {displayedProducts?.length === 0 ? (
                     <div className="flex flex-col justify-center items-center h-[50vh] w-screen  rounded-md">
                       <span className="text-4xl mb-4">😞</span>{" "}
@@ -349,8 +349,7 @@ const BroserProduct = () => {
                   ) : (
                     displayedProducts?.map((item: Product, i) => (
                       <div
-                        className="w-full  rounded-[12px] border border-querternaryWhite
-                           flex flex-col gap-[11px] pb-3 "
+                        className="rounded-[12px] w-[316px] min-w-full md:min-w-fit border border-querternaryWhite flex flex-col gap-[11px] pb-3 "
                         key={i}
                       >
                         <div className="h-[169px] flex justify-center items-center">
@@ -360,7 +359,7 @@ const BroserProduct = () => {
                             className="w-[227px] h-[91px]"
                           />
                         </div>
-                        <div className="flex flex-col mx-3 md:gap-[9px]">
+                        <div className="flex flex-col mx-3 gap-2">
                           <div className="flex justify-between items-center">
                             <span className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-secondaryGreen font-medium border border-secondaryGreen">
                               {item?.tagline}
@@ -370,7 +369,7 @@ const BroserProduct = () => {
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <span className="text-xl font-semibold text-primaryBlack my-2">
+                            <span className="text-xl font-semibold text-primaryBlack">
                               ₹{item.price}
                             </span>
                           </div>
