@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import FilterModal from "@/components/filter-modal";
 import { Button } from "@/components/ui/button";
+import acImage from "@/assets/ac-image.png";
 import {
   Select,
   SelectContent,
@@ -354,7 +355,7 @@ const BroserProduct = () => {
                       >
                         <div className="h-[169px] flex justify-center items-center">
                           <img
-                            src={item?.image}
+                            src={acImage}
                             alt="acImg"
                             className="w-[227px] h-[91px]"
                           />
@@ -389,10 +390,7 @@ const BroserProduct = () => {
                         <div className="px-3">
                           <a href={item?.productLink} target="_blank">
                             {" "}
-                            <Button
-                              className="text-sm font-medium text-septenaryWhite w-full"
-                              size={"sm"}
-                            >
+                            <Button className="text-sm font-medium text-septenaryWhite w-full">
                               View at {item.buttonText}
                             </Button>
                           </a>

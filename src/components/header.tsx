@@ -73,7 +73,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
             {tabs.map((tab) => (
               <div key={tab} className="relative">
                 <span
-                  className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] p-[10px] ${
+                  className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] p-[12px] ${
                     activeTab === tab ? "font-semibold" : "font-medium"
                   } z-10 relative`}
                   onClick={() => handleTabClick(tab)}
