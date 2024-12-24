@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
       case "/browse-ac":
         return "Bowse AC";
       default:
-        return "";
+        return "Home"; // Default to "Home" if no match is found
     }
   })();
 
@@ -40,7 +40,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <div className="font-poppins select-none h-auto md:px-20 px-4  overflow-hidden">
+      <div className="font-poppins select-none h-auto md:px-20 px-4 overflow-hidden">
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>
@@ -63,28 +63,19 @@ const Layout = ({ children }: LayoutProps) => {
                 {["Home", "Bowse AC"].map((tab) => (
                   <span
                     key={tab}
-                    className={`flex items-center  gap-1 cursor-pointer ${
+                    className={`flex items-center gap-1 cursor-pointer ${
                       activeTab === tab ? "font-semibold" : "font-medium"
                     }`}
                     onClick={() => handleTabClick(tab)}
                   >
                     <span
-                      className={` h-6  w-1 text-sm font-semibold text-primaryBlack ${
+                      className={`h-6 w-1 text-sm font-semibold text-primaryBlack ${
                         activeTab === tab ? "bg-primary" : ""
                       }`}
                     ></span>
                     {tab}
                   </span>
                 ))}
-                {/* <span className="text-sm font-semibold text-primaryBlack">
-                  Home
-                </span>
-                <span className="text-sm font-semibold text-primaryBlack">
-                  Blogs
-                </span>
-                <span className="text-sm font-semibold text-primaryBlack">
-                  Browse AC
-                </span> */}
               </div>
             </div>
             <X
