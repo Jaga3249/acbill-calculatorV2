@@ -1,9 +1,10 @@
 import { Product } from "@/type/type";
 import { Button } from "./ui/button";
+import acImage from "@/assets/ac-image.png";
 
 const AcRecomendation = ({ products }: { products: Product[] }) => {
   return (
-    <div className="flex flex-col md:justify-center justify-start md:mt-16 mt-10 md:mx-20">
+    <div className="flex flex-col md:justify-center justify-start md:mt-16 mt-10 md:mx-28">
       {/* <div className=" flex flex-col gap-[16px]"> */}
       {/* top section */}
       <div className="flex md:justify-between items-center mb-4">
@@ -22,13 +23,9 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
             key={i}
           >
             <div className="h-[169px] flex justify-center items-center">
-              <img
-                src={item?.Image}
-                alt="acImg"
-                className="w-[227px] h-[91px] object-cover"
-              />
+              <img src={acImage} alt="acImg" className="w-[227px] h-[91px]" />
             </div>
-            <div className=" flex flex-col mx-3 md:gap-[9px]">
+            <div className=" flex flex-col mx-3 gap-[6px]">
               <div className="flex justify-between items-center">
                 <span className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-secondaryGreen font-medium border border-secondaryGreen">
                   {item.tagline}
