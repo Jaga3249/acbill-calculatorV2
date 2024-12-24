@@ -44,7 +44,7 @@ const Layout = ({ children }: LayoutProps) => {
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>
-      {/* <Footer /> */}
+      <Footer />
       {isMenuOpen && (
         <>
           <div
