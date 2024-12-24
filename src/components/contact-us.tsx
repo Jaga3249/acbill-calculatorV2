@@ -76,7 +76,7 @@ const ContactUs = () => {
           <Input
             id="Name"
             type="text"
-            placeholder="Rohit Sharma"
+            placeholder="Your Name"
             className="text-customBlack text-sm"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
@@ -93,7 +93,7 @@ const ContactUs = () => {
           <Input
             id="Email ID"
             type="email"
-            placeholder="rohitsharma44@gmail.com"
+            placeholder="Your Email"
             className="text-customBlack text-sm"
             value={userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
@@ -110,7 +110,7 @@ const ContactUs = () => {
           <Input
             id="contactNumber"
             type="text"
-            placeholder="8965323265"
+            placeholder="Your Contact No."
             className="text-customBlack text-sm"
             value={contactNumber}
             onChange={(e) => setContactNumber(e.target.value)}
