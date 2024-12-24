@@ -69,12 +69,12 @@ const Footer = () => {
         </div>
         <div className="flex-1 ">
           <ul className="flex flex-col gap-[18px] cursor-pointer">
-            {/* <li className="text-sm font-semibold text-septenaryWhite">
+            <li className="text-sm font-semibold text-septenaryWhite">
               Other Pages
-            </li> */}
-            {/* <li className="text-sm font-semibold text-septenaryWhite">
-              AC ton calculator
-            </li> */}
+            </li>
+            <li className="text-sm font-semibold text-septenaryWhite">
+              Techligtor
+            </li>
           </ul>
         </div>
       </div>

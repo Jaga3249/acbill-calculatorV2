@@ -90,7 +90,7 @@ const AcComparision = () => {
             ))}
         {predictRecomenedAc && predictRecomenedAc.length < 3 && (
           <div
-            className="md:w-[214px] h-[137px] md:h-auto border border-querternaryWhite
+            className="lg:w-[214px]  md:h-auto border border-querternaryWhite
          p-3 rounded-[12px] flex justify-center items-center flex-col gap-[23px] "
           >
             <span className="w-[38px] h-[38px] rounded-full flex justify-center items-center bg-senaryWhite">

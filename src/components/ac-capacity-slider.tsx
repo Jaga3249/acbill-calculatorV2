@@ -32,7 +32,7 @@ const ACCapacitySlider = ({ capacity, setCapacity }: activeProp) => {
         <React.Fragment key={index}>
           <div className="flex flex-col items-center">
             {/* Label */}
-            <span className="mb-2 text-xs text-gray-700">{point.label}</span>
+            <span className=" text-xs text-gray-700">{point.label}</span>
             {/* Point */}
             <div
               className={`h-4 w-4 rounded-full cursor-pointer flex items-center justify-center ${

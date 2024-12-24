@@ -24,10 +24,10 @@ const ACUsageComparison = ({ product }: { product: ACUsageData }) => {
             color="#ef4444"
           />
         </div>
-        <div className="md:max-w-[400px] flex flex-col justify-center items-center gap-4 p-3 border-[#C6C6C6] border rounded-md">
+        <div className="md:max-w-[400px]  flex flex-col justify-center items-center gap-4 p-3 border-[#C6C6C6] border rounded-md">
           <img
             src={imagePath.tree}
-            className="w-[336.623px] h-[153.968px]"
+            className="w-[336.623px] h-[180px]"
             alt=""
           />
           <p className="text-sm text-[#797979] font-medium tracking-wider leading-6">
@@ -36,7 +36,8 @@ const ACUsageComparison = ({ product }: { product: ACUsageData }) => {
               {product?.predictions?.monthlyUnitConsumption} units
             </span>{" "}
             produces {product?.predictions?.co2_emmision_kg_annualy}
-            <span className="text-[#FC5D5D]">{""} kg of CO₂</span>, needing
+            <span className="text-[#FC5D5D]">{""} kg of CO₂</span> anually,
+            needing
             <span className="text-[#262626]">
               {" "}
               {product?.predictions?.Tree_needed} trees

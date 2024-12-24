@@ -40,7 +40,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <div className="font-poppins select-none h-auto md:px-20 px-4 overflow-hidden">
+      <div className="font-poppins select-none h-auto md:px-4 lg:px-20 px-4 ">
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>

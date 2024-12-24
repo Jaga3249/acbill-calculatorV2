@@ -97,9 +97,9 @@ const AcCalculatorForm = () => {
         Your Guide to Smarter AC Choices 🌟 Calculate and save on your bills
         today!
       </h1>
-      <div className=" hidden  md:w-[773px] gap-[66px] md:flex">
-        <div className="w-[352px]  flex flex-col gap-5">
-          <div className="grid w-[352px] items-center gap-1.5">
+      <div className=" hidden   lg:gap-[66px] md:gap-20 md:flex">
+        <div className=" flex flex-col gap-5">
+          <div className="grid  items-center gap-1.5 ">
             <Label htmlFor="brand">
               Brand <span className="text-red-700">*</span>
             </Label>
@@ -164,15 +164,15 @@ const AcCalculatorForm = () => {
           </div>
         </div>
 
-        <div className="w-[352px] flex flex-col gap-[20px]">
-          <div className="flex flex-col gap-[6px]">
-            <p className="text-xs font-medium">
+        <div className=" flex flex-col gap-[20px]">
+          <div className="flex flex-col gap-[6px] h-[63px] ">
+            <p className="text-sm font-medium">
               AC Capacity in ton <span className="text-red-700">*</span>
             </p>
             <ACCapacitySlider setCapacity={setCapacity} capacity={capacity} />
           </div>
           <div className="flex flex-col gap-[6px]">
-            <p>
+            <p className="text-sm font-medium">
               Ac Type<span className="text-red-700">*</span>
             </p>
             <div className="flex gap-[11px]">
