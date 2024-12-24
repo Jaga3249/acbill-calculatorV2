@@ -49,6 +49,7 @@ const AcCalculatorForm = () => {
     setSelectTemperature,
     setSelectState,
     setSelectHours,
+    setCapacity,
   });
 
   const handleRatingClick = (rate: number) => {

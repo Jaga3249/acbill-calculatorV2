@@ -21,9 +21,21 @@ interface propType {
   setSelectTemperature: React.Dispatch<React.SetStateAction<string>>;
   setSelectState: React.Dispatch<React.SetStateAction<string>>;
   setSelectHours: React.Dispatch<React.SetStateAction<string>>;
+  setCapacity: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const usePredictAndRecommend = ({ data, url }: propType) => {
+const usePredictAndRecommend = ({
+  data,
+  url,
+  setHoverRating,
+  setRating,
+  setSelectedAcType,
+  setSelectedBrand,
+  setSelectTemperature,
+  setSelectState,
+  setSelectHours,
+  setCapacity,
+}: propType) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const { setPredictRecomenedAc } = useAcContext();
@@ -61,13 +73,14 @@ const usePredictAndRecommend = ({ data, url }: propType) => {
       setPredictRecomenedAc((prev) =>
         prev ? [...prev, updatedRes] : [updatedRes]
       );
-      // setHoverRating(0);
-      // setRating(0.8);
-      // setSelectedAcType("");
-      // setSelectedBrand("");
-      // setSelectTemperature("");
-      // setSelectState("");
-      // setSelectHours("");
+      setHoverRating(0);
+      setRating(0);
+      setSelectedAcType("");
+      setSelectedBrand("");
+      setSelectTemperature("");
+      setSelectState("");
+      setSelectHours("");
+      setCapacity(0);
     } catch (err: any) {
       setError(err.message);
       toast.error(err.message);
