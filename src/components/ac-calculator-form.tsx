@@ -20,8 +20,6 @@ import { useAcContext } from "@/context/use-context";
 const url = import.meta.env.VITE_API_URL;
 
 const AcCalculatorForm = () => {
-  const [color, setColor] = useState("white");
-
   const [rating, setRating] = useState(0); // Selected rating
   const [hoverRating, setHoverRating] = useState(0);
   const [selectedAcType, setSelectedAcType] = useState("");
@@ -66,7 +64,6 @@ const AcCalculatorForm = () => {
   };
   const handleSelectAcType = (acType: string) => {
     setSelectedAcType((prevType) => (prevType === acType ? "" : acType));
-    changeColor();
   };
   const handleReset = () => {
     setSelectedBrand("");
@@ -78,9 +75,7 @@ const AcCalculatorForm = () => {
     setSelectedAcType("");
     setCapacity(0);
   };
-  const changeColor = () => {
-    setColor("blue"); // Example usage of setColor
-  };
+
   useEffect(() => {
     const unitPrice = electricity_rates.filter(
       (item) => item.state === selectState

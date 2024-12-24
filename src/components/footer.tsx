@@ -73,7 +73,10 @@ const Footer = () => {
               Other Pages
             </li>
             <li className="text-sm font-semibold text-septenaryWhite">
-              Techligtor
+              <a href="https://techligator.com/" target="_blank">
+                {" "}
+                Techligtor
+              </a>
             </li>
           </ul>
         </div>
