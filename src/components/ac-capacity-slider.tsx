@@ -45,7 +45,7 @@ const ACCapacitySlider = ({ capacity, setCapacity }: activeProp) => {
           </div>
           {/* Connecting Line */}
           {index < points.length - 1 && (
-            <div className="flex-1 h-[2px] bg-[#D9D9D9] mt-6"></div>
+            <div className="flex-1 h-[2px] bg-[#D9D9D9] mt-[1.01rem]"></div>
           )}
         </React.Fragment>
       ))}

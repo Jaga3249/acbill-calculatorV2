@@ -9,9 +9,9 @@ const Footer = () => {
   const router = useNavigate();
   return (
     <>
-      <div className=" hidden bg-primaryBlack py-[52px] px-[200px]  sm:flex mt-10 ">
+      <div className=" hidden bg-primaryBlack py-[52px] px-[220px]  sm:flex mt-10 sm:justify-between ">
         {/* left side */}
-        <div className="flex-1 flex flex-col gap-2">
+        <div className=" flex flex-col gap-2">
           <div className="flex flex-col gap-3 cursor-pointer">
             <img
               src={footerlogo}
@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
         {/* middle side */}
-        <div className="flex-1 ">
+        <div className=" ">
           <ul className="flex flex-col gap-5 h-full cursor-pointer">
             <li
               className="text-sm font-normal text-septenaryWhite"
@@ -67,7 +67,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex-1 ">
+        <div className="">
           <ul className="flex flex-col gap-[18px] cursor-pointer">
             <li className="text-sm font-semibold text-septenaryWhite">
               Other Pages
@@ -121,12 +121,12 @@ const Footer = () => {
             </span>
           </div>
           <div className="flex flex-col gap-[18px]">
-            {/* <span className="text-sm font-normal text-primaryWhite">
+            <span className="text-sm font-normal text-primaryWhite">
               Other Pages
-            </span> */}
-            {/* <span className="text-sm font-normal text-primaryWhite">
+            </span>
+            <span className="text-sm font-normal text-primaryWhite">
               AC ton calculator
-            </span> */}
+            </span>
           </div>
         </div>
         <div className="flex justify-center items-center mt-3">

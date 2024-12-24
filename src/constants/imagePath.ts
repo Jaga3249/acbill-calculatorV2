@@ -1,6 +1,7 @@
 import companyLogo from "@/assets/company-logo.png";
 import windowAc from "@/assets/windowAc.png";
 import splitAc from "@/assets/splitAc.png";
+import darksplitAc from "@/assets/darkSplitAc.png";
 import darkWindowAc from "@/assets/darkWindowAc.png";
 import carousel1 from "@/assets/carousel1.png";
 import carousel2 from "@/assets/carousel2.png";
@@ -22,4 +23,5 @@ export const imagePath = {
   carouselMobile1: carouselMobile1,
   carouselMobile2: carouselMobile2,
   carouselMobile3: carouselMobile3,
+  darksplitAc: darksplitAc,
 };

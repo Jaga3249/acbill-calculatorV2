@@ -101,7 +101,7 @@ const AcCalculatorForm = () => {
         <div className=" flex flex-col gap-5">
           <div className="grid  items-center gap-1.5 ">
             <Label htmlFor="brand">
-              Brand <span className="text-red-700">*</span>
+              Ac Brand <span className="text-red-700">*</span>
             </Label>
             <SearchableSelect
               options={brands}
@@ -111,10 +111,10 @@ const AcCalculatorForm = () => {
             />
           </div>
 
-          <div>
-            <label htmlFor="" className="text-sm font-medium">
+          <div className="-mt-2">
+            <Label htmlFor="">
               Star Rating<span className="text-red-700">*</span>
-            </label>
+            </Label>
             <div className="flex space-x-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
@@ -164,20 +164,20 @@ const AcCalculatorForm = () => {
           </div>
         </div>
 
-        <div className=" flex flex-col gap-[20px]">
-          <div className="flex flex-col gap-[6px] h-[63px] ">
-            <p className="text-sm font-medium">
+        <div className=" flex flex-col  gap-5">
+          <div className="flex flex-col gap-[9px] h-[60px]  ">
+            <Label>
               AC Capacity in ton <span className="text-red-700">*</span>
-            </p>
+            </Label>
             <ACCapacitySlider setCapacity={setCapacity} capacity={capacity} />
           </div>
-          <div className="flex flex-col gap-[6px]">
-            <p className="text-sm font-medium">
+          <div className="flex flex-col gap-[6px] -mt-1">
+            <Label>
               Ac Type<span className="text-red-700">*</span>
-            </p>
+            </Label>
             <div className="flex gap-[11px]">
               <div
-                className={`w-[127px] p-[2px] border cursor-pointer  ${
+                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
                   selectedAcType === "windows"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
@@ -185,7 +185,7 @@ const AcCalculatorForm = () => {
                 onClick={() => handleSelectAcType("windows")}
               >
                 <div
-                  className={`w-9 h-9 flex items-center justify-center
+                  className={`w-8 h-8 flex items-center justify-center
                  ${
                    selectedAcType === "windows"
                      ? " bg-primaryBlack"
@@ -194,9 +194,9 @@ const AcCalculatorForm = () => {
                 >
                   <img
                     src={
-                      color === "white"
-                        ? imagePath.windowAc
-                        : imagePath.darkWindowAc
+                      selectedAcType === "windows"
+                        ? imagePath.darkWindowAc
+                        : imagePath.windowAc
                     }
                     alt=""
                     className="h-[13.14px] w-[17.74px]"
@@ -208,7 +208,7 @@ const AcCalculatorForm = () => {
               </div>
 
               <div
-                className={`w-[127px] p-[2px] border cursor-pointer  ${
+                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
                   selectedAcType === "Split AC"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
@@ -216,7 +216,7 @@ const AcCalculatorForm = () => {
                 onClick={() => handleSelectAcType("Split AC")}
               >
                 <div
-                  className={`w-9 h-9 flex items-center justify-center py-[3px] px-[1px]
+                  className={`w-8 h-8 flex items-center justify-center py-[3px] px-[1px]
                     ${
                       selectedAcType === "Split AC"
                         ? " bg-primaryBlack"
@@ -224,7 +224,11 @@ const AcCalculatorForm = () => {
                     }  rounded-[6px]`}
                 >
                   <img
-                    src={imagePath.splitAc}
+                    src={
+                      selectedAcType === "Split AC"
+                        ? imagePath.darksplitAc
+                        : imagePath.splitAc
+                    }
                     alt=""
                     className="h-[13.14px] w-[17.74px]"
                   />
@@ -264,15 +268,15 @@ const AcCalculatorForm = () => {
             />
           </div>
           <div className="flex flex-col gap-[6px] w-full">
-            <p className="text-xs font-medium">
+            <Label>
               AC Capacity in ton <span className="text-red-700">*</span>
-            </p>
+            </Label>
             <ACCapacitySlider setCapacity={setCapacity} capacity={capacity} />
           </div>
           <div className="w-full">
-            <label htmlFor="" className="text-sm font-medium">
+            <Label>
               Star Rating <span className="text-red-700">*</span>
-            </label>
+            </Label>
             <div className="flex space-x-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
@@ -291,13 +295,13 @@ const AcCalculatorForm = () => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-[6px]">
-            <p>
+          <div className="flex flex-col gap-[6px] -mt-1">
+            <Label>
               Ac Type<span className="text-red-700">*</span>
-            </p>
+            </Label>
             <div className="flex gap-[11px]">
               <div
-                className={`w-[127px] p-[2px] border  ${
+                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
                   selectedAcType === "windows"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
@@ -305,7 +309,7 @@ const AcCalculatorForm = () => {
                 onClick={() => handleSelectAcType("windows")}
               >
                 <div
-                  className={`w-9 h-9 flex items-center justify-center
+                  className={`w-8 h-8 flex items-center justify-center
                  ${
                    selectedAcType === "windows"
                      ? " bg-primaryBlack"
@@ -314,9 +318,9 @@ const AcCalculatorForm = () => {
                 >
                   <img
                     src={
-                      color === "white"
-                        ? imagePath.windowAc
-                        : imagePath.darkWindowAc
+                      selectedAcType === "windows"
+                        ? imagePath.darkWindowAc
+                        : imagePath.windowAc
                     }
                     alt=""
                     className="h-[13.14px] w-[17.74px]"
@@ -328,7 +332,7 @@ const AcCalculatorForm = () => {
               </div>
 
               <div
-                className={`w-[127px] p-[2px] border  ${
+                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
                   selectedAcType === "Split AC"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
@@ -336,7 +340,7 @@ const AcCalculatorForm = () => {
                 onClick={() => handleSelectAcType("Split AC")}
               >
                 <div
-                  className={`w-9 h-9 flex items-center justify-center py-[3px] px-[1px]
+                  className={`w-8 h-8 flex items-center justify-center py-[3px] px-[1px]
                     ${
                       selectedAcType === "Split AC"
                         ? " bg-primaryBlack"
@@ -344,7 +348,11 @@ const AcCalculatorForm = () => {
                     }  rounded-[6px]`}
                 >
                   <img
-                    src={imagePath.splitAc}
+                    src={
+                      selectedAcType === "Split AC"
+                        ? imagePath.darksplitAc
+                        : imagePath.splitAc
+                    }
                     alt=""
                     className="h-[13.14px] w-[17.74px]"
                   />
