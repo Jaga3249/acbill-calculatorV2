@@ -1,11 +1,11 @@
 import { useAcContext } from "@/context/use-context";
-import { Product } from "@/type/type";
+
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const useGetProducts = (url: string) => {
-  const { products, setProducts } = useAcContext();
-  const [updatedProducts, setUpdatedProducts] = useState<Product[]>([]);
+  const { products, setProducts, updatedProducts, setUpdatedProducts } =
+    useAcContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const getProducts = async () => {

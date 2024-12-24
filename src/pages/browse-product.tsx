@@ -38,7 +38,6 @@ const BroserProduct = () => {
     capacity: number,
     rating: number
   ) => {
-    console.log("functioncall", "functioncall");
     const filteredProducts = updatedProducts.filter((product: Product) => {
       return (
         (selectedAcType ? product.type === selectedAcType : true) &&
@@ -89,7 +88,8 @@ const BroserProduct = () => {
         (currentPage - 1) * perPageProduct,
         currentPage * perPageProduct
       );
-
+  console.log("updatedProducts", updatedProducts);
+  console.log("products", products);
   return (
     <Layout>
       <div>

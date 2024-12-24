@@ -58,6 +58,7 @@ const FilterModal = ({
   };
 
   const handleFilter = () => {
+    console.log("updatedProducts", updatedProducts);
     if (selectedAcType || selectedBrand || capacity || rating) {
       const filteredProducts = updatedProducts.filter((product: Product) => {
         return (
