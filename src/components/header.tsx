@@ -1,4 +1,4 @@
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
 import companyLogo from "@/assets/company-logo.png";
 import { Menu } from "lucide-react";
@@ -13,32 +13,41 @@ type HeaderProps = {
 const Header = ({ setIsMenuOpen }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Determine active tab based on the current path
-  const activeTab = (() => {
+  const [activeTab, setActiveTab] = useState<string>(() => {
     switch (location.pathname) {
       case "/":
         return "Home";
       case "/blog":
         return "Blog";
       case "/browse-ac":
-        return "Bowse AC";
+        return "Browse AC";
       default:
-        return "";
+        return location.hash === "#faqs" ? "Faqs" : "";
     }
-  })();
+  });
 
-  // Handler for changing active tab
   const handleTabClick = (tab: string) => {
+    setActiveTab(tab); // Update active tab immediately
     if (tab === "Home") {
       navigate("/");
     } else if (tab === "Blog") {
       navigate("/blog");
-    } else if (tab === "Bowse AC") {
+    } else if (tab === "Browse AC") {
       navigate("/browse-ac");
+    } else if (tab === "Faqs") {
+      // Scroll to FAQs section without changing the route history
+      const faqsSection = document.getElementById("faqs");
+      if (faqsSection) {
+        faqsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
   };
-  const tabs = ["Home", "Bowse AC"];
+
+  const tabs =
+    location.pathname === "/"
+      ? ["Home", "Browse AC", "Faqs"]
+      : ["Home", "Browse AC"];
+
   return (
     <>
       <header className="mt-6 hidden md:flex md:items-center w-full">
@@ -46,28 +55,11 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
           src={imagePath?.companyLogo}
           alt="Company Logo"
           className="w-[55px] h-[37.15px] cursor-pointer"
-          onClick={() => navigate("/")}
+          onClick={() => {
+            setActiveTab("Home");
+            navigate("/");
+          }}
         />
-        {/* <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px]">
-          <div className="flex items-center font-medium text-sm">
-            {["Home", "Bowse AC"].map((tab) => (
-              <span
-                key={tab}
-                className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] ${
-                  activeTab === tab
-                    ? "font-semibold bg-[#CDCDCD] rounded-xl p-[10px]"
-                    : "font-medium"
-                }`}
-                onClick={() => handleTabClick(tab)}
-              >
-                {tab}
-              </span>
-            ))}
-          </div>
-          <a href="#contact">
-            <Button className="w-[136px] rounded-xl">Contact Us</Button>
-          </a>
-        </div> */}
         <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px] relative">
           <div className="flex items-center font-medium text-sm relative w-full">
             {tabs.map((tab) => (
@@ -98,6 +90,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
             <Button
               className="w-[136px] rounded-xl"
               onClick={() => {
+                setActiveTab("Contact");
                 navigate("/");
               }}
             >

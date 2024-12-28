@@ -89,9 +89,9 @@ const AcCalculatorForm = () => {
       className="flex items-center  md:mt-[2%] mt-[5%] flex-col md:gap-9 gap-7 "
       id="calculatorForm"
     >
-      <h1 className="text-primaryBlacktext-base font-medium md:text-center text-start ">
-        Your Guide to Smarter AC Choices 🌟 Calculate and save on your bills
-        today!
+      <h1 className="text-primaryBlacktext-base font-medium md:text-center text-start select-text ">
+        Your Guide to Smarter AC Choices 🌟 Calculate your AC consumption and
+        save on your bills today!
       </h1>
       <div className=" hidden   lg:gap-[66px] md:gap-20 md:flex">
         <div className=" flex flex-col gap-5">

@@ -90,6 +90,7 @@ const BroserProduct = () => {
         currentPage * perPageProduct
       );
 
+  console.log("products", products);
   return (
     <Layout>
       <div>
@@ -337,9 +338,8 @@ const BroserProduct = () => {
 
                 <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-cols-1 sm:gap-9 gap-4 sm:justify-center ">
                   {displayedProducts?.length === 0 ? (
-                    <div className="flex flex-col justify-center items-center h-[50vh] w-screen  rounded-md">
-                      <span className="text-4xl mb-4">😞</span>{" "}
-                      {/* Emoji for "No Results Found" */}
+                    <div className="flex flex-col justify-center items-center h-[50vh] w-full rounded-md">
+                      <span className="text-4xl mb-4">😞</span>
                       <h2 className="text-lg font-semibold text-gray-700">
                         No ACs Found
                       </h2>
@@ -350,50 +350,67 @@ const BroserProduct = () => {
                   ) : (
                     displayedProducts?.map((item: Product, i) => (
                       <div
-                        className="rounded-[12px] w-[316px] min-w-full md:min-w-fit border border-querternaryWhite flex flex-col gap-[11px] pb-3 "
+                        className="rounded-[12px] w-full sm:w-[300px] border border-querternaryWhite flex flex-col gap-[11px]"
                         key={i}
                       >
                         <div className="h-[169px] flex justify-center items-center">
                           <img
                             src={acImage}
                             alt="acImg"
-                            className="w-[227px] h-[91px]"
+                            className="max-w-[227px] max-h-[91px] object-contain"
                           />
                         </div>
-                        <div className="flex flex-col mx-3 gap-2">
+
+                        <div className="flex-1 flex flex-col p-2 gap-[6px] bg-quinaryWhite rounded-bl-md rounded-br-md">
                           <div className="flex justify-between items-center">
-                            <span className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-secondaryGreen font-medium border border-secondaryGreen">
-                              {item?.tagline}
+                            <span
+                              className="bg-[#C6C6C6] py-[6px] px-[12px] rounded-[30px] text-xs
+                             text-primaryBlack font-medium "
+                            >
+                              {item.tagline}
                             </span>
-                            <span className="py-[6px] px-[12px] bg-senaryGray rounded-[30px] text-primaryBlack text-xs font-medium">
+                            <span
+                              className="py-[6px] px-[12px] bg-senaryGray rounded-[30px]
+                             text-primaryBlack text-xs font-medium border border-primaryBlack"
+                            >
                               {item.starRating}⭐
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="text-xl font-semibold text-primaryBlack">
-                              ₹{item.price}
+                              ₹{item?.price}
+                            </span>
+                            <span className="text-xs font-medium text-primaryBlack line-through">
+                              ₹{item?.originalPrice}
                             </span>
                           </div>
                           <p className="text-sm font-semibold text-primaryBlack">
-                            {`${item.brand} ${item.capacity} Ton  ${item.type}`}
+                            {item.brand} {item.capacity} Ton {item.type}
                           </p>
-                          {!item.capacity && (
+                          <p className="text-septenaryGray text-[12px] leading-[18px] font-medium">
+                            No-cost EMI available at{" "}
+                            <span>{item.buttonText}.</span>
+                          </p>
+
+                          {item.estimatedMonthlyCost && (
                             <p className="text-septenaryGray text-[12px] leading-[18px] font-medium">
                               Estimated Monthly Cost:{" "}
-                              <span className="text-primaryBlack">
+                              <span className="text-primaryBlack font-extrabold text-sm">
                                 ₹{item.estimatedMonthlyCost}
                               </span>{" "}
                               as per your data
                             </p>
                           )}
-                        </div>
-                        <div className="px-3">
-                          <a href={item?.productLink} target="_blank">
-                            {" "}
-                            <Button className="text-sm font-medium text-septenaryWhite w-full">
-                              View at {item.buttonText}
-                            </Button>
-                          </a>
+                          <div>
+                            <a href={item?.productLink} target="_blank">
+                              <Button
+                                className="text-sm font-medium text-septenaryWhite w-full"
+                                size={"sm"}
+                              >
+                                {item.buttonText}
+                              </Button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     ))

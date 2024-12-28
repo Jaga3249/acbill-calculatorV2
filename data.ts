@@ -323,7 +323,7 @@ export const hours: Option[] = [
 ];
 
 export const temperature_preferences: Option[] = [
-  { value: "16-22", label: "16-22" },
+  { value: "16-20", label: "16-20" },
   { value: "20-22", label: "20-22" },
   { value: "24", label: "24" },
   { value: ">24", label: ">24" },

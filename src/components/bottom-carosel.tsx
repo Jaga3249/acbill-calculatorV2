@@ -33,12 +33,12 @@ const BottomCarousel = () => {
 
   return (
     <div className="md:mx-28 md:px-10 flex flex-col gap-7 mt-10">
-      <h1 className="text-base font-medium text-center text-primaryBlack">
+      <h1 className="text-base font-medium text-center text-primaryBlack select-text">
         Want to lower your bills? Check out our energy-saving tips! 🛠
       </h1>
       <div
         className="text-sm font-medium text-center text-primaryBlack border border-querternaryWhite
-          rounded-[12px] py-[10px] px-[50px] h-[138px] flex justify-center items-center"
+        rounded-[12px] py-[10px] px-[50px] h-[138px] flex justify-center items-center select-text"
       >
         {carouselItems[currentIndex]}
       </div>
@@ -59,6 +59,7 @@ const BottomCarousel = () => {
               className={`w-2 h-2 rounded-full cursor-pointer ${
                 currentIndex === index ? "bg-black" : "bg-gray-300"
               }`}
+              style={{ pointerEvents: "none" }} // Prevents dots from blocking selection
             ></div>
           ))}
         </div>
