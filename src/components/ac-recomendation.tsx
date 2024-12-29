@@ -27,20 +27,20 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
     <div className="flex flex-col md:justify-center justify-start md:mt-16 mt-6 md:mx-28">
       {/* Top section */}
       <div className="flex md:justify-between items-center mb-4">
-        {!isMobile && (
-          <div className="flex items-center justify-between w-full">
-            <span className="text-primaryBlack sm:text-base text-xs font-medium">
-              Our Recommendation as per your need ✨
-            </span>
+        <div className="flex items-center justify-between w-full">
+          <span className="text-primaryBlack text-base font-medium">
+            Our Recommendation as per your need ✨
+          </span>
 
+          {!isMobile && (
             <span
               className="text-primaryBlack md:text-base sm:text-sm text-xs font-medium cursor-pointer hover:underline hover:text-primaryBlue transition-colors"
               onClick={handleSeeAllClick}
             >
               {showAll ? "Show less" : "See all"} {/* Toggle text */}
             </span>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <div className="flex justify-between w-full gap-4 overflow-x-scroll md:overflow-hidden md:grid grid-cols-3">
@@ -54,14 +54,14 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
               <div className="h-[169px] flex justify-center items-center">
                 <img src={acImage} alt="acImg" className="w-[227px] h-[91px]" />
               </div>
-              <div className="flex flex-col px-3 pb-2 gap-[6px] bg-quinaryWhite sm:bg-transparent">
+              <div className="flex flex-col rounded-bl-md rounded-br-md p-3 gap-[6px] bg-quinaryWhite sm:bg-transparent">
                 <div className="flex justify-between items-center">
-                  <span className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs text-secondaryGreen font-medium border border-secondaryGreen">
+                  <span className="sm:bg-tertiaryGreen bg-[#C6C6C6] py-[6px] px-[12px] rounded-[30px] text-xs sm:text-secondaryGreen text-primaryBlack  font-medium border sm:border-secondaryGreen">
                     {item.tagline}
                   </span>
                   <span
                     className="py-[6px] px-[12px] bg-senaryGray rounded-[30px]
-                     text-primaryBlack text-xs font-medium"
+                     text-primaryBlack text-xs font-medium border border-primaryBlack"
                   >
                     {item.starRating}⭐
                   </span>
