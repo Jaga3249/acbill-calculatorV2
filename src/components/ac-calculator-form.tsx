@@ -13,9 +13,17 @@ import ACCapacitySlider from "./ac-capacity-slider";
 import { imagePath } from "@/constants/imagePath";
 //
 import { Label } from "./ui/label";
-import { SearchableSelect } from "./searchable-select";
+import { Option, SearchableSelect } from "./searchable-select";
 import usePredictAndRecommend from "@/hooks/use-predict-and-recomend-ac";
 import { useAcContext } from "@/context/use-context";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const url = import.meta.env.VITE_API_URL;
 
@@ -133,12 +141,29 @@ const AcCalculatorForm = () => {
             <Label htmlFor="temperature">
               Temperature Preference <span className="text-red-700">*</span>
             </Label>
-            <SearchableSelect
+            {/* <SearchableSelect
               options={temperature_preferences}
               placeholder="Select temperature"
               selectedValue={selectTemperature}
               onSelect={setSelectTemperature}
-            />
+            /> */}
+            <Select
+              value={selectTemperature}
+              onValueChange={(value) => setSelectTemperature(value)}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select temperature" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {temperature_preferences.map((item: Option) => (
+                    <SelectItem key={item.label} value={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="grid w-[352px] items-center gap-1.5">
@@ -239,12 +264,31 @@ const AcCalculatorForm = () => {
             <Label htmlFor="hours">
               Hours of usage per day <span className="text-red-700">*</span>
             </Label>
-            <SearchableSelect
+            {/* <SearchableSelect
               options={hours}
               placeholder="Select hour"
               selectedValue={selectHours}
               onSelect={setSelectHours}
-            />
+            /> */}
+            {
+              <Select
+                value={selectHours}
+                onValueChange={(value) => setSelectHours(value)}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select hour" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {hours?.map((item) => (
+                      <SelectItem key={item.label} value={item.value}>
+                        {item.label}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            }
           </div>
         </div>
       </div>
@@ -363,12 +407,23 @@ const AcCalculatorForm = () => {
             <Label htmlFor="temperature">
               Temperature Preference <span className="text-red-700">*</span>
             </Label>
-            <SearchableSelect
-              options={temperature_preferences}
-              placeholder="Select temperature"
-              selectedValue={selectTemperature}
-              onSelect={setSelectTemperature}
-            />
+            <Select
+              value={selectTemperature}
+              onValueChange={(value) => setSelectTemperature(value)}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select temperature" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {temperature_preferences.map((item: Option) => (
+                    <SelectItem key={item.label} value={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
           <div className="flex flex-col gap-[6px] w-full">
             {/* <p className="text-xs font-medium">
@@ -387,12 +442,25 @@ const AcCalculatorForm = () => {
             <Label htmlFor="hours">
               Hours of usage per day <span className="text-red-700">*</span>
             </Label>
-            <SearchableSelect
-              options={hours}
-              placeholder="Select time"
-              selectedValue={selectHours}
-              onSelect={setSelectHours}
-            />
+            {
+              <Select
+                value={selectHours}
+                onValueChange={(value) => setSelectHours(value)}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select hour" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {hours?.map((item) => (
+                      <SelectItem key={item.label} value={item.value}>
+                        {item.label}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            }
           </div>
           <div className="flex flex-col gap-[6px] w-full">
             <Label htmlFor="state">

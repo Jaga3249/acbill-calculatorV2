@@ -22,7 +22,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
       case "/browse-ac":
         return "Browse AC";
       default:
-        return location.hash === "#faqs" ? "Faqs" : "";
+        return location.hash === "#FAQs" ? "FAQs" : "";
     }
   });
 
@@ -34,9 +34,9 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
       navigate("/blog");
     } else if (tab === "Browse AC") {
       navigate("/browse-ac");
-    } else if (tab === "Faqs") {
+    } else if (tab === "FAQs") {
       // Scroll to FAQs section without changing the route history
-      const faqsSection = document.getElementById("faqs");
+      const faqsSection = document.getElementById("FAQs");
       if (faqsSection) {
         faqsSection.scrollIntoView({ behavior: "smooth", block: "start" });
       }
@@ -45,7 +45,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
 
   const tabs =
     location.pathname === "/"
-      ? ["Home", "Browse AC", "Faqs"]
+      ? ["Home", "Browse AC", "FAQs"]
       : ["Home", "Browse AC"];
 
   return (
