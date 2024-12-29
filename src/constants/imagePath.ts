@@ -1,4 +1,4 @@
-import companyLogo from "@/assets/company-logo.png";
+import companyLogo from "@/assets/techligator-logo.png";
 import windowAc from "@/assets/windowAc.png";
 import splitAc from "@/assets/splitAc.png";
 import darksplitAc from "@/assets/darkSplitAc.png";

@@ -14,33 +14,47 @@ const Layout = ({ children }: LayoutProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const activeTab = (() => {
+  const [activeTab, setActiveTab] = useState<string>(() => {
     switch (location.pathname) {
       case "/":
-        return "Home";
+        return location.hash === "#FAQs" ? "FAQs" : "Home";
       case "/blog":
         return "Blog";
       case "/browse-ac":
-        return "Bowse AC";
+        return "Browse AC";
       default:
-        return "Home"; // Default to "Home" if no match is found
+        return "";
     }
-  })();
+  });
 
-  // Handler for changing active tab
   const handleTabClick = (tab: string) => {
-    if (tab === "Home") {
-      navigate("/");
-    } else if (tab === "Blog") {
-      navigate("/blog");
-    } else if (tab === "Bowse AC") {
-      navigate("/browse-ac");
+    if (tab === "FAQs") {
+      navigate("/#FAQs");
+      setActiveTab(tab);
+      setIsMenuOpen(false);
+
+      setTimeout(() => {
+        const faqsSection = document.getElementById("FAQs");
+        if (faqsSection) {
+          faqsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    } else {
+      setActiveTab(tab);
+      if (tab === "Home") {
+        navigate("/");
+      } else if (tab === "Blog") {
+        navigate("/blog");
+      } else if (tab === "Browse AC") {
+        navigate("/browse-ac");
+      }
+      setIsMenuOpen(false);
     }
   };
 
   return (
     <>
-      <div className="font-poppins select-none h-auto md:px-4 lg:px-20 px-4 ">
+      <div className="font-poppins select-none h-auto md:px-4 lg:px-20 px-4">
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>
@@ -51,8 +65,11 @@ const Layout = ({ children }: LayoutProps) => {
             className="fixed inset-0 bg-black bg-opacity-40 z-10"
             onClick={() => setIsMenuOpen(false)}
           />
-
-          <span className="md:hidden sm:hidden bg-septenaryWhite fixed top-0 w-[273px] h-screen rounded-tr-[20px] rounded-br-[20px] p-8 z-20">
+          <span
+            className={`md:hidden sm:hidden bg-septenaryWhite fixed top-0 w-[273px] h-screen rounded-tr-[20px] rounded-br-[20px] p-8 z-20 transform transition-transform duration-300 ${
+              isMenuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
             <div className="flex flex-col gap-[52px]">
               <img
                 src={imagePath?.companyLogo}
@@ -60,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
                 className="w-[55px] h-[37px]"
               />
               <div className="flex flex-col gap-[40px]">
-                {["Home", "Bowse AC"].map((tab) => (
+                {["Home", "Browse AC", "FAQs"].map((tab) => (
                   <span
                     key={tab}
                     className={`flex items-center gap-1 cursor-pointer ${

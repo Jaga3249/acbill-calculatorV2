@@ -1,6 +1,5 @@
 import { SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
-import companyLogo from "@/assets/company-logo.png";
 import { Menu } from "lucide-react";
 import { imagePath } from "@/constants/imagePath";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -106,7 +105,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
           className="w-8 h-8"
         />
         <div className="flex-1 flex items-center justify-center">
-          <img src={companyLogo} alt="logo" className="w-12 h-9" />
+          <img src={imagePath?.companyLogo} alt="logo" className="w-12 h-9" />
         </div>
       </header>
     </>
