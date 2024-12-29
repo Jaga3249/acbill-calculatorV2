@@ -15,11 +15,11 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
       {/* Top section */}
       <div className="flex md:justify-between items-center mb-4">
         <div className="flex items-center justify-between w-full">
-          <span className="text-primaryBlack sm:text-base text-sm font-medium">
+          <span className="text-primaryBlack sm:text-base  text-[10px] font-medium">
             Our Recommendation as per your need ✨
           </span>
           <span
-            className="text-primaryBlack sm:text-base text-sm font-medium cursor-pointer hover:underline hover:text-primaryBlue transition-colors"
+            className="text-primaryBlack md:text-base sm:text-sm text-[10px] font-medium cursor-pointer hover:underline hover:text-primaryBlue transition-colors"
             onClick={handleSeeAllClick}
           >
             {showAll ? "Show less" : "See all"} {/* Toggle text */}
