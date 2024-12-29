@@ -23,7 +23,7 @@ const faqData = [
           <a
             href="https://acbillcalculator.com"
             target="_blank"
-            className="text-blue-700 ml-1s"
+            className="text-blue-700 ml-1"
           >
             AC Bill Calculator
           </a>{" "}
