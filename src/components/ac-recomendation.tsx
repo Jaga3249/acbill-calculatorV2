@@ -28,7 +28,7 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
       {/* Top section */}
       <div className="flex md:justify-between items-center mb-4">
         <div className="flex items-center justify-between w-full">
-          <span className="text-primaryBlack text-base font-medium">
+          <span className="text-primaryBlack sm:text-base text-[15px] font-medium">
             Our Recommendation as per your need ✨
           </span>
 
