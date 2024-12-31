@@ -10,6 +10,7 @@ import carousel3 from "@/assets/carousel3.png";
 import carouselMobile1 from "@/assets/carousel-mobile-1.png";
 import carouselMobile2 from "@/assets/carousel-mobile-2.png";
 import carouselMobile3 from "@/assets/carousel-mobile-3.png";
+import blog1 from "@/assets/blog-1.png";
 
 export const imagePath = {
   companyLogo: companyLogo,
@@ -24,4 +25,5 @@ export const imagePath = {
   carouselMobile2: carouselMobile2,
   carouselMobile3: carouselMobile3,
   darksplitAc: darksplitAc,
+  blog1: blog1,
 };

@@ -1,6 +1,6 @@
+import { imagePath } from "@/constants/imagePath";
 import Layout from "@/layout/layout";
 import React from "react";
-import blog1 from "@/assets/blog-1.png";
 
 const AcBillCalculatorPage: React.FC = () => {
   return (
@@ -156,7 +156,7 @@ const AcBillCalculatorPage: React.FC = () => {
           >
             View the Lloyd AC model used for this calculation on Amazon.
           </a>
-          <img src={blog1} alt="bgog1" />
+          <img src={imagePath?.blog1} alt="bgog1" />
           <p>
             You can simplify this calculation with our{" "}
             <a
