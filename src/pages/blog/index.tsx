@@ -26,7 +26,10 @@ const Blog = () => {
   return (
     <Layout>
       <div className="h-[80vh] flex flex-col pt-6">
-        <div className="container mx-auto text-gray-800 cursor-pointer">
+        <div
+          className="container mx-auto text-gray-800 
+        cursor-pointer border border-gray-200 rounded-lg p-4 shadow-sm bg-white"
+        >
           <h1
             className="text-xl font-bold"
             onClick={() => navigate("/blog/ac-electricity-bill-calculator")}
