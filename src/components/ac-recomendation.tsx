@@ -54,7 +54,7 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
               <div className="h-[169px] flex justify-center items-center">
                 <img src={acImage} alt="acImg" className="w-[227px] h-[91px]" />
               </div>
-              <div className="flex flex-col rounded-bl-md rounded-br-md p-3 gap-[6px] bg-quinaryWhite sm:bg-transparent">
+              <div className="flex flex-col rounded-bl-md rounded-br-md p-3 gap-[6px] bg-quinaryWhite">
                 <div className="flex justify-between items-center">
                   <span className="sm:bg-tertiaryGreen bg-[#C6C6C6] py-[6px] px-[12px] rounded-[30px] text-xs sm:text-secondaryGreen text-primaryBlack  font-medium border sm:border-secondaryGreen">
                     {item.tagline}

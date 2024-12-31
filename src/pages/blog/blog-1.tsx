@@ -5,8 +5,8 @@ import blog1 from "@/assets/blog-1.png";
 const AcBillCalculatorPage: React.FC = () => {
   return (
     <Layout>
-      <div className="container mx-auto p-6 text-gray-800">
-        <h1 className="text-3xl font-bold mb-4">
+      <div className="container mx-auto pt-8 text-gray-800">
+        <h1 className="text-xl font-bold mb-4">
           How to Calculate Your Air Conditioner’s Annual Electricity Bill in
           India
         </h1>
@@ -28,7 +28,7 @@ const AcBillCalculatorPage: React.FC = () => {
         </p>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">
+          <h2 className="text-xl font-semibold mb-2">
             Why Should You Calculate Your AC’s Electricity Consumption?
           </h2>
           <ul className="list-disc pl-6 mb-4">
@@ -55,29 +55,30 @@ const AcBillCalculatorPage: React.FC = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">
+          <h2 className="text-xl font-semibold mb-2">
             The Formula to Calculate Annual AC Power Consumption
           </h2>
-          <p className="mb-4 font-bold">
+          <p className="mb-4 font-semibold">
             Annual Energy Consumption (kWh) = 8 hours/day × 30 days × 8 months
           </p>
           <p className="mb-4">
-            <strong>Power Rating (kW):</strong> This information is found on the
-            AC’s energy efficiency sticker, usually near the star rating label.
+            <strong className="font-semibold">Power Rating (kW):</strong> This
+            information is found on the AC’s energy efficiency sticker, usually
+            near the star rating label.
           </p>
           <p className="mb-4">
-            <strong>8 Hours Daily:</strong> Assumes an average daily usage of 8
-            hours.
+            <strong className="font-semibold">8 Hours Daily:</strong> Assumes an
+            average daily usage of 8 hours.
           </p>
           <p className="mb-4">
-            <strong>30 Days per Month:</strong> Accounts for consistent usage
-            during the cooling season.
+            <strong className="font-semibold">30 Days per Month:</strong>{" "}
+            Accounts for consistent usage during the cooling season.
           </p>
           <p className="mb-4">
-            <strong>8 Months:</strong> Represents the typical duration of AC use
-            in a year for most regions in India.
+            <strong className="font-semibold">8 Months:</strong> Represents the
+            typical duration of AC use in a year for most regions in India.
           </p>
-          <h1 className="font-bold">Adjusting for temperature settings</h1>
+          <h1 className="font-semibold">Adjusting for temperature settings</h1>
           <p className="mb-2">
             The formula assumes you keep your AC set at 24°C, which is the
             recommended temperature for balancing comfort and energy efficiency.
@@ -95,7 +96,7 @@ const AcBillCalculatorPage: React.FC = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">Example Calculation</h2>
+          <h2 className="text-xl font-semibold mb-2">Example Calculation</h2>
           <p className="mb-4">
             Let’s consider a
             <span className="font-semibold">1.5-ton Lloyd AC</span>, used for 8
@@ -178,7 +179,7 @@ const AcBillCalculatorPage: React.FC = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">
+          <h2 className="text-xl font-semibold mb-2">
             Factors Affecting AC Electricity Consumption
           </h2>
           <ul className="list-decimal pl-6 flex flex-col gap-1">
@@ -228,7 +229,7 @@ const AcBillCalculatorPage: React.FC = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">
+          <h2 className="text-xl font-semibold mb-2">
             How to Use the{" "}
             <a
               href="https://acbillcalculator.com"
@@ -247,7 +248,7 @@ const AcBillCalculatorPage: React.FC = () => {
               Visit
               <a
                 href="https://acbillcalculator.com"
-                className="text-blue-500 underline"
+                className="text-blue-600 underline ml-1"
               >
                 acbillcalculator.com
               </a>
@@ -271,78 +272,108 @@ const AcBillCalculatorPage: React.FC = () => {
             <li>Annual costs.</li>
           </ul>
           <p>
-            Whether you need a Voltas AC Bill Calculator, a Samsung AC Bill
-            Calculator, or a generic split AC power consumption calculator, this
-            tool covers all brands and models.
+            Whether you need a{" "}
+            <span className="font-semibold">Voltas AC Bill Calculator</span>, a
+            <span className="font-semibold">Samsung AC Bill Calculator</span>,
+            or a generic{" "}
+            <span className="font-semibold">
+              split AC power consumption calculator
+            </span>
+            , this tool covers all brands and models.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">
+          <h2 className="text-xl font-semibold mb-2">
             Benefits of Using Our AC Calculator
           </h2>
-          <ul className="list-disc pl-6 mb-4">
+          <ul className="list-decimal pl-6 mb-4">
             <li>
-              Accuracy: Provides precise cost estimates tailored to your AC
-              model and usage.
-            </li>
-            <li>Time-Saving: Eliminates the need for manual calculations.</li>
-            <li>
-              Versatility: Works for all major brands, including Voltas,
-              Samsung, and more.
+              <span className="font-semibold text-base mr-1">Accuracy:</span>
+              Provides precise cost estimates tailored to your AC model and
+              usage.
             </li>
             <li>
-              Customizable: Allows you to test different scenarios (e.g.,
-              varying hours or tariffs).
+              <span className="font-semibold text-base mr-1">Time-Saving:</span>
+              Eliminates the need for manual calculations.
+            </li>
+            <li>
+              <span className="font-semibold text-base mr-1">Versatility:</span>
+              Works for all major brands, including Voltas, Samsung, and more.
+            </li>
+            <li>
+              <span className="font-semibold text-base mr-1">
+                {" "}
+                Customizable:
+              </span>
+              Allows you to test different scenarios (e.g., varying hours or
+              tariffs).
             </li>
           </ul>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">
+          <h2 className="text-xl font-semibold mb-2">
             Tips to Reduce Your AC Electricity Bill
           </h2>
-          <ul className="list-disc pl-6 mb-4">
-            <li>
-              Choose Energy-Efficient ACs: Invest in 4-star or 5-star AC models.
-              Though they cost more upfront, they reduce long-term electricity
-              expenses.
+          <ul className="list-decimal pl-6 mb-4 flex flex-col gap-2 ">
+            <li className="[&::marker]:font-bold ">
+              <h1 className="font-semibold">Choose Energy-Efficient ACs</h1>
+              Invest in 4-star or 5-star AC models. Though they cost more
+              upfront, they reduce long-term electricity expenses.
             </li>
-            <li>
-              Maintain Optimal Temperature: Set your AC to 24–26°C to balance
-              comfort and energy savings.
+            <li className="[&::marker]:font-bold">
+              <h1 className="font-semibold">Maintain Optimal Temperature</h1>
+              Set your AC to 24–26°C to balance comfort and energy savings.
             </li>
-            <li>
-              Use Smart Features: Modern ACs come with energy-saving modes and
-              timers. Use these features to avoid unnecessary usage.
+            <li className="[&::marker]:font-bold">
+              <h1 className="font-semibold">Use Smart Features</h1>
+              Modern ACs come with energy-saving modes and timers. Use these
+              features to avoid unnecessary usage.
             </li>
-            <li>
-              Regular Maintenance: Clean filters and schedule annual servicing
-              to ensure peak efficiency.
+            <li className="[&::marker]:font-bold">
+              <h1 className="font-semibold">Regular Maintenance</h1>
+              Clean filters and schedule annual servicing to ensure peak
+              efficiency.
             </li>
-            <li>
-              Seal Your Room: Ensure your room is well-insulated to prevent air
-              leaks.
+            <li className="[&::marker]:font-bold">
+              <h1 className="font-semibold">Seal Your Room</h1>
+              Ensure your room is well-insulated to prevent air leaks.
             </li>
-            <li>
-              Monitor Usage: Track your monthly bills and adjust usage habits
-              accordingly.
+            <li className="[&::marker]:font-bold">
+              <h1 className="font-semibold">Monitor Usage</h1>
+              Track your monthly bills and adjust usage habits accordingly.
             </li>
           </ul>
         </section>
 
-        <footer className="mt-6">
-          <p className="text-sm text-gray-600">
+        <footer className="mt-6 flex flex-col gap-3">
+          <h1 className="font-bold text-xl ">Conclusion</h1>
+          <p className="text-base text-gray-600">
             Calculating your AC’s electricity consumption is the first step
             towards managing energy costs effectively. By using a simple
-            formula, adjusting your habits, and leveraging tools like the AC
-            Bill Calculator, you can optimize your AC usage and save on
-            electricity bills.
+            formula, adjusting your habits, and leveraging tools like the{" "}
+            <a
+              href="https://acbillcalculator.com/"
+              target="_blank"
+              className="text-blue-600 font-semibold underline"
+            >
+              AC Bill Calculator
+            </a>{" "}
+            , you can optimize your AC usage and save on electricity bills.
           </p>
-          <p className="text-sm text-gray-600">
-            Take control of your energy expenses today! Visit AC Bill Calculator
+          <p className="text-base text-gray-600">
+            Take control of your energy expenses today! Visit{" "}
+            <a
+              href="https://acbillcalculator.com/"
+              target="_blank"
+              className="text-blue-600 font-semibold underline"
+            >
+              AC Bill Calculator
+            </a>{" "}
             now to estimate your AC’s daily, monthly, and annual costs
-            effortlessly.
+            effortlessly. now to estimate your AC’s daily, monthly, and annual
+            costs effortlessly.
           </p>
         </footer>
       </div>

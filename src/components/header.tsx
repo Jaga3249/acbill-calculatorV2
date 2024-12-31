@@ -13,23 +13,17 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<string>(() => {
-    switch (location.pathname) {
-      case "/":
-        return "Home";
-      case "/blog":
-        return "Blog";
-      case "/browse-ac":
-        return "Browse AC";
-      default:
-        return location.hash === "#FAQs" ? "FAQs" : "";
-    }
+    if (location.pathname === "/") return "Home";
+    if (location.pathname.includes("/blog")) return "Blogs";
+    if (location.pathname === "/browse-ac") return "Browse AC";
+    return location.hash === "#FAQs" ? "FAQs" : "";
   });
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab); // Update active tab immediately
     if (tab === "Home") {
       navigate("/");
-    } else if (tab === "Blog") {
+    } else if (tab === "Blogs") {
       navigate("/blog");
     } else if (tab === "Browse AC") {
       navigate("/browse-ac");
@@ -44,8 +38,8 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
 
   const tabs =
     location.pathname === "/"
-      ? ["Home", "Browse AC", "FAQs"]
-      : ["Home", "Browse AC"];
+      ? ["Home", "Browse AC", "FAQs", "Blogs"]
+      : ["Home", "Browse AC", "Blogs"];
 
   return (
     <>

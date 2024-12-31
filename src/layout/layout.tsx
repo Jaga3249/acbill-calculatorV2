@@ -19,7 +19,7 @@ const Layout = ({ children }: LayoutProps) => {
       case "/":
         return location.hash === "#FAQs" ? "FAQs" : "Home";
       case "/blog":
-        return "Blog";
+        return "Blogs";
       case "/browse-ac":
         return "Browse AC";
       default:
@@ -43,7 +43,7 @@ const Layout = ({ children }: LayoutProps) => {
       setActiveTab(tab);
       if (tab === "Home") {
         navigate("/");
-      } else if (tab === "Blog") {
+      } else if (tab === "Blogs") {
         navigate("/blog");
       } else if (tab === "Browse AC") {
         navigate("/browse-ac");
@@ -77,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
                 className="w-[55px] h-[37px]"
               />
               <div className="flex flex-col gap-[40px]">
-                {["Home", "Browse AC", "FAQs"].map((tab) => (
+                {["Home", "Browse AC", "FAQs", "Blogs"].map((tab) => (
                   <span
                     key={tab}
                     className={`flex items-center gap-1 cursor-pointer ${
