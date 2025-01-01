@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/home";
 import BroserProduct from "./pages/browse-product";
@@ -36,6 +36,7 @@ const App = () => {
           element={<ACPowerConsumption />}
         />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
