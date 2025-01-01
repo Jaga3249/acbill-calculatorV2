@@ -3,7 +3,7 @@ import Layout from "@/layout/layout";
 const EnergySavingTips = () => {
   return (
     <Layout>
-      <div className="container mx-auto  p-6 select-text">
+      <div className="container mx-auto  pt-8 px-20 select-text">
         <h1 className="text-2xl font-bold mb-4">
           Top 10 Energy-Saving Tips for AC Users in India
         </h1>

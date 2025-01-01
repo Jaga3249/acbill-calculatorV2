@@ -3,7 +3,7 @@ import Layout from "@/layout/layout";
 const ACStarRatingsBlog = () => {
   return (
     <Layout>
-      <div className="container mx-auto  p-6 select-text">
+      <div className="container mx-auto  pt-8 px-20 select-text">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">
           How AC Star Ratings Impact Your Monthly Electricity Costs
         </h1>

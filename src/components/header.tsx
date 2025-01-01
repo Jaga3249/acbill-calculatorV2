@@ -27,19 +27,8 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
       navigate("/blog");
     } else if (tab === "Browse AC") {
       navigate("/browse-ac");
-    } else if (tab === "FAQs") {
-      // Scroll to FAQs section without changing the route history
-      const faqsSection = document.getElementById("FAQs");
-      if (faqsSection) {
-        faqsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
     }
   };
-
-  const tabs =
-    location.pathname === "/"
-      ? ["Home", "Browse AC", "FAQs", "Blogs"]
-      : ["Home", "Browse AC", "Blogs"];
 
   return (
     <>
@@ -55,7 +44,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
         />
         <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px] relative">
           <div className="flex items-center font-medium text-sm relative w-full">
-            {tabs.map((tab) => (
+            {["Home", "Browse AC", "Blogs"].map((tab) => (
               <div key={tab} className="relative">
                 <span
                   className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] p-[12px] ${
