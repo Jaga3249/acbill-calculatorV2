@@ -13,20 +13,38 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<string>(() => {
-    if (location.pathname === "/") return "Home";
-    if (location.pathname.includes("/blog")) return "Blogs";
-    if (location.pathname === "/browse-ac") return "Browse AC";
-    return location.hash === "#FAQs" ? "FAQs" : "";
+    switch (location.pathname) {
+      case "/":
+        return location.hash === "#FAQs" ? "FAQs" : "Home";
+      case "/blog":
+        return "Blogs";
+      case "/browse-ac":
+        return "Browse AC";
+      default:
+        return "";
+    }
   });
 
   const handleTabClick = (tab: string) => {
-    setActiveTab(tab); // Update active tab immediately
-    if (tab === "Home") {
-      navigate("/");
-    } else if (tab === "Blogs") {
-      navigate("/blog");
-    } else if (tab === "Browse AC") {
-      navigate("/browse-ac");
+    if (tab === "FAQs") {
+      navigate("/#FAQs");
+      setActiveTab(tab);
+
+      setTimeout(() => {
+        const faqsSection = document.getElementById("FAQs");
+        if (faqsSection) {
+          faqsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    } else {
+      setActiveTab(tab);
+      if (tab === "Home") {
+        navigate("/");
+      } else if (tab === "Blogs") {
+        navigate("/blog");
+      } else if (tab === "Browse AC") {
+        navigate("/browse-ac");
+      }
     }
   };
 
@@ -44,7 +62,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
         />
         <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px] relative">
           <div className="flex items-center font-medium text-sm relative w-full">
-            {["Home", "Browse AC", "Blogs"].map((tab) => (
+            {["Home", "FAQs", "Browse AC", "Blogs"].map((tab) => (
               <div key={tab} className="relative">
                 <span
                   className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] p-[12px] ${
