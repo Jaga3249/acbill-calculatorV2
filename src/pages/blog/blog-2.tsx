@@ -1,10 +1,9 @@
 import Layout from "@/layout/layout";
-import React from "react";
 
 const ACStarRatingsBlog = () => {
   return (
     <Layout>
-      <div className="container mx-auto  p-6">
+      <div className="container mx-auto  p-6 select-text">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">
           How AC Star Ratings Impact Your Monthly Electricity Costs
         </h1>
@@ -14,11 +13,17 @@ const ACStarRatingsBlog = () => {
           bills might not. If you’ve ever wondered how AC star ratings impact
           your monthly electricity cost, you’re in the right place. In this
           blog, we’ll break it down simply, compare 3-star and 5-star ACs, and
-          explain how you can estimate energy consumption with our AC Energy
-          Savings Calculator.
+          explain how you can estimate energy consumption with our{" "}
+          <a
+            href="https://acbillcalculator.com"
+            target="_blank"
+            className="text-blue-600 font-semibold"
+          >
+            AC Energy Savings Calculator
+          </a>
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
           What Are AC Star Ratings?
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
@@ -29,6 +34,7 @@ const ACStarRatingsBlog = () => {
           the same level of cooling.
         </p>
         <ul className="list-disc list-inside text-gray-700 mb-4">
+          <p className="mb-2">For example:</p>
           <li>
             3-star AC: Moderate energy efficiency; ideal for infrequent use or
             smaller budgets.
@@ -39,7 +45,7 @@ const ACStarRatingsBlog = () => {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Understanding the Difference: 3-Star vs. 5-Star AC
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
@@ -47,29 +53,42 @@ const ACStarRatingsBlog = () => {
           in power consumption between a 3-star and 5-star AC?” Let’s break it
           down:
         </p>
-        <ol className="list-decimal list-inside text-gray-700 mb-4">
-          <li className="mb-2">
+        <ol className="list-decimal list-inside text-gray-700 flex flex-col gap-2">
+          <li className="">
             <strong>Energy Efficiency Ratio (EER):</strong>
-            <p className="ml-4">
-              A 5-star AC has a higher EER compared to a 3-star AC, meaning it
-              consumes less electricity to cool your room.
-            </p>
+            <ul className="list-disc ml-6">
+              <li>
+                {" "}
+                A 5-star AC has a higher EER compared to a 3-star AC, meaning it
+                consumes less electricity to cool your room.
+              </li>
+            </ul>
           </li>
-          <li className="mb-2">
+          <li className="">
             <strong>Electricity Consumption:</strong>
-            <p className="ml-4">
-              A 1.5-ton 3-star AC typically consumes about 0.6-0.8 units per
-              hour, while a 1.5-ton 5-star AC consumes around 0.8-1.0 units per
-              hour.
-            </p>
+            <ul className="list-disc ml-6">
+              <li>
+                {" "}
+                A <span className="font-semibold">1.5-ton 3-star AC</span>{" "}
+                typically consumes about 0.6-0.8 units per hour
+              </li>
+              <li>
+                A <span className="font-semibold">1.5-ton 5-star AC</span>{" "}
+                consumes around 0.8-1.0 units per hour.
+              </li>
+            </ul>
           </li>
-          <li className="mb-2">
+          <li className="">
             <strong>Cost Savings:</strong>
-            <p className="ml-4">
-              Assuming 8 hours of daily usage, the monthly savings with a 5-star
-              AC can range between ₹500-₹800 compared to a 3-star AC, depending
-              on your electricity rate.
-            </p>
+            <ul className="list-disc ml-6">
+              <li>
+                {" "}
+                Assuming 8 hours of daily usage, the monthly savings with a
+                5-star AC can range between ₹500-₹800 compared to a 3-star AC,
+                depending on your electricity rate.
+              </li>
+            </ul>
+            <p className="ml-4"></p>
           </li>
         </ol>
         <p className="text-gray-700 leading-relaxed mb-4">
@@ -77,25 +96,33 @@ const ACStarRatingsBlog = () => {
           Calculator to find out.
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Why Inverter ACs Are a Game-Changer
         </h2>
         <ul className="list-disc list-inside text-gray-700 mb-4">
           <li>
-            Inverter ACs adjust their compressor speed based on room
-            temperature, consuming less power over time.
+            <span className="font-semibold">Inverter ACs</span> adjust their
+            compressor speed based on room temperature, consuming less power
+            over time.
           </li>
           <li>
-            A 3-star inverter AC can sometimes match or even outperform a 5-star
-            non-inverter AC in energy efficiency.
+            A <span className="font-semibold">3-star inverter AC</span> can
+            sometimes match or even outperform a 5-star non-inverter AC in
+            energy efficiency.
           </li>
         </ul>
         <p className="text-gray-700 leading-relaxed mb-4">
-          To know how much energy your inverter AC will consume, try our Split
-          AC Energy Consumption Calculator.
+          To know how much energy your inverter AC will consume, try our{" "}
+          <a
+            href="https://acbillcalculator.com"
+            target="_blank"
+            className="text-blue-600 font-semibold"
+          >
+            Split AC Energy Consumption Calculator.
+          </a>
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Monthly Power Consumption of 3-Star and 5-Star ACs
         </h2>
         <div className="overflow-x-auto">
@@ -130,11 +157,13 @@ const ACStarRatingsBlog = () => {
           </table>
         </div>
         <p className="text-gray-700 leading-relaxed mt-4">
-          With a 5-star AC, you save up to ₹280 per month, which adds up to over
-          ₹3,360 annually.
+          With a 5-star AC, you save up to{" "}
+          <span className="font-semibold">₹280 per month</span>, which adds up
+          to over <span className="font-semibold">₹3,360 annually</span>. ₹3,360
+          annually.
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 mt-2">
           How to Choose the Right AC for Your Needs
         </h2>
         <ol className="list-decimal list-inside text-gray-700 mb-4">
@@ -152,8 +181,16 @@ const ACStarRatingsBlog = () => {
             <strong>Room Size:</strong>
             <ul className="list-disc ml-8">
               <li>
-                Use a Calculator for Air Conditioner Size to find the correct
-                tonnage for your room.
+                Use a{" "}
+                <a
+                  href="https://acbillcalculator.com"
+                  target="_blank"
+                  className="font-semibold text-blue-600"
+                >
+                  {" "}
+                  Calculator for Air Conditioner Size
+                </a>
+                to find the correct tonnage for your room.
               </li>
               <li>
                 Overestimating or underestimating the size can lead to higher
@@ -172,10 +209,22 @@ const ACStarRatingsBlog = () => {
           </li>
         </ol>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-2">
           Benefits of Using Our AC Bill Calculator
         </h2>
-        <ul className="list-disc list-inside text-gray-700 mb-4">
+        <p className="mb-2">
+          Estimating your AC's electricity cost doesn’t have to be a guessing
+          game. With our{" "}
+          <a
+            href="https://acbillcalculator.com"
+            target="_blank"
+            className="font-semibold text-blue-600"
+          >
+            AC Energy Consumption Calculator
+          </a>
+          , you can:
+        </p>
+        <ul className="list-disc list-inside text-gray-700 mb-2">
           <li>Compare 3-star and 5-star AC costs.</li>
           <li>Calculate daily, monthly, or annual power consumption.</li>
           <li>
@@ -184,25 +233,41 @@ const ACStarRatingsBlog = () => {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 ">
           Smart Tips to Save More on AC Electricity Bills
         </h2>
-        <ol className="list-decimal list-inside text-gray-700 mb-4">
-          <li className="mb-2">
-            Set the thermostat wisely. Keep the temperature at 24°C-26°C for the
-            best balance between comfort and efficiency.
+        <p className="my-2">
+          Regardless of whether you use a 3-star or 5-star AC, these tips can
+          help you reduce energy consumption:
+        </p>
+        <ol className="list-decimal  ml-4 flex flex-col gap-2">
+          <li className="">
+            <h1 className="font-semibold">Set the thermostat wisely:</h1>
+            <ul className="list-disc ml-4">
+              <li>
+                Keep the temperature at 24°C-26°C for the best balance between
+                comfort and efficiency.
+              </li>
+            </ul>
           </li>
-          <li className="mb-2">
-            Regular Maintenance: Clean filters monthly and schedule annual
-            servicing.
+          <li className="">
+            <h1 className="font-semibold"> Regular Maintenance:</h1>
+            <ul className="list-disc ml-4">
+              <li> Clean filters monthly and schedule annual servicing.</li>
+            </ul>
           </li>
-          <li className="mb-2">
-            Seal Your Room: Prevent air leaks by sealing gaps around windows and
-            doors.
+          <li className="">
+            <h1 className="font-semibold">Seal Your Room:</h1>
+            <ul className="list-disc ml-4">
+              <li>
+                {" "}
+                Prevent air leaks by sealing gaps around windows and doors.
+              </li>
+            </ul>
           </li>
         </ol>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Why Star Ratings Matter in the Long Run
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
@@ -211,19 +276,32 @@ const ACStarRatingsBlog = () => {
           can offset the initial investment, making it a cost-effective choice.
         </p>
         <p className="text-gray-700 leading-relaxed mb-4">
-          Still confused about which AC to buy? Use our AC Energy Savings
-          Calculator to explore how much you can save with different models and
-          star ratings.
+          Still confused about which AC to buy? Use our{" "}
+          <a
+            href="https://acbillcalculator.com"
+            target="_blank"
+            className="font-semibold text-blue-600"
+          >
+            AC Energy Savings Calculator
+          </a>
+          to explore how much you can save with different models and star
+          ratings.
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Conclusion
-        </h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">Conclusion</h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           AC star ratings are more than just labels—they have a direct impact on
           your electricity bills. Whether you’re debating between a 3-star and
           5-star AC or looking for ways to optimize your energy usage, tools
-          like our AC Bill Calculator can help you make informed decisions.
+          like our{" "}
+          <a
+            href="https://acbillcalculator.com"
+            target="_blank"
+            className="font-semibold text-blue-600"
+          >
+            AC Bill Calculator
+          </a>{" "}
+          can help you make informed decisions.
         </p>
         <p className="text-gray-700 leading-relaxed mb-4">
           By choosing the right AC and following energy-saving practices, you

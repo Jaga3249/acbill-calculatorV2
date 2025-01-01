@@ -5,8 +5,8 @@ import React from "react";
 const AcBillCalculatorPage: React.FC = () => {
   return (
     <Layout>
-      <div className="container mx-auto pt-8 text-gray-800">
-        <h1 className="text-xl font-bold mb-4">
+      <div className="container mx-auto pt-8 text-gray-800 select-text">
+        <h1 className="text-2xl font-bold mb-4">
           How to Calculate Your Air Conditioner’s Annual Electricity Bill in
           India
         </h1>
