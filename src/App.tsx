@@ -6,7 +6,7 @@ import AcBillCalculatorPage from "./pages/blog/blog-1";
 import ACStarRatingsBlog from "./pages/blog/blog-2";
 import Blog from "./pages/blog";
 import EnergySavingTips from "./pages/blog/blog-3";
-import ACUsageTips from "./pages/blog/blog-4";
+// import ACUsageTips from "./pages/blog/blog-4";
 
 const App = () => {
   return (

@@ -1,5 +1,4 @@
 import Layout from "@/layout/layout";
-import { useNavigate } from "react-router-dom";
 
 interface BlogPost {
   title: string;
@@ -8,7 +7,6 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const navigate = useNavigate();
   const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
 
   const blogPosts: BlogPost[] = [
