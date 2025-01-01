@@ -364,8 +364,8 @@ const BroserProduct = () => {
                         <div className="flex-1 flex flex-col p-2 gap-[6px] bg-quinaryWhite rounded-bl-md rounded-br-md">
                           <div className="flex justify-between items-center">
                             <span
-                              className="bg-[#C6C6C6] py-[6px] px-[12px] rounded-[30px] text-xs
-                             text-primaryBlack font-medium "
+                              className="bg-tertiaryGreen py-[6px] px-[12px] rounded-[30px] text-xs
+                             border-secondaryGreen border text-secondaryGreen  font-medium "
                             >
                               {item.tagline}
                             </span>
@@ -407,7 +407,7 @@ const BroserProduct = () => {
                                 className="text-sm font-medium text-septenaryWhite w-full"
                                 size={"sm"}
                               >
-                                {item.buttonText}
+                                View at {item.buttonText}
                               </Button>
                             </a>
                           </div>
