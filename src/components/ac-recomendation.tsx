@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Product } from "@/type/type";
 import { Button } from "./ui/button";
-import acImage from "@/assets/ac-image.png";
 
 const AcRecomendation = ({ products }: { products: Product[] }) => {
   const [showAll, setShowAll] = useState(false); // State to toggle "See all"
@@ -52,7 +51,7 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
               key={i}
             >
               <div className="h-[169px] flex justify-center items-center">
-                <img src={acImage} alt="acImg" className="w-[227px] h-[91px]" />
+                <img src={item.Image} alt="acImg" className="w-[227px]" />
               </div>
               <div className="flex flex-col rounded-bl-md rounded-br-md p-3 gap-[6px] bg-quinaryWhite">
                 <div className="flex justify-between items-center">

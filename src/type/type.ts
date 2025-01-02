@@ -43,6 +43,7 @@ export interface ChatData {
 //   buttonText: string; // Text for the button (e.g., "Flipkart")
 // }
 export interface Product {
+  image: string;
   Image: string;
   starRating: number;
   tagline: string;

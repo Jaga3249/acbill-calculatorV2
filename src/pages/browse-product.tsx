@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import FilterModal from "@/components/filter-modal";
 import { Button } from "@/components/ui/button";
-import acImage from "@/assets/ac-image.png";
 import {
   Select,
   SelectContent,
@@ -355,9 +354,9 @@ const BroserProduct = () => {
                       >
                         <div className="h-[169px] flex justify-center items-center">
                           <img
-                            src={acImage}
+                            src={item.image}
                             alt="acImg"
-                            className="max-w-[227px] max-h-[91px] object-contain"
+                            className="max-w-[227px] object-contain"
                           />
                         </div>
 
