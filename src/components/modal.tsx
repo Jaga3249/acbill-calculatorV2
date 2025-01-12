@@ -33,7 +33,10 @@ export function Modal({ open, setOpen, fetchPrediction }: Props) {
       }));
     }
   };
-
+  function isValidIndianMobileNumber(mobileNumber: string) {
+    const mobileNumberPattern = /^[6-9]\d{9}$/;
+    return mobileNumberPattern.test(mobileNumber);
+  }
   const handleContactChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (/^\d*$/.test(value)) {
@@ -88,9 +91,16 @@ export function Modal({ open, setOpen, fetchPrediction }: Props) {
           <Button
             type="submit"
             onClick={() => {
-              handleContactSubmit();
-              setOpen(false);
-              fetchPrediction();
+              if (isValidIndianMobileNumber(contact)) {
+                handleContactSubmit();
+                setOpen(false);
+                fetchPrediction();
+              } else {
+                setErrors((prev) => ({
+                  ...prev,
+                  contact: "Please enter a valid Indian mobile number",
+                }));
+              }
             }}
             disabled={isLoading}
           >
