@@ -105,7 +105,7 @@ export function Modal({ open, setOpen, fetchPrediction }: Props) {
             disabled={isLoading}
           >
             {isLoading && <Loader2 className="animate-spin" />}
-            Calculating
+            Calculate
           </Button>
         </DialogFooter>
       </DialogContent>
