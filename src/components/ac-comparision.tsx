@@ -5,12 +5,12 @@ import { CircleX, Plus } from "lucide-react";
 const AcComparision = () => {
   const { predictRecomenedAc, setPredictRecomenedAc } = useAcContext();
   const handleRemoveAc = (id: string) => {
-    console.log("id", id);
+    // console.log("id", id);
     setPredictRecomenedAc(
       (prev) => prev && prev.filter((item) => item.id !== id)
     );
   };
-  console.log("predictRecomenedAc", predictRecomenedAc);
+  // console.log("predictRecomenedAc", predictRecomenedAc);
   return (
     <div className="  flex md:justify-center flex-col md:items-center justify-start gap-4 md:mt-10 mt-10">
       <h1 className="text-base font-medium sm:text-center text-start">

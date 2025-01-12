@@ -24,10 +24,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { Modal } from "./modal";
 
 const url = import.meta.env.VITE_API_URL;
 
 const AcCalculatorForm = () => {
+  const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0); // Selected rating
   const [hoverRating, setHoverRating] = useState(0);
   const [selectedAcType, setSelectedAcType] = useState("");
@@ -37,7 +39,7 @@ const AcCalculatorForm = () => {
   const [selectHours, setSelectHours] = useState("");
   const [capacity, setCapacity] = useState<number>(0);
   const [stateUnitPrice, setStateUnitPrice] = useState<number>(0);
-  const { predictRecomenedAc } = useAcContext();
+  const { predictRecomenedAc, isContactSubmit } = useAcContext();
 
   const { fetchPrediction, loading } = usePredictAndRecommend({
     url: url as string,
@@ -488,13 +490,20 @@ const AcCalculatorForm = () => {
         </Button>
         <Button
           size={"lg"}
-          onClick={fetchPrediction}
+          onClick={() => {
+            if (predictRecomenedAc?.length === 1 && !isContactSubmit) {
+              setOpen(true);
+            } else {
+              fetchPrediction();
+            }
+          }}
           disabled={loading || predictRecomenedAc?.length === 3}
         >
           {loading && <Loader2 className="animate-spin" />}
           Calculate
         </Button>
       </div>
+      <Modal open={open} setOpen={setOpen} fetchPrediction={fetchPrediction} />
     </section>
   );
 };

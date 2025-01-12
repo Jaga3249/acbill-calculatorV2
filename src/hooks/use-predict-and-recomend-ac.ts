@@ -43,8 +43,9 @@ const usePredictAndRecommend = ({
   const fetchPrediction = async () => {
     setLoading(true);
     setError("");
-    const hasEmptyValue = Object.values(data).some((value) => value === "");
-    console.log("hasEmptyValue", hasEmptyValue);
+    const hasEmptyValue = Object.values(data).some(
+      (value) => value === "" || value === 0
+    );
     if (hasEmptyValue || !url) {
       setLoading(false);
       setError("please select all the fields");
