@@ -72,7 +72,7 @@ export function Modal({ open, setOpen, fetchPrediction }: Props) {
 
           {/* Contact Field */}
           <div className="">
-            <Label htmlFor="contact">Contact</Label>
+            <Label htmlFor="contact">Phone Number</Label>
             <div>
               <Input
                 id="contact"
@@ -105,7 +105,7 @@ export function Modal({ open, setOpen, fetchPrediction }: Props) {
             disabled={isLoading}
           >
             {isLoading && <Loader2 className="animate-spin" />}
-            Submit
+            Calculating
           </Button>
         </DialogFooter>
       </DialogContent>
