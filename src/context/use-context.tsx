@@ -10,6 +10,8 @@ interface AcContextType {
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   updatedProducts: Product[];
   setUpdatedProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  isContactSubmit: boolean;
+  setIsContactSubmit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AcContext = createContext<AcContextType | undefined>(undefined);
@@ -31,7 +33,7 @@ export const AcProvider = ({ children }: { children: React.ReactNode }) => {
     return storedData ? JSON.parse(storedData) : null;
   });
 
-  // State for `updatedProducts`, synced with session storage
+  // State for `products` and `updatedProducts`, synced with session storage
   const [products, setProducts] = useState<Product[]>(() => {
     const storedProducts = sessionStorage.getItem("products");
     return storedProducts ? JSON.parse(storedProducts) : [];
@@ -39,6 +41,12 @@ export const AcProvider = ({ children }: { children: React.ReactNode }) => {
   const [updatedProducts, setUpdatedProducts] = useState<Product[]>(() => {
     const storedProducts = sessionStorage.getItem("updatedProducts");
     return storedProducts ? JSON.parse(storedProducts) : [];
+  });
+
+  // State for the `isContactSubmit` flag
+  const [isContactSubmit, setIsContactSubmit] = useState<boolean>(() => {
+    const storedFlag = sessionStorage.getItem("isContactSubmit");
+    return storedFlag ? JSON.parse(storedFlag) : false;
   });
 
   // Sync `predictRecomenedAc` with session storage
@@ -53,7 +61,7 @@ export const AcProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [predictRecomenedAc]);
 
-  // Sync `updatedProducts` with session storage
+  // Sync `products` with session storage
   useEffect(() => {
     if (products !== null) {
       sessionStorage.setItem("products", JSON.stringify(products));
@@ -61,13 +69,23 @@ export const AcProvider = ({ children }: { children: React.ReactNode }) => {
       sessionStorage.removeItem("products");
     }
   }, [products]);
+
+  // Sync `updatedProducts` with session storage
   useEffect(() => {
     if (updatedProducts !== null) {
-      sessionStorage.setItem("updatedProducts", JSON.stringify(products));
+      sessionStorage.setItem(
+        "updatedProducts",
+        JSON.stringify(updatedProducts)
+      );
     } else {
       sessionStorage.removeItem("updatedProducts");
     }
-  }, [products]);
+  }, [updatedProducts]);
+
+  // Sync `isContactSubmit` with session storage
+  useEffect(() => {
+    sessionStorage.setItem("isContactSubmit", JSON.stringify(isContactSubmit));
+  }, [isContactSubmit]);
 
   return (
     <AcContext.Provider
@@ -76,8 +94,10 @@ export const AcProvider = ({ children }: { children: React.ReactNode }) => {
         setPredictRecomenedAc,
         products,
         setProducts,
-        setUpdatedProducts,
         updatedProducts,
+        setUpdatedProducts,
+        isContactSubmit,
+        setIsContactSubmit,
       }}
     >
       {children}
