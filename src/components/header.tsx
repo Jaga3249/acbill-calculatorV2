@@ -1,5 +1,5 @@
 import { SetStateAction, useState } from "react";
-import { Button } from "./ui/button";
+// import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { imagePath } from "@/constants/imagePath";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -62,7 +62,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
         />
         <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px] relative">
           <div className="flex items-center font-medium text-sm relative w-full">
-            {["Home", "FAQs", "Browse AC", "Blogs"].map((tab) => (
+            {["Home", "FAQs", "Browse AC"].map((tab) => (
               <div key={tab} className="relative">
                 <span
                   className={`flex flex-col items-center gap-2 cursor-pointer w-[136px] p-[12px] ${
@@ -86,7 +86,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
               </div>
             ))}
           </div>
-          <a href="#contact">
+          {/* <a href="#contact">
             <Button
               className="w-[136px] rounded-xl"
               onClick={() => {
@@ -96,7 +96,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
             >
               Contact Us
             </Button>
-          </a>
+          </a> */}
         </div>
       </header>
       <header className="md:hidden flex mt-5">

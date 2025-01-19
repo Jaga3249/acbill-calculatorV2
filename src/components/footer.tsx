@@ -58,7 +58,12 @@ const Footer = () => {
             >
               Home
             </li>
-            {/* <li className="text-sm font-normal text-septenaryWhite">Blog</li> */}
+            <li
+              className="text-sm font-normal text-septenaryWhite"
+              onClick={() => router("/blog")}
+            >
+              Blog
+            </li>
             <li
               className="text-sm font-normal text-septenaryWhite "
               onClick={() => router("/browse-ac")}
@@ -117,9 +122,22 @@ const Footer = () => {
         </div>
         <div className="flex justify-between mt-5">
           <div className="flex flex-col gap-5">
-            <span className="text-sm font-normal text-primaryWhite">Home</span>
-            {/* <span className="text-sm font-normal text-primaryWhite">Blog</span> */}
-            <span className="text-sm font-normal text-primaryWhite">
+            <span
+              className="text-sm font-normal text-septenaryWhite"
+              onClick={() => router("/")}
+            >
+              Home
+            </span>
+            <span
+              className="text-sm font-normal text-septenaryWhite"
+              onClick={() => router("/blog")}
+            >
+              Blog
+            </span>
+            <span
+              className="text-sm font-normal text-septenaryWhite "
+              onClick={() => router("/browse-ac")}
+            >
               Browse AC
             </span>
           </div>
