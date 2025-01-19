@@ -81,7 +81,7 @@ const ACUsageComparison = ({ product }: { product: ACUsageData }) => {
             </div> */}
 
             <div className="flex flex-col justify-center items-center gap-3 max-w-lg">
-              <div className="w-[350px] sm:w-[380px] h-[180px] relative">
+              <div className="w-full max-w-[350px] sm:w-[380px] h-[180px] relative">
                 <img
                   src={imagePath.browseElectronics}
                   alt=""
