@@ -1,11 +1,5 @@
-import { useEffect, useState } from "react";
-import {
-  brands,
-  electricity_rates,
-  electricity_states,
-  hours,
-  temperature_preferences,
-} from "../../data";
+import { useState } from "react";
+import { brands } from "../../data";
 
 import { Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
@@ -13,17 +7,17 @@ import ACCapacitySlider from "./ac-capacity-slider";
 import { imagePath } from "@/constants/imagePath";
 //
 import { Label } from "./ui/label";
-import { Option, SearchableSelect } from "./searchable-select";
+import { SearchableSelect } from "./searchable-select";
 import usePredictAndRecommend from "@/hooks/use-predict-and-recomend-ac";
 import { useAcContext } from "@/context/use-context";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectGroup,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "./ui/select";
 import { Modal } from "./modal";
 
 const url = import.meta.env.VITE_API_URL;
@@ -34,11 +28,11 @@ const AcCalculatorForm = () => {
   const [hoverRating, setHoverRating] = useState(0);
   const [selectedAcType, setSelectedAcType] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
-  const [selectTemperature, setSelectTemperature] = useState("");
-  const [selectState, setSelectState] = useState("");
-  const [selectHours, setSelectHours] = useState("");
+  // const [selectTemperature, setSelectTemperature] = useState("");
+  // const [selectState, setSelectState] = useState("");
+  // const [selectHours, setSelectHours] = useState("");
   const [capacity, setCapacity] = useState<number>(0);
-  const [stateUnitPrice, setStateUnitPrice] = useState<number>(0);
+  // const [stateUnitPrice, setStateUnitPrice] = useState<number>(0);
   const { predictRecomenedAc, isContactSubmit } = useAcContext();
 
   const { fetchPrediction, loading } = usePredictAndRecommend({
@@ -48,17 +42,15 @@ const AcCalculatorForm = () => {
       capacity: capacity,
       starRating: rating,
       type: selectedAcType,
-      temperature: selectTemperature,
-      totalUsagesHour: Number(selectHours),
-      state: selectState,
+      // temperature: selectTemperature,
+      // totalUsagesHour: Number(selectHours),
+      // state: selectState,
     },
     setHoverRating,
     setRating,
     setSelectedAcType,
     setSelectedBrand,
-    setSelectTemperature,
-    setSelectState,
-    setSelectHours,
+
     setCapacity,
   });
 
@@ -76,23 +68,23 @@ const AcCalculatorForm = () => {
   const handleSelectAcType = (acType: string) => {
     setSelectedAcType((prevType) => (prevType === acType ? "" : acType));
   };
-  const handleReset = () => {
-    setSelectedBrand("");
-    setSelectTemperature("");
-    setSelectState("");
-    setSelectHours("");
-    setRating(0);
-    setHoverRating(0);
-    setSelectedAcType("");
-    setCapacity(0);
-  };
+  // const handleReset = () => {
+  //   setSelectedBrand("");
+  //   setSelectTemperature("");
+  //   setSelectState("");
+  //   setSelectHours("");
+  //   setRating(0);
+  //   setHoverRating(0);
+  //   setSelectedAcType("");
+  //   setCapacity(0);
+  // };
 
-  useEffect(() => {
-    const unitPrice = electricity_rates.filter(
-      (item) => item.state === selectState
-    );
-    setStateUnitPrice(unitPrice[0]?.unit_price / 100);
-  }, [selectState]);
+  // useEffect(() => {
+  //   const unitPrice = electricity_rates.filter(
+  //     (item) => item.state === selectState
+  //   );
+  //   setStateUnitPrice(unitPrice[0]?.unit_price / 100);
+  // }, [selectState]);
 
   return (
     <section
@@ -139,16 +131,11 @@ const AcCalculatorForm = () => {
               ))}
             </div>
           </div>
-          <div className="grid w-[352px] items-center gap-1.5">
+          {/* <div className="grid w-[352px] items-center gap-1.5">
             <Label htmlFor="temperature">
               Temperature Preference <span className="text-red-700">*</span>
             </Label>
-            {/* <SearchableSelect
-              options={temperature_preferences}
-              placeholder="Select temperature"
-              selectedValue={selectTemperature}
-              onSelect={setSelectTemperature}
-            /> */}
+          
             <Select
               value={selectTemperature}
               onValueChange={(value) => setSelectTemperature(value)}
@@ -166,9 +153,9 @@ const AcCalculatorForm = () => {
                 </SelectGroup>
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
 
-          <div className="grid w-[352px] items-center gap-1.5">
+          {/* <div className="grid w-[352px] items-center gap-1.5">
             <Label htmlFor="state">
               {" "}
               Choose your State <span className="text-red-700">*</span>
@@ -184,7 +171,7 @@ const AcCalculatorForm = () => {
                 {`  *Cost per unit is ₹${stateUnitPrice} in your state`}
               </p>
             )}
-          </div>
+          </div> */}
         </div>
 
         <div className=" flex flex-col  gap-5">
@@ -262,16 +249,11 @@ const AcCalculatorForm = () => {
               </div>
             </div>
           </div>
-          <div className="grid w-[352px] items-center gap-1.5">
+          {/* <div className="grid w-[352px] items-center gap-1.5">
             <Label htmlFor="hours">
               Hours of usage per day <span className="text-red-700">*</span>
             </Label>
-            {/* <SearchableSelect
-              options={hours}
-              placeholder="Select hour"
-              selectedValue={selectHours}
-              onSelect={setSelectHours}
-            /> */}
+            
             {
               <Select
                 value={selectHours}
@@ -291,7 +273,7 @@ const AcCalculatorForm = () => {
                 </SelectContent>
               </Select>
             }
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -405,7 +387,7 @@ const AcCalculatorForm = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-[6px] w-full">
+          {/* <div className="flex flex-col gap-[6px] w-full">
             <Label htmlFor="temperature">
               Temperature Preference <span className="text-red-700">*</span>
             </Label>
@@ -426,21 +408,9 @@ const AcCalculatorForm = () => {
                 </SelectGroup>
               </SelectContent>
             </Select>
-          </div>
-          <div className="flex flex-col gap-[6px] w-full">
-            {/* <p className="text-xs font-medium">
-              Hours of usage per day * <span className="text-red-700">*</span>
-            </p> */}
-            {/* <div
-              id="usage-hours"
-              className="flex gap-2 items-center justify-between rounded-[6px] border-[1px] border-tertiaryWhite p-2 w-full"
-              aria-label="Hours of usage per day"
-            >
-              <span className="text-secondaryGray text-sm font-normal">
-                8 hr
-              </span>
-              <Clock className="text-secondaryBlack" aria-hidden="true" />
-            </div> */}
+          </div> */}
+          {/* <div className="flex flex-col gap-[6px] w-full">
+            
             <Label htmlFor="hours">
               Hours of usage per day <span className="text-red-700">*</span>
             </Label>
@@ -463,8 +433,8 @@ const AcCalculatorForm = () => {
                 </SelectContent>
               </Select>
             }
-          </div>
-          <div className="flex flex-col gap-[6px] w-full">
+          </div> */}
+          {/* <div className="flex flex-col gap-[6px] w-full">
             <Label htmlFor="state">
               {" "}
               Choose your State <span className="text-red-700">*</span>
@@ -480,14 +450,18 @@ const AcCalculatorForm = () => {
                 {`  *Cost per unit is ₹${stateUnitPrice} in your state`}
               </p>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
-
+      <p className="text-xs font-normal text-gray-900 text-left ">
+        * Note: Calculations assume 8 hours of daily usage at 24°C with an
+        electricity rate of ₹7 per unit. Actual costs may vary based on usage
+        and local rates.
+      </p>
       <div className="flex gap-5 ">
-        <Button size={"lg"} variant={"outline"} onClick={handleReset}>
+        {/* <Button size={"lg"} variant={"outline"} onClick={handleReset}>
           Reset
-        </Button>
+        </Button> */}
         <Button
           size={"lg"}
           onClick={() => {

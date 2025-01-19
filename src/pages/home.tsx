@@ -17,11 +17,7 @@ const Home = () => {
       <AcCalculatorForm />
 
       {predictRecomenedAc && predictRecomenedAc.length > 0 && <AcComparision />}
-      {predictRecomenedAc && predictRecomenedAc.length > 0 && (
-        <ACUsageComparison
-          product={predictRecomenedAc[predictRecomenedAc.length - 1]}
-        />
-      )}
+
       {predictRecomenedAc &&
         predictRecomenedAc.length > 0 &&
         predictRecomenedAc[predictRecomenedAc.length - 1].recommendations
@@ -32,6 +28,11 @@ const Home = () => {
             }
           />
         )}
+      {predictRecomenedAc && predictRecomenedAc.length > 0 && (
+        <ACUsageComparison
+          product={predictRecomenedAc[predictRecomenedAc.length - 1]}
+        />
+      )}
       <BottomCarousel />
       <Faq />
 

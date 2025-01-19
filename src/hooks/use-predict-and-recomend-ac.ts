@@ -10,17 +10,17 @@ interface propType {
     capacity: number;
     starRating: number;
     type: string;
-    temperature: string;
-    totalUsagesHour: number;
-    state: string;
+    // temperature: string;
+    // totalUsagesHour: number;
+    // state: string;
   };
   setHoverRating: React.Dispatch<React.SetStateAction<number>>;
   setRating: React.Dispatch<React.SetStateAction<number>>;
   setSelectedAcType: React.Dispatch<React.SetStateAction<string>>;
   setSelectedBrand: React.Dispatch<React.SetStateAction<string>>;
-  setSelectTemperature: React.Dispatch<React.SetStateAction<string>>;
-  setSelectState: React.Dispatch<React.SetStateAction<string>>;
-  setSelectHours: React.Dispatch<React.SetStateAction<string>>;
+  // setSelectTemperature: React.Dispatch<React.SetStateAction<string>>;
+  // setSelectState: React.Dispatch<React.SetStateAction<string>>;
+  // setSelectHours: React.Dispatch<React.SetStateAction<string>>;
   setCapacity: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -31,9 +31,7 @@ const usePredictAndRecommend = ({
   setRating,
   setSelectedAcType,
   setSelectedBrand,
-  setSelectTemperature,
-  setSelectState,
-  setSelectHours,
+
   setCapacity,
 }: propType) => {
   const [loading, setLoading] = useState(false);
@@ -78,9 +76,9 @@ const usePredictAndRecommend = ({
       setRating(0);
       setSelectedAcType("");
       setSelectedBrand("");
-      setSelectTemperature("");
-      setSelectState("");
-      setSelectHours("");
+      // setSelectTemperature("");
+      // setSelectState("");
+      // setSelectHours("");
       setCapacity(0);
     } catch (err: any) {
       setError(err.message);

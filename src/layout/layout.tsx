@@ -77,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
                 className="w-[55px] h-[37px]"
               />
               <div className="flex flex-col gap-[40px]">
-                {["Home", "Browse AC", "FAQs", "Blogs"].map((tab) => (
+                {["Home", "FAQs", "Browse AC"].map((tab) => (
                   <span
                     key={tab}
                     className={`flex items-center gap-1 cursor-pointer ${
