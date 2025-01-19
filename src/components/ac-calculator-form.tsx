@@ -7,7 +7,7 @@ import ACCapacitySlider from "./ac-capacity-slider";
 import { imagePath } from "@/constants/imagePath";
 //
 import { Label } from "./ui/label";
-import { SearchableSelect } from "./searchable-select";
+// import { SearchableSelect } from "./searchable-select";
 import usePredictAndRecommend from "@/hooks/use-predict-and-recomend-ac";
 import { useAcContext } from "@/context/use-context";
 // import {
@@ -19,6 +19,14 @@ import { useAcContext } from "@/context/use-context";
 //   SelectValue,
 // } from "./ui/select";
 import { Modal } from "./modal";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const url = import.meta.env.VITE_API_URL;
 
@@ -101,12 +109,23 @@ const AcCalculatorForm = () => {
             <Label htmlFor="brand">
               Ac Brand <span className="text-red-700">*</span>
             </Label>
-            <SearchableSelect
-              options={brands}
-              placeholder="Select Brand"
-              selectedValue={selectedBrand}
-              onSelect={setSelectedBrand}
-            />
+            <Select
+              value={selectedBrand}
+              onValueChange={(value) => setSelectedBrand(value)}
+            >
+              <SelectTrigger className="md:w-[352px] w-full">
+                <SelectValue placeholder="Select hour" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {brands?.map((item) => (
+                    <SelectItem key={item.label} value={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="-mt-2">
@@ -188,37 +207,6 @@ const AcCalculatorForm = () => {
             <div className="flex gap-[11px]">
               <div
                 className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
-                  selectedAcType === "windows"
-                    ? " border-quaternaryBlack"
-                    : "border-secondaryWhite "
-                } rounded-[8px] flex items-center gap-1`}
-                onClick={() => handleSelectAcType("windows")}
-              >
-                <div
-                  className={`w-8 h-8 flex items-center justify-center
-                 ${
-                   selectedAcType === "windows"
-                     ? " bg-primaryBlack"
-                     : "bg-senaryWhite"
-                 } py-[3px] px-[1px] rounded-[6px]`}
-                >
-                  <img
-                    src={
-                      selectedAcType === "windows"
-                        ? imagePath.darkWindowAc
-                        : imagePath.windowAc
-                    }
-                    alt=""
-                    className="h-[13.14px] w-[17.74px]"
-                  />
-                </div>
-                <span className="text-sm font-medium text-tertiaryBlack">
-                  Window
-                </span>
-              </div>
-
-              <div
-                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
                   selectedAcType === "Split AC"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
@@ -245,6 +233,36 @@ const AcCalculatorForm = () => {
                 </div>
                 <span className="text-sm font-medium text-tertiaryBlack">
                   Split AC
+                </span>
+              </div>
+              <div
+                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
+                  selectedAcType === "windows"
+                    ? " border-quaternaryBlack"
+                    : "border-secondaryWhite "
+                } rounded-[8px] flex items-center gap-1`}
+                onClick={() => handleSelectAcType("windows")}
+              >
+                <div
+                  className={`w-8 h-8 flex items-center justify-center
+                 ${
+                   selectedAcType === "windows"
+                     ? " bg-primaryBlack"
+                     : "bg-senaryWhite"
+                 } py-[3px] px-[1px] rounded-[6px]`}
+                >
+                  <img
+                    src={
+                      selectedAcType === "windows"
+                        ? imagePath.darkWindowAc
+                        : imagePath.windowAc
+                    }
+                    alt=""
+                    className="h-[13.14px] w-[17.74px]"
+                  />
+                </div>
+                <span className="text-sm font-medium text-tertiaryBlack">
+                  Window
                 </span>
               </div>
             </div>
@@ -284,12 +302,23 @@ const AcCalculatorForm = () => {
             <Label htmlFor="brand">
               Brand <span className="text-red-700">*</span>
             </Label>
-            <SearchableSelect
-              options={brands}
-              placeholder="Select Brand"
-              selectedValue={selectedBrand}
-              onSelect={setSelectedBrand}
-            />
+            <Select
+              value={selectedBrand}
+              onValueChange={(value) => setSelectedBrand(value)}
+            >
+              <SelectTrigger className=" w-full">
+                <SelectValue placeholder="Select hour" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {brands?.map((item) => (
+                    <SelectItem key={item.label} value={item.value}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
           <div className="flex flex-col gap-[6px] w-full">
             <Label>
@@ -326,37 +355,6 @@ const AcCalculatorForm = () => {
             <div className="flex gap-[11px]">
               <div
                 className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
-                  selectedAcType === "windows"
-                    ? " border-quaternaryBlack"
-                    : "border-secondaryWhite "
-                } rounded-[8px] flex items-center gap-1`}
-                onClick={() => handleSelectAcType("windows")}
-              >
-                <div
-                  className={`w-8 h-8 flex items-center justify-center
-                 ${
-                   selectedAcType === "windows"
-                     ? " bg-primaryBlack"
-                     : "bg-senaryWhite"
-                 } py-[3px] px-[1px] rounded-[6px]`}
-                >
-                  <img
-                    src={
-                      selectedAcType === "windows"
-                        ? imagePath.darkWindowAc
-                        : imagePath.windowAc
-                    }
-                    alt=""
-                    className="h-[13.14px] w-[17.74px]"
-                  />
-                </div>
-                <span className="text-sm font-medium text-tertiaryBlack">
-                  Window
-                </span>
-              </div>
-
-              <div
-                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
                   selectedAcType === "Split AC"
                     ? " border-quaternaryBlack"
                     : "border-secondaryWhite "
@@ -383,6 +381,36 @@ const AcCalculatorForm = () => {
                 </div>
                 <span className="text-sm font-medium text-tertiaryBlack">
                   Split AC
+                </span>
+              </div>
+              <div
+                className={`w-[127px] h-[37px] px-[2px] border cursor-pointer  ${
+                  selectedAcType === "windows"
+                    ? " border-quaternaryBlack"
+                    : "border-secondaryWhite "
+                } rounded-[8px] flex items-center gap-1`}
+                onClick={() => handleSelectAcType("windows")}
+              >
+                <div
+                  className={`w-8 h-8 flex items-center justify-center
+                 ${
+                   selectedAcType === "windows"
+                     ? " bg-primaryBlack"
+                     : "bg-senaryWhite"
+                 } py-[3px] px-[1px] rounded-[6px]`}
+                >
+                  <img
+                    src={
+                      selectedAcType === "windows"
+                        ? imagePath.darkWindowAc
+                        : imagePath.windowAc
+                    }
+                    alt=""
+                    className="h-[13.14px] w-[17.74px]"
+                  />
+                </div>
+                <span className="text-sm font-medium text-tertiaryBlack">
+                  Window
                 </span>
               </div>
             </div>
@@ -453,11 +481,7 @@ const AcCalculatorForm = () => {
           </div> */}
         </div>
       </div>
-      <p className="text-xs font-normal text-gray-900 text-left ">
-        * Note: Calculations assume 8 hours of daily usage at 24°C with an
-        electricity rate of ₹7 per unit. Actual costs may vary based on usage
-        and local rates.
-      </p>
+
       <div className="flex gap-5 ">
         {/* <Button size={"lg"} variant={"outline"} onClick={handleReset}>
           Reset
@@ -477,6 +501,14 @@ const AcCalculatorForm = () => {
           Calculate
         </Button>
       </div>
+      {predictRecomenedAc && predictRecomenedAc?.length > 0 && (
+        <p className="text-xs font-normal text-gray-900 text-left ">
+          * Note: Calculations assume 8 hours of daily usage at 24°C with an
+          electricity rate of ₹7 per unit. Actual costs may vary based on usage
+          and local rates.
+        </p>
+      )}
+
       <Modal open={open} setOpen={setOpen} fetchPrediction={fetchPrediction} />
     </section>
   );

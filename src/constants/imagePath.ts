@@ -12,6 +12,7 @@ import carouselMobile2 from "@/assets/carousel-mobile-2.png";
 import carouselMobile3 from "@/assets/carousel-mobile-3.png";
 import blog1 from "@/assets/blog-1.png";
 import browseElectronics from "@/assets/browse-electronics.jpeg";
+import browseElectronics2 from "@/assets/browse-electronics2.jpeg";
 
 export const imagePath = {
   companyLogo: companyLogo,
@@ -28,4 +29,5 @@ export const imagePath = {
   darksplitAc: darksplitAc,
   blog1: blog1,
   browseElectronics,
+  browseElectronics2,
 };
