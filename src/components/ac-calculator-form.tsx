@@ -114,7 +114,7 @@ const AcCalculatorForm = () => {
               onValueChange={(value) => setSelectedBrand(value)}
             >
               <SelectTrigger className="md:w-[352px] w-full">
-                <SelectValue placeholder="Select hour" />
+                <SelectValue placeholder="Select brand" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
@@ -307,7 +307,7 @@ const AcCalculatorForm = () => {
               onValueChange={(value) => setSelectedBrand(value)}
             >
               <SelectTrigger className=" w-full">
-                <SelectValue placeholder="Select hour" />
+                <SelectValue placeholder="Select brand" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
