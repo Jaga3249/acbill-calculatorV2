@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { brands } from "../../data";
 
 import { Loader2 } from "lucide-react";
@@ -93,6 +93,19 @@ const AcCalculatorForm = () => {
   //   );
   //   setStateUnitPrice(unitPrice[0]?.unit_price / 100);
   // }, [selectState]);
+
+  useEffect(() => {
+    if (predictRecomenedAc && predictRecomenedAc?.length > 0) {
+      const acComparision = document.getElementById("acComparision");
+      if (acComparision) {
+        acComparision.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        console.log("Scrolled to Comparison Section");
+      }
+    }
+  }, [predictRecomenedAc]);
 
   return (
     <section
