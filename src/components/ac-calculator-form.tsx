@@ -502,7 +502,7 @@ const AcCalculatorForm = () => {
         <Button
           size={"lg"}
           onClick={() => {
-            if (predictRecomenedAc?.length === 1 && !isContactSubmit) {
+            if (!isContactSubmit) {
               setOpen(true);
             } else {
               fetchPrediction();
