@@ -1,4 +1,4 @@
-import companyLogo from "@/assets/techligator-logo.png";
+import headerLogo from "@/assets/headerLogo.png";
 import windowAc from "@/assets/windowAc.png";
 import splitAc from "@/assets/splitAc.png";
 import darksplitAc from "@/assets/darkSplitAc.png";
@@ -13,9 +13,10 @@ import carouselMobile3 from "@/assets/carousel-mobile-3.png";
 import blog1 from "@/assets/blog-1.png";
 import browseElectronics from "@/assets/browse-electronics.jpeg";
 import browseElectronics2 from "@/assets/browse-electronics2.jpeg";
+import footerLogo from "@/assets/footerLogo.png";
 
 export const imagePath = {
-  companyLogo: companyLogo,
+  headerLogo: headerLogo,
   windowAc: windowAc,
   splitAc: splitAc,
   darkWindowAc: darkWindowAc,
@@ -30,4 +31,5 @@ export const imagePath = {
   blog1: blog1,
   browseElectronics,
   browseElectronics2,
+  footerLogo: footerLogo,
 };

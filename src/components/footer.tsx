@@ -1,9 +1,9 @@
-import footerlogo from "@/assets/footer-logo.png";
 import instagram from "@/assets/instagram.png";
 import linkedin from "@/assets/linkedin.png";
 import facebook from "@/assets/facebook.png";
 import { Copyright } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { imagePath } from "@/constants/imagePath";
 
 const Footer = () => {
   const router = useNavigate();
@@ -14,9 +14,9 @@ const Footer = () => {
         <div className=" flex flex-col gap-2">
           <div className="flex flex-col gap-3 cursor-pointer">
             <img
-              src={footerlogo}
+              src={imagePath.footerLogo}
               alt="footer logo"
-              className="w-[47px] h-[32px]"
+              className="w-[60px] h-[60px]"
               onClick={() => router("/")}
             />
             <span className="text-sm font-normal text-septenaryWhite">
@@ -90,9 +90,9 @@ const Footer = () => {
       <div className="bg-primaryBlack py-8 px-6 flex flex-col sm:hidden mt-5 ">
         <div className="flex justify-between">
           <img
-            src={footerlogo}
+            src={imagePath.footerLogo}
             alt="footer logo"
-            className="w-[47px] h-[32px]"
+            className="w-[60px] h-[60px]"
           />
           <div className="flex flex-col items-end gap-4">
             <span className="text-sm font-normal text-primaryWhite">
