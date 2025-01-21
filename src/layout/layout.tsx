@@ -72,9 +72,9 @@ const Layout = ({ children }: LayoutProps) => {
           >
             <div className="flex flex-col gap-[52px]">
               <img
-                src={imagePath?.companyLogo}
+                src={imagePath?.headerLogo}
                 alt="company logo"
-                className="w-[55px] h-[37px]"
+                className="w-[60px] h-[60px]"
               />
               <div className="flex flex-col gap-[40px]">
                 {["Home", "FAQs", "Browse AC"].map((tab) => (
