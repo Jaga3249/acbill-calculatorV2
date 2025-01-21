@@ -52,9 +52,9 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
     <>
       <header className="mt-6 hidden md:flex md:items-center w-full">
         <img
-          src={imagePath?.companyLogo}
+          src={imagePath?.headerLogo}
           alt="Company Logo"
-          className="w-[55px] h-[37.15px] cursor-pointer"
+          className="w-[75px] h-[75px] cursor-pointer"
           onClick={() => {
             setActiveTab("Home");
             navigate("/");
@@ -106,7 +106,11 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
           className="w-8 h-8"
         />
         <div className="flex-1 flex items-center justify-center">
-          <img src={imagePath?.companyLogo} alt="logo" className="w-12 h-9" />
+          <img
+            src={imagePath?.headerLogo}
+            alt="logo"
+            className="w-[50px] h-[50px]"
+          />
         </div>
       </header>
     </>
