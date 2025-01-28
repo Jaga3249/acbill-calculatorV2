@@ -27,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { LeadModal } from "./lead-modal";
 
 const url = import.meta.env.VITE_API_URL;
 
@@ -502,7 +503,11 @@ const AcCalculatorForm = () => {
         <Button
           size={"lg"}
           onClick={() => {
-            if (!isContactSubmit) {
+            if (
+              predictRecomenedAc &&
+              predictRecomenedAc?.length === 1 &&
+              !isContactSubmit
+            ) {
               setOpen(true);
             } else {
               fetchPrediction();
@@ -522,7 +527,11 @@ const AcCalculatorForm = () => {
         </p>
       )}
 
-      <Modal open={open} setOpen={setOpen} fetchPrediction={fetchPrediction} />
+      <LeadModal
+        open={open}
+        setOpen={setOpen}
+        fetchPrediction={fetchPrediction}
+      />
     </section>
   );
 };

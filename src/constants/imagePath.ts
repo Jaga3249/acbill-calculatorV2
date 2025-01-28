@@ -14,6 +14,8 @@ import blog1 from "@/assets/blog-1.png";
 import browseElectronics from "@/assets/browse-electronics.jpeg";
 import browseElectronics2 from "@/assets/browse-electronics2.jpeg";
 import footerLogo from "@/assets/footerLogo.png";
+import leadFormBg from "@/assets/leadFormBg.png";
+import people from "@/assets/people.png";
 
 export const imagePath = {
   headerLogo: headerLogo,
@@ -32,4 +34,6 @@ export const imagePath = {
   browseElectronics,
   browseElectronics2,
   footerLogo: footerLogo,
+  leadFormBg: leadFormBg,
+  people: people,
 };
