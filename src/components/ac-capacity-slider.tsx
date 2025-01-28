@@ -27,18 +27,18 @@ const ACCapacitySlider = ({ capacity, setCapacity }: activeProp) => {
   // console.log("active", active);
 
   return (
-    <div className="flex items-center md:w-72 w-full ">
+    <div className="flex items-center  w-full ">
       {points.map((point, index) => (
         <React.Fragment key={index}>
           <div className="flex flex-col items-center">
             {/* Label */}
-            <span className=" text-xs text-gray-700">{point.label}</span>
+            <span className=" text-xs text-white">{point.label}</span>
             {/* Point */}
             <div
               className={`h-4 w-4 rounded-full cursor-pointer flex items-center justify-center ${
                 capacity === point.value
-                  ? "bg-black text-white"
-                  : "bg-white border-2 border-[#D9D9D9]"
+                  ? "bg-white text-white"
+                  : " border-2 border-[#D9D9D9]"
               }`}
               onClick={() => handleClick(point.value)}
             ></div>

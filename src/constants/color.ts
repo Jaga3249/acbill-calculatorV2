@@ -10,6 +10,7 @@ export const ColorPalette = {
     white: "#D5D5D5",
     black: "#191919",
     gray: "#33363A",
+    blue: "#081747",
   },
   tertiary: {
     white: "#CBD5E1",

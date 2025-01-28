@@ -74,6 +74,7 @@ export default {
         customBlack: "#33363A",
         octonaryGray: "#AFADAD",
         primaryBlue: "#2563EB",
+        darkBlue: "#081747",
         tertiaryBlack: "#2C2D2F",
         quaternaryBlack: "#191919",
         lightGray: "#6A6A6A",
@@ -81,6 +82,8 @@ export default {
         tertiaryGreen: "#EBFFDD",
         primaryRed: "#FF4E4E",
         boldGray: "#C6C6C6",
+        lightGray: "#7D7D7D",
+        lightBlue: "#3F518C",
       },
       keyframes: {
         "accordion-down": {
