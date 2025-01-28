@@ -525,32 +525,33 @@ const AcCalculatorForm = () => {
     //   <Modal open={open} setOpen={setOpen} fetchPrediction={fetchPrediction} />
     // </section>
     <>
-      <div className="w-full flex gap-3">
+      <div className="w-full flex flex-col gap-3 md:flex-row mt-3">
         {/* left section */}
-        <div className=" w-[30%] flex flex-col  justify-center gap-[11px]">
+        <div className="md:w-[30%] w-full flex flex-col justify-center gap-[11px]">
           <h1 className="text-[#081747] font-semibold text-[29px] leading-[43px]">
             Calculate Your AC’s Energy Costs in Seconds!
           </h1>
-          <p className="text-lightGray font-medium text-[20px] leading-[30px] max-w-[332px]">
-            Take charge of your electricity bill know exactly what your AC costs
-            you.
+          <p className="text-lightGray font-medium text-[20px] leading-[30px] md:max-w-[332px]">
+            Take charge of your electricity bill, know exactly what your AC
+            costs you.
           </p>
         </div>
+
         {/* right section */}
-        <div className=" flex-1   bg-[#081747] p-5 rounded-xl flex flex-col gap-6">
+        <div className="flex-1 bg-[#081747] p-5 rounded-xl flex flex-col gap-4 sm:gap-6">
           <p className="text-white text-base font-semibold">
             Enter the required data to calculate your AC bill
           </p>
-          <div className="flex justify-between">
-            <div className="grid items-center gap-1.5 flex-1 ">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-0 justify-between">
+            <div className="grid items-center gap-1.5 flex-1">
               <Label htmlFor="brand" className="text-white">
-                Ac Brand <span className="text-red-700">*</span>
+                AC Brand <span className="text-red-700">*</span>
               </Label>
               <Select
                 value={selectedBrand}
                 onValueChange={(value) => setSelectedBrand(value)}
               >
-                <SelectTrigger className="md:w-[352px] w-full">
+                <SelectTrigger className="w-full md:w-[352px]">
                   <SelectValue placeholder="Select brand" />
                 </SelectTrigger>
                 <SelectContent>
@@ -564,7 +565,7 @@ const AcCalculatorForm = () => {
                 </SelectContent>
               </Select>
             </div>
-            <div className="flex flex-col gap-[9px] h-[60px] flex-1  ">
+            <div className="flex flex-col gap-[9px] flex-1 h-[60px]">
               <Label className="text-white">
                 AC Capacity in ton <span className="text-red-700">*</span>
               </Label>
@@ -572,8 +573,8 @@ const AcCalculatorForm = () => {
             </div>
           </div>
 
-          <div className="flex justify-between">
-            <div className="flex-1">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between">
+            <div className="flex-1 -mt-2">
               <Label htmlFor="" className="text-white">
                 Star Rating <span className="text-red-700">*</span>
               </Label>
@@ -581,7 +582,7 @@ const AcCalculatorForm = () => {
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
                     key={star}
-                    className={`cursor-pointer text-4xl flex  ${
+                    className={`cursor-pointer text-4xl ${
                       hoverRating >= star || rating >= star
                         ? "text-yellow-500"
                         : "text-gray-300"
@@ -595,26 +596,25 @@ const AcCalculatorForm = () => {
                 ))}
               </div>
             </div>
-            <div className=" flex-1 flex flex-col gap-[6px]">
+            <div className="flex flex-col gap-[6px] flex-1">
               <Label className="text-white">
-                Ac Type <span className="text-red-700">*</span>
+                AC Type <span className="text-red-700">*</span>
               </Label>
-              <div className="flex gap-[11px]  w-full">
+              <div className="flex gap-[11px] w-full">
                 <div
-                  className={` flex-1  h-[37px] px-[2px] border cursor-pointer  ${
+                  className={`flex-1 h-[37px] px-[2px] border cursor-pointer ${
                     selectedAcType === "windows"
-                      ? " border-[#3F518C] border "
-                      : "border-secondaryWhite "
+                      ? "bg-white"
+                      : "border-[#3F518C] border"
                   } rounded-[8px] flex items-center gap-1`}
                   onClick={() => handleSelectAcType("windows")}
                 >
                   <div
-                    className={`w-8 h-8 flex items-center justify-center
-             ${
-               selectedAcType === "windows"
-                 ? " bg-primaryBlack"
-                 : "bg-senaryWhite"
-             } py-[3px] px-[1px] rounded-[6px]`}
+                    className={`w-8 h-8 flex items-center justify-center ${
+                      selectedAcType === "windows"
+                        ? "bg-[#0067F4]"
+                        : "bg-[#3F518C]"
+                    } py-[3px] px-[1px] rounded-[6px]`}
                   >
                     <img
                       src={
@@ -636,20 +636,19 @@ const AcCalculatorForm = () => {
                 </div>
 
                 <div
-                  className={`flex-1 h-[37px] px-[2px] border cursor-pointer  ${
+                  className={`flex-1 h-[37px] px-[2px] border cursor-pointer ${
                     selectedAcType === "Split AC"
-                      ? " bg-white"
-                      : "border-[#3F518C] border "
+                      ? "bg-white"
+                      : "border-[#3F518C] border"
                   } rounded-[8px] flex items-center gap-1`}
                   onClick={() => handleSelectAcType("Split AC")}
                 >
                   <div
-                    className={`w-8 h-8 flex items-center justify-center py-[3px] px-[1px]
-                ${
-                  selectedAcType === "Split AC"
-                    ? " bg-[#0067F4]"
-                    : "bg-[#3F518C]"
-                }  rounded-[6px]`}
+                    className={`w-8 h-8 flex items-center justify-center ${
+                      selectedAcType === "Split AC"
+                        ? "bg-[#0067F4]"
+                        : "bg-[#3F518C]"
+                    } py-[3px] px-[1px] rounded-[6px]`}
                   >
                     <img
                       src={
@@ -661,7 +660,13 @@ const AcCalculatorForm = () => {
                       className="h-[13.14px] w-[17.74px]"
                     />
                   </div>
-                  <span className="text-sm font-medium text-white">
+                  <span
+                    className={`text-sm font-medium ${
+                      selectedAcType === "Split AC"
+                        ? "text-black"
+                        : "text-white"
+                    }`}
+                  >
                     Split AC
                   </span>
                 </div>
@@ -669,6 +674,11 @@ const AcCalculatorForm = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-end mt-2">
+        <Button className="bg-[#0067F4] p-[10px] rounded-xl w-[134px]">
+          Calculate
+        </Button>
       </div>
     </>
   );

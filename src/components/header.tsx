@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import { imagePath } from "@/constants/imagePath";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Button } from "./ui/button";
 
 type HeaderProps = {
   setIsMenuOpen: React.Dispatch<SetStateAction<boolean>>;
@@ -12,55 +13,52 @@ type HeaderProps = {
 const Header = ({ setIsMenuOpen }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState<string>(() => {
+  // const [activeTab, setActiveTab] = useState<string>(() => {
+  //   switch (location.pathname) {
+  //     case "/":
+  //       return location.hash === "#FAQs" ? "FAQs" : "Home";
+  //     case "/blog":
+  //       return "Blogs";
+  //     case "/browse-ac":
+  //       return "Browse AC";
+  //     default:
+  //       return "";
+  //   }
+  // });
+
+  const [activeTab, setActiveTab] = useState(() => {
     switch (location.pathname) {
       case "/":
-        return location.hash === "#FAQs" ? "FAQs" : "Home";
-      case "/blog":
-        return "Blogs";
+        return "Home";
       case "/browse-ac":
         return "Browse AC";
-      default:
-        return "";
     }
   });
 
+  const tabs = ["Home", "Browse AC"];
   const handleTabClick = (tab: string) => {
-    if (tab === "FAQs") {
-      navigate("/#FAQs");
+    if (tab === "Home") {
       setActiveTab(tab);
-
-      setTimeout(() => {
-        const faqsSection = document.getElementById("FAQs");
-        if (faqsSection) {
-          faqsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
-    } else {
+      navigate("/");
+    } else if (tab === "Browse AC") {
       setActiveTab(tab);
-      if (tab === "Home") {
-        navigate("/");
-      } else if (tab === "Blogs") {
-        navigate("/blog");
-      } else if (tab === "Browse AC") {
-        navigate("/browse-ac");
-      }
+      navigate("/browse-ac");
     }
   };
 
   return (
     <>
-      <header className="mt-6 hidden md:flex md:items-center w-full">
+      <header className="mt-6 hidden md:flex md:items-center md:justify-between w-full">
         <img
           src={imagePath?.headerLogo}
           alt="Company Logo"
-          className="w-[75px] h-[75px] cursor-pointer"
+          className="w-[100px] h-[50px] cursor-pointer"
           onClick={() => {
             setActiveTab("Home");
             navigate("/");
           }}
         />
-        <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px] relative">
+        {/* <div className="bg-[#F3F3F3] flex-1 flex items-center justify-between ml-8 p-2 rounded-[20px] relative">
           <div className="flex items-center font-medium text-sm relative w-full">
             {["Home", "FAQs", "Browse AC"].map((tab) => (
               <div key={tab} className="relative">
@@ -86,7 +84,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
               </div>
             ))}
           </div>
-          {/* <a href="#contact">
+          <a href="#contact">
             <Button
               className="w-[136px] rounded-xl"
               onClick={() => {
@@ -96,9 +94,29 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
             >
               Contact Us
             </Button>
-          </a> */}
+          </a>
+        </div> */}
+        <div className="flex gap-16">
+          {tabs.map((item, i) => (
+            <div
+              className={`flex flex-col gap-2 cursor-pointer `}
+              key={i}
+              onClick={() => handleTabClick(item)}
+            >
+              <span className="font-semibold text-sm">{item}</span>
+              <span
+                className={`h-[4px] w-[50%] rounded-full transition-all self-center ${
+                  activeTab === item ? "bg-blue-500" : "bg-transparent"
+                }`}
+              ></span>
+            </div>
+          ))}
         </div>
+        <Button className="bg-[#0067F4] p-[11px] w-[134px] rounded-[12px]">
+          Contact Us
+        </Button>
       </header>
+      {/* mobile view */}
       <header className="md:hidden flex mt-5">
         <Menu
           onClick={() => setIsMenuOpen(true)}
@@ -109,7 +127,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
           <img
             src={imagePath?.headerLogo}
             alt="logo"
-            className="w-[50px] h-[50px]"
+            className="w-[80px] h-[50px]"
           />
         </div>
       </header>
