@@ -43,11 +43,7 @@ export function HeroSection() {
 
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const images = [
-    imagePath.carousel1,
-    imagePath.carousel2,
-    imagePath.carousel3,
-  ];
+  const images = [imagePath.carousel1, imagePath.carousel2];
 
   React.useEffect(() => {
     if (!api) {
@@ -61,7 +57,7 @@ export function HeroSection() {
 
   return (
     <>
-      <div className="w-full md:h-[300px] overflow-hidden mt-8 rounded-md">
+      <div className="w-full h-full overflow-hidden mt-8 rounded-md">
         <Carousel
           setApi={setApi}
           plugins={[plugin.current]}
@@ -70,7 +66,7 @@ export function HeroSection() {
             loop: true,
           }}
         >
-          <CarouselContent className="flex w-full md:h-[300px] h-full rounded-md">
+          <CarouselContent className="flex w-full h-full rounded-md">
             {images?.map((image, index) => (
               <CarouselItem key={index} className="rounded-md">
                 <div className="w-full h-full relative rounded-md">
@@ -79,7 +75,7 @@ export function HeroSection() {
                     alt={`hero-img-${index}`}
                     className="w-full h-full object-cover rounded-md"
                   />
-                  {index === 2 && (
+                  {/* {index === 2 && (
                     <div className="sm:block absolute sm:top-10 sm:left-10 left-6 top-0">
                       <h1 className="text-septenaryWhite sm:text-[50px] font-semibold sm:leading-[75px] text-base mt-5">
                         Contact Us
@@ -93,7 +89,7 @@ export function HeroSection() {
                         </Button>
                       </a>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </CarouselItem>
             ))}

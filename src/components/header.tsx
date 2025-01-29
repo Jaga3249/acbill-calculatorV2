@@ -5,6 +5,7 @@ import { imagePath } from "@/constants/imagePath";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 type HeaderProps = {
   setIsMenuOpen: React.Dispatch<SetStateAction<boolean>>;
@@ -52,7 +53,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
         <img
           src={imagePath?.headerLogo}
           alt="Company Logo"
-          className="w-[100px] h-[50px] cursor-pointer"
+          className="w-[144.08px] h-[50.3px] cursor-pointer"
           onClick={() => {
             setActiveTab("Home");
             navigate("/");
@@ -103,7 +104,15 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
               key={i}
               onClick={() => handleTabClick(item)}
             >
-              <span className="font-semibold text-sm">{item}</span>
+              <span
+                className={cn(
+                  activeTab === item
+                    ? "font-semibold text-sm"
+                    : "font-medium text-sm"
+                )}
+              >
+                {item}
+              </span>
               <span
                 className={`h-[4px] w-[50%] rounded-full transition-all self-center ${
                   activeTab === item ? "bg-blue-500" : "bg-transparent"
@@ -112,7 +121,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
             </div>
           ))}
         </div>
-        <Button className="bg-[#0067F4] p-[11px] w-[134px] rounded-[12px]">
+        <Button className="bg-[#0067F4] hover:bg-[#0067F4] p-[11px] w-[134px] h-[44px] rounded-[12px]">
           Contact Us
         </Button>
       </header>
