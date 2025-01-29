@@ -27,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { LeadModal } from "./lead-modal";
 
 const url = import.meta.env.VITE_API_URL;
 
@@ -675,11 +676,43 @@ const AcCalculatorForm = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-end mt-2">
-        <Button className="bg-[#0067F4] p-[10px] rounded-xl w-[134px]">
+
+      <div className="flex gap-5 ">
+        {/* <Button size={"lg"} variant={"outline"} onClick={handleReset}>
+          Reset
+        </Button> */}
+        <Button
+          size={"lg"}
+          onClick={() => {
+            if (
+              predictRecomenedAc &&
+              predictRecomenedAc?.length === 1 &&
+              !isContactSubmit
+            ) {
+              setOpen(true);
+            } else {
+              fetchPrediction();
+            }
+          }}
+          disabled={loading || predictRecomenedAc?.length === 3}
+        >
+          {loading && <Loader2 className="animate-spin" />}
           Calculate
         </Button>
       </div>
+      {predictRecomenedAc && predictRecomenedAc?.length > 0 && (
+        <p className="text-xs font-normal text-gray-900 text-left ">
+          * Note: Calculations assume 8 hours of daily usage at 24°C with an
+          electricity rate of ₹7 per unit. Actual costs may vary based on usage
+          and local rates.
+        </p>
+      )}
+
+      <LeadModal
+        open={open}
+        setOpen={setOpen}
+        fetchPrediction={fetchPrediction}
+      />
     </>
   );
 };
