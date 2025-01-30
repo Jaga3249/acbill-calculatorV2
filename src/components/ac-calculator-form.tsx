@@ -114,8 +114,8 @@ const AcCalculatorForm = () => {
     <>
       <div className="w-full flex flex-col gap-3 lg:flex-row mt-8">
         {/* left section */}
-        <div className="w-[386px] flex flex-col justify-center gap-[11px]">
-          <h1 className="text-[#081747] font-semibold text-[29px] leading-[43px]">
+        <div className="sm:w-[386px] flex flex-col justify-center gap-[11px]">
+          <h1 className="text-[#081747] font-semibold text-[29px]  leading-[43px]">
             Calculate Your AC’s Energy Costs in Seconds!
           </h1>
           <p className="text-lightGray font-medium text-[20px] leading-[30px] md:max-w-[332px]">

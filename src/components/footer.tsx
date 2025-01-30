@@ -3,10 +3,10 @@ import { imagePath } from "@/constants/imagePath";
 const Footer = () => {
   return (
     <div
-      className="bg-white flex justify-center items-center py-6 mt-7"
+      className="bg-white flex justify-center items-baseline py-6 mt-7 border-2"
       id="footer"
     >
-      <div className="flex flex-col items-center justify-start gap-4 ">
+      <div className="flex flex-col items-center  gap-4 border-2">
         <img
           src={imagePath.footerLogo}
           alt="footerLogo"

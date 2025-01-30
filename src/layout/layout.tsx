@@ -65,7 +65,7 @@ const Layout = ({ children }: LayoutProps) => {
   };
   return (
     <>
-      <div className="font-poppins h-auto w-full  px-3 sm:max-w-[1144px] sm:mx-auto ">
+      <div className="font-poppins h-auto   px-3 max-w-[1144px] mx-auto ">
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>
