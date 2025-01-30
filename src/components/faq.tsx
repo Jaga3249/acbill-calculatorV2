@@ -136,7 +136,7 @@ const faqData = [
 
 const Faq = () => {
   return (
-    <div className="md:mx-28 md:px-10 md:mt-5" id="FAQs">
+    <div className="md:mx-28 md:px-10 md:mt-5 px-3 sm:px-0" id="FAQs">
       <h1 className="font-semibold text-2xl font-serif">FAQs</h1>
       <Accordion type="single" collapsible className="w-full">
         {faqData.map((faq, index) => (

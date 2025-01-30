@@ -4,13 +4,21 @@ import { CircleX, Plus } from "lucide-react";
 
 const AcComparision = () => {
   const { predictRecomenedAc, setPredictRecomenedAc } = useAcContext();
+
   const handleRemoveAc = (id: string) => {
     // console.log("id", id);
     setPredictRecomenedAc(
       (prev) => prev && prev.filter((item) => item.id !== id)
     );
   };
-  // console.log("predictRecomenedAc", predictRecomenedAc);
+
+  const handleScrollToForm = () => {
+    const formElement = document.getElementById("calculatorForm");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className="  flex md:justify-center flex-col md:items-center justify-start gap-4 md:mt-10 mt-10"
@@ -27,7 +35,6 @@ const AcComparision = () => {
               <div
                 className=" relative border border-querternaryWhite rounded-[12px] px-3 py-[15px] flex gap-6 flex-col"
                 key={index}
-                onClick={() => handleRemoveAc(data?.id)}
               >
                 <div className="flex justify-between">
                   <div className="flex  flex-col gap-2">
@@ -88,6 +95,7 @@ const AcComparision = () => {
                   className="absolute -top-4 -right-2 cursor-pointer text-senaryWhite rounded-full"
                   fill="red"
                   size={30}
+                  onClick={() => handleRemoveAc(data?.id)}
                 />
               </div>
             ))}
@@ -97,9 +105,9 @@ const AcComparision = () => {
          p-3 rounded-[12px] flex justify-center items-center flex-col gap-[23px] "
           >
             <span className="w-[38px] h-[38px] rounded-full flex justify-center items-center bg-senaryWhite">
-              <a href="#calculatorForm">
+              <span onClick={handleScrollToForm}>
                 <Plus />
-              </a>
+              </span>
             </span>
             <h2 className="text-xs leading-[18px] font-medium text-quinaryGray">
               Add to compare

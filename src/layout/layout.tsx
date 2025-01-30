@@ -1,3 +1,4 @@
+import Faq from "@/components/faq";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
@@ -69,6 +70,7 @@ const Layout = ({ children }: LayoutProps) => {
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>
+      <Faq />
       <Footer />
       {isMenuOpen && (
         <>
@@ -89,7 +91,7 @@ const Layout = ({ children }: LayoutProps) => {
                   className="w-[93px] h-[30px]"
                 />
                 <div className="flex flex-col gap-[40px]">
-                  {["Home", "Browse AC"].map((tab) => (
+                  {["Home", "Browse AC", "FAQs"].map((tab) => (
                     <span
                       key={tab}
                       className={`flex items-center gap-1 cursor-pointer ${
