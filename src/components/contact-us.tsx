@@ -43,7 +43,7 @@ const ContactUs = () => {
       setUserEmail("");
       setContactNumber("");
       toast.success("We will get back to you soon!");
-    } catch (error: any) {
+    } catch (error) {
       console.error("EmailJS Error: ", error);
       toast.error("Failed to send message. Please try again later.");
     } finally {

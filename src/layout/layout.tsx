@@ -77,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
             onClick={() => setIsMenuOpen(false)}
           />
           <span
-            className={`md:hidden sm:hidden bg-septenaryWhite fixed top-0 w-[273px] h-screen rounded-tr-[20px] rounded-br-[20px] p-8 z-20 transform transition-transform duration-300 ${
+            className={`md:hidden sm:hidden bg-septenaryWhite fixed top-0 sm:w-[273px] h-screen rounded-tr-[20px] rounded-br-[20px] p-8 z-20 transform transition-transform duration-300 ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >

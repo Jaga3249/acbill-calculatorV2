@@ -6,7 +6,7 @@ const Footer = () => {
       className="bg-white flex justify-center  sm:py-6 py-4 mt-7 "
       id="footer"
     >
-      <div className="flex flex-col items-center gap-4 ">
+      <div className="flex flex-col items-center gap-4  max-w-[363px]">
         <img
           src={imagePath.footerLogo}
           alt="footerLogo"
