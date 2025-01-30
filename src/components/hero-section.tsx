@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/carousel";
 
 import { imagePath } from "@/constants/imagePath";
-import { Button } from "./ui/button";
 
 // DotButton Component
 function DotButton({

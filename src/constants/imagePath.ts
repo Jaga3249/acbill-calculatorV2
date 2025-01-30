@@ -15,6 +15,13 @@ import browseElectronics2 from "@/assets/browse-electronics2.jpeg";
 import footerLogo from "@/assets/footerLogo.png";
 import leadFormBg from "@/assets/leadFormBg.png";
 import people from "@/assets/people.png";
+import facebook from "@/assets/facebook.png";
+import instagram from "@/assets/instagram.png";
+import linkedin from "@/assets/linkedin.png";
+import twitter from "@/assets/twitter.png";
+import mobileCarousel1 from "@/assets/mobileCarousel1.png";
+import mobileCarousel2 from "@/assets/mobileCarousel2.png";
+import mobileLeadFormBg from "@/assets/mobileLeadFormBg.png";
 
 export const imagePath = {
   headerLogo: headerLogo,
@@ -34,4 +41,11 @@ export const imagePath = {
   footerLogo: footerLogo,
   leadFormBg: leadFormBg,
   people: people,
+  facebook: facebook,
+  instagram: instagram,
+  linkedin: linkedin,
+  twitter: twitter,
+  mobileCarousel1: mobileCarousel1,
+  mobileCarousel2: mobileCarousel2,
+  mobileLeadFormBg: mobileLeadFormBg,
 };

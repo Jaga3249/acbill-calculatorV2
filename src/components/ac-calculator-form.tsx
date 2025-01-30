@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { brands } from "../../data";
 
 import { Loader2 } from "lucide-react";
@@ -18,7 +18,7 @@ import { useAcContext } from "@/context/use-context";
 //   SelectTrigger,
 //   SelectValue,
 // } from "./ui/select";
-import { Modal } from "./modal";
+
 import {
   Select,
   SelectContent,
@@ -28,6 +28,8 @@ import {
   SelectValue,
 } from "./ui/select";
 import { LeadModal } from "./lead-modal";
+import { DrawerDemo } from "./bottom-drawer";
+import { useIsMobile } from "@/utils/check-mobile";
 
 const url = import.meta.env.VITE_API_URL;
 
@@ -62,7 +64,7 @@ const AcCalculatorForm = () => {
 
     setCapacity,
   });
-
+  const isMobile = useIsMobile();
   const handleRatingClick = (rate: number) => {
     setRating(rate); // Set the clicked rating
   };
@@ -124,10 +126,10 @@ const AcCalculatorForm = () => {
 
         {/* right section */}
         <div className="flex-1 w-full bg-[#081747] p-5 rounded-xl flex flex-col gap-4 sm:gap-6">
-          <p className="text-white text-base font-semibold">
+          <p className="text-white sm:text-base text-[14px] font-semibold">
             Enter the required data to calculate your AC bill
           </p>
-          <div className="flex flex-col sm:flex-row sm:gap-[50px] justify-between">
+          <div className="flex flex-col sm:flex-row sm:gap-[50px] gap-4 justify-between">
             <div className="flex-1 grid items-center gap-1.5 ">
               <Label htmlFor="brand" className="text-white">
                 AC Brand <span className="text-red-700">*</span>
@@ -158,7 +160,7 @@ const AcCalculatorForm = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:gap-[75px] justify-between">
+          <div className="flex flex-col sm:flex-row sm:gap-[75px] gap-4 justify-between">
             <div className="flex-1 -mt-2">
               <Label htmlFor="" className="text-white">
                 Star Rating <span className="text-red-700">*</span>
@@ -278,7 +280,7 @@ const AcCalculatorForm = () => {
 
       <div className="flex justify-end mt-3">
         <Button
-          className="bg-[#0067F4] hover:bg-[#0067F4] p-[11px] w-[134px] h-[44px] rounded-[12px]"
+          className="bg-[#0067F4] hover:bg-[#0067F4] p-[11px] sm:w-[134px] w-full h-[44px] rounded-[12px]"
           onClick={() => {
             if (
               predictRecomenedAc &&
@@ -297,18 +299,25 @@ const AcCalculatorForm = () => {
         </Button>
       </div>
       {predictRecomenedAc && predictRecomenedAc?.length > 0 && (
-        <p className="text-xs font-normal text-gray-900 text-left ">
+        <p className=" hidden sm:blocktext-xs font-normal text-gray-900 text-left ">
           * Note: Calculations assume 8 hours of daily usage at 24°C with an
           electricity rate of ₹7 per unit. Actual costs may vary based on usage
           and local rates.
         </p>
       )}
-
-      <LeadModal
-        open={open}
-        setOpen={setOpen}
-        fetchPrediction={fetchPrediction}
-      />
+      {isMobile ? (
+        <DrawerDemo
+          open={open}
+          setOpen={setOpen}
+          fetchPrediction={fetchPrediction}
+        />
+      ) : (
+        <LeadModal
+          open={open}
+          setOpen={setOpen}
+          fetchPrediction={fetchPrediction}
+        />
+      )}
     </>
   );
 };

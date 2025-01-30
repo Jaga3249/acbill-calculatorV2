@@ -1,6 +1,8 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { Button } from "@/components/ui/button";
 import { imagePath } from "@/constants/imagePath";
+
 import { X } from "lucide-react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -51,10 +53,19 @@ const Layout = ({ children }: LayoutProps) => {
       setIsMenuOpen(false);
     }
   };
-
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      const footerSection = document.getElementById("footer");
+      if (footerSection) {
+        window.scrollTo({ top: footerSection.offsetTop, behavior: "smooth" });
+      }
+    }, 300);
+  };
   return (
     <>
-      <div className="font-poppins h-auto max-w-[1144px] sm:mx-auto px-4">
+      <div className="font-poppins h-auto max-w-[1144px] w-full mx-auto px-3">
         <Header setIsMenuOpen={setIsMenuOpen} />
         {children}
       </div>
@@ -70,30 +81,37 @@ const Layout = ({ children }: LayoutProps) => {
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <div className="flex flex-col gap-[52px]">
-              <img
-                src={imagePath?.headerLogo}
-                alt="company logo"
-                className="w-[80px] h-[50px]"
-              />
-              <div className="flex flex-col gap-[40px]">
-                {["Home", "FAQs", "Browse AC"].map((tab) => (
-                  <span
-                    key={tab}
-                    className={`flex items-center gap-1 cursor-pointer ${
-                      activeTab === tab ? "font-semibold" : "font-medium"
-                    }`}
-                    onClick={() => handleTabClick(tab)}
-                  >
+            <div className="flex flex-col justify-between h-full ">
+              <div className="flex flex-col gap-[52px]">
+                <img
+                  src={imagePath?.headerLogo}
+                  alt="company logo"
+                  className="w-[93px] h-[30px]"
+                />
+                <div className="flex flex-col gap-[40px]">
+                  {["Home", "Browse AC"].map((tab) => (
                     <span
-                      className={`h-6 w-1 text-sm font-semibold text-primaryBlack ${
-                        activeTab === tab ? "bg-primary" : ""
+                      key={tab}
+                      className={`flex items-center gap-1 cursor-pointer ${
+                        activeTab === tab ? "font-semibold" : "font-medium"
                       }`}
-                    ></span>
-                    {tab}
-                  </span>
-                ))}
+                      onClick={() => handleTabClick(tab)}
+                    >
+                      <span
+                        className={`h-6 w-[2px] text-sm font-semibold text-primaryBlack ${
+                          activeTab === tab ? "bg-primary" : ""
+                        }`}
+                      ></span>
+                      {tab}
+                    </span>
+                  ))}
+                </div>
               </div>
+              <a href="#footer" onClick={handleContactClick}>
+                <Button className="text-white w-[134px] h-[44px] bg-[#0067F4] rounded-[12px] p-[9px]">
+                  Contact Us
+                </Button>
+              </a>
             </div>
             <X
               className="absolute top-4 right-4"

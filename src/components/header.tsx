@@ -3,7 +3,6 @@ import { SetStateAction, useState } from "react";
 import { Menu } from "lucide-react";
 import { imagePath } from "@/constants/imagePath";
 import { useNavigate, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
@@ -45,6 +44,16 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
       setActiveTab(tab);
       navigate("/browse-ac");
     }
+  };
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      const footerSection = document.getElementById("footer");
+      if (footerSection) {
+        window.scrollTo({ top: footerSection.offsetTop, behavior: "smooth" });
+      }
+    }, 300);
   };
 
   return (
@@ -121,9 +130,12 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
             </div>
           ))}
         </div>
-        <Button className="bg-[#0067F4] hover:bg-[#0067F4] p-[11px] w-[134px] h-[44px] rounded-[12px]">
-          Contact Us
-        </Button>
+        <a href="#footer" onClick={handleContactClick}>
+          {" "}
+          <Button className="bg-[#0067F4] hover:bg-[#0067F4] p-[11px] w-[134px] h-[44px] rounded-[12px]">
+            Contact Us
+          </Button>
+        </a>
       </header>
       {/* mobile view */}
       <header className="md:hidden flex mt-5">
@@ -136,7 +148,7 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
           <img
             src={imagePath?.headerLogo}
             alt="logo"
-            className="w-[80px] h-[50px]"
+            className="w-[93.11px] h-[30px]"
           />
         </div>
       </header>

@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { imagePath } from "@/constants/imagePath";
-import useContactSubmit from "@/hooks/use-contact-submit";
-import { Loader2 } from "lucide-react";
-import { useState } from "react";
+"use client";
 
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { Input } from "./ui/input";
+import useContactSubmit from "@/hooks/use-contact-submit";
+import { useState } from "react";
+import { imagePath } from "@/constants/imagePath";
+import { Loader2 } from "lucide-react";
 interface Props {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   fetchPrediction: () => void;
 }
-
-export function LeadModal({ open, setOpen, fetchPrediction }: Props) {
+export function DrawerDemo({ fetchPrediction, open, setOpen }: Props) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
@@ -49,12 +49,6 @@ export function LeadModal({ open, setOpen, fetchPrediction }: Props) {
     const value = e.target.value;
     if (/^\d*$/.test(value)) {
       setContact(value);
-      //   setErrors((prev) => ({ ...prev, contact: "" }));
-      // } else {
-      //   setErrors((prev) => ({
-      //     ...prev,
-      //     contact: "Contact must contain only numbers",
-      //   }));
     }
   };
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,37 +72,34 @@ export function LeadModal({ open, setOpen, fetchPrediction }: Props) {
     setOpen(false);
     fetchPrediction();
   };
-
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent
-        className="sm:min-w-[734px]"
-        onInteractOutside={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <div className="flex gap-4">
-          <div className="flex-1 relative px-5">
-            <img
-              src={imagePath.leadFormBg}
-              alt="people"
-              className="h-full w-full absolute top-0 left-0 -z-10"
-            />
-            <h2 className="text-[40px] leading-[46px] font-bold text-[#3E3E3E] mt-6 tracking-wide">
-              We would like to know you
-            </h2>
-            <h2 className="text-[16px] font-medium text-[#3E3E3E] mt-2 tracking-wide">
-              Fill the form to calculate your AC Bill
-            </h2>
-            <div className="w-full flex items-center justify-center">
+    <Drawer open={open}>
+      <DrawerContent>
+        <div className="flex flex-col gap-5 p-4">
+          <div
+            className="h-[136px]   flex flex-row justify-between p-5 rounded-[16px] "
+            style={{
+              backgroundImage: `url(${imagePath.leadFormBg})`,
+              backgroundSize: "cover",
+            }}
+          >
+            <div className="flex-1 flex flex-col justify-center">
+              <h2 className=" max-w-[180px] text-[20px] leading-[28px] font-bold text-[#3E3E3E]">
+                We would like to know you
+              </h2>
+              <h2 className=" text-[12px] leading-[18px] font-medium text-[#3E3E3E] mt-2 tracking-wide">
+                Fill the form to calculate your AC Bill
+              </h2>
+            </div>
+            <div className="w-[117px] ">
               <img
                 src={imagePath.people}
                 alt="people"
-                className="h-[177px] w-[159px] mt-6 "
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
-          <div className="flex-1 bg-[#081747] rounded-[20px] p-4 flex flex-col gap-2">
+          <div className="h-[353px] bg-[#081747] rounded-[20px] p-4 flex flex-col gap-2">
             <h3 className="font-semibold text-base text-white mb-1">
               Fill this form
             </h3>
@@ -160,9 +151,9 @@ export function LeadModal({ open, setOpen, fetchPrediction }: Props) {
             {errorMessage && (
               <p className="text-red-500 text-sm mt-1">{errorMessage}</p>
             )}
-            <div className="mt-3 flex justify-end">
+            <div className="mt-3 flex justify-center">
               <Button
-                className="bg-[#0067F5] hover:bg-[#0067F5] h-[45px] w-[119px]"
+                className="bg-[#0067F5] hover:bg-[#0067F5] h-[45px] w-[196px]"
                 onClick={handleSubmit}
                 disabled={isLoading}
               >
@@ -172,7 +163,7 @@ export function LeadModal({ open, setOpen, fetchPrediction }: Props) {
             </div>
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </DrawerContent>
+    </Drawer>
   );
 }

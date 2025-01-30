@@ -57,7 +57,7 @@ const BottomCarousel = () => {
               key={index}
               onClick={() => handleDotClick(index)}
               className={`w-2 h-2 rounded-full cursor-pointer ${
-                currentIndex === index ? "bg-black" : "bg-gray-300"
+                currentIndex === index ? "bg-[#0067F4]" : "bg-gray-300"
               }`}
               style={{ pointerEvents: "none" }} // Prevents dots from blocking selection
             ></div>

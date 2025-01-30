@@ -6,14 +6,17 @@ import BottomCarousel from "@/components/bottom-carosel";
 import ContactUs from "@/components/contact-us";
 import Faq from "@/components/faq";
 import { HeroSection } from "@/components/hero-section";
+import { MobileHeroSection } from "@/components/mobile-herosection";
 import { useAcContext } from "@/context/use-context";
 import Layout from "@/layout/layout";
+import { useIsMobile } from "@/utils/check-mobile";
 
 const Home = () => {
   const { predictRecomenedAc } = useAcContext();
+  const isMobile = useIsMobile();
   return (
     <Layout>
-      <HeroSection />
+      {isMobile ? <MobileHeroSection /> : <HeroSection />}
       <AcCalculatorForm />
 
       {predictRecomenedAc && predictRecomenedAc.length > 0 && <AcComparision />}
