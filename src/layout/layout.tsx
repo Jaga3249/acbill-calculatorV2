@@ -76,10 +76,10 @@ const Layout = ({ children }: LayoutProps) => {
             className="fixed inset-0 bg-black bg-opacity-40 z-10"
             onClick={() => setIsMenuOpen(false)}
           />
-          <span
-            className={`md:hidden sm:hidden bg-septenaryWhite fixed top-0 sm:w-[273px] h-screen rounded-tr-[20px] rounded-br-[20px] p-8 z-20 transform transition-transform duration-300 ${
+          <div
+            className={`md:hidden sm:hidden bg-septenaryWhite fixed top-0 left-0 w-[273px] h-screen rounded-tr-[20px] rounded-br-[20px] p-8 z-20 transform transition-transform duration-300 ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+            } overflow-hidden`}
           >
             <div className="flex flex-col justify-between h-full ">
               <div className="flex flex-col gap-[52px]">
@@ -107,8 +107,8 @@ const Layout = ({ children }: LayoutProps) => {
                   ))}
                 </div>
               </div>
-              <a href="#footer" onClick={handleContactClick}>
-                <Button className="text-white w-[134px] h-[44px] bg-[#0067F4] rounded-[12px] p-[9px]">
+              <a href="#footer" onClick={handleContactClick} className="mb-8">
+                <Button className="text-white w-[134px] h-[44px] bg-[#0067F4] rounded-[12px] p-[9px] ">
                   Contact Us
                 </Button>
               </a>
@@ -118,7 +118,7 @@ const Layout = ({ children }: LayoutProps) => {
               size={30}
               onClick={() => setIsMenuOpen(false)}
             />
-          </span>
+          </div>
         </>
       )}
     </>
