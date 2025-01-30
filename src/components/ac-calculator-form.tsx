@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { brands } from "../../data";
 
 import { Loader2 } from "lucide-react";
@@ -28,7 +28,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { LeadModal } from "./lead-modal";
-import { DrawerDemo } from "./bottom-drawer";
+import { BottomLeadDrawer } from "./bottom-drawer";
 import { useIsMobile } from "@/utils/check-mobile";
 
 const url = import.meta.env.VITE_API_URL;
@@ -97,41 +97,46 @@ const AcCalculatorForm = () => {
   //   setStateUnitPrice(unitPrice[0]?.unit_price / 100);
   // }, [selectState]);
 
-  // useEffect(() => {
-  //   if (predictRecomenedAc && predictRecomenedAc?.length > 0) {
-  //     const acComparision = document.getElementById("acComparision");
-  //     if (acComparision) {
-  //       acComparision.scrollIntoView({
-  //         behavior: "smooth",
-  //         block: "start",
-  //       });
-  //       console.log("Scrolled to Comparison Section");
-  //     }
-  //   }
-  // }, [predictRecomenedAc]);
+  useEffect(() => {
+    if (predictRecomenedAc && predictRecomenedAc?.length > 0) {
+      const acRecomendation = document.getElementById("acRecomendation");
+      if (acRecomendation) {
+        acRecomendation.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  }, [predictRecomenedAc]);
 
   return (
     <>
-      <div className="w-full flex flex-col gap-3 lg:flex-row mt-8">
+      <div
+        className="w-full flex flex-col sm:gap-3 gap-1 lg:flex-row mt-2"
+        id="calculatorForm"
+      >
         {/* left section */}
-        <div className="sm:w-[386px]  flex flex-col justify-center gap-[11px]">
-          <h1 className="text-[#081747] font-semibold sm:text-[29px] text-[25px]  sm:leading-[43px] leading-[40px]">
+        <div className="sm:w-[386px]  flex flex-col justify-center sm:gap-[11px] gap-[2px]">
+          <h1 className="text-[#081747] sm:font-semibold font-bold sm:text-[29px] text-[18px]  sm:leading-[43px] leading-[30px]">
             Calculate Your AC’s Energy Costs in Seconds!
           </h1>
-          <p className="text-lightGray font-medium text-[20px] leading-[30px] md:max-w-[332px]">
+          <p className="text-lightGray font-medium sm:text-[20px] text-[10px] sm:leading-[30px] leading-[18px] md:max-w-[332px]">
             Take charge of your electricity bill, know exactly what your AC
             costs you.
           </p>
         </div>
 
         {/* right section */}
-        <div className="flex-1 w-full bg-[#081747] p-5 rounded-xl flex flex-col gap-4 sm:gap-6">
-          <p className="text-white sm:text-base text-[14px] font-semibold">
+        <div className="flex-1 w-full bg-[#081747] sm:p-5 p-3 rounded-xl flex flex-col gap-3 sm:gap-6">
+          <p className="text-white sm:text-base text-[12px] font-semibold">
             Enter the required data to calculate your AC bill
           </p>
           <div className="flex flex-col sm:flex-row sm:gap-[50px] gap-4 justify-between">
             <div className="flex-1 grid items-center gap-1.5 ">
-              <Label htmlFor="brand" className="text-white">
+              <Label
+                htmlFor="brand"
+                className="text-white  sm:text-sm text-[12px] font-medium"
+              >
                 AC Brand <span className="text-red-700">*</span>
               </Label>
               <Select
@@ -153,7 +158,7 @@ const AcCalculatorForm = () => {
               </Select>
             </div>
             <div className="flex-1 flex flex-col gap-[9px] h-[60px]">
-              <Label className="text-white">
+              <Label className="text-white  sm:text-sm text-[12px] font-medium">
                 AC Capacity in ton <span className="text-red-700">*</span>
               </Label>
               <ACCapacitySlider setCapacity={setCapacity} capacity={capacity} />
@@ -162,7 +167,10 @@ const AcCalculatorForm = () => {
 
           <div className="flex flex-col sm:flex-row sm:gap-[75px] gap-4 justify-between">
             <div className="flex-1 -mt-2">
-              <Label htmlFor="" className="text-white">
+              <Label
+                htmlFor=""
+                className="text-white  sm:text-sm text-[12px] font-medium"
+              >
                 Star Rating <span className="text-red-700">*</span>
               </Label>
               <div className="flex space-x-2 mt-2">
@@ -199,7 +207,7 @@ const AcCalculatorForm = () => {
               </div>
             </div>
             <div className="flex flex-col gap-[6px] flex-1">
-              <Label className="text-white">
+              <Label className="text-white  sm:text-sm text-[12px] font-medium">
                 AC Type <span className="text-red-700">*</span>
               </Label>
               <div className="flex gap-[11px] w-full">
@@ -229,7 +237,7 @@ const AcCalculatorForm = () => {
                     />
                   </div>
                   <span
-                    className={`text-sm font-medium ${
+                    className={`sm:text-sm text-[12px] font-medium ${
                       selectedAcType === "windows" ? "text-black" : "text-white"
                     }`}
                   >
@@ -263,7 +271,7 @@ const AcCalculatorForm = () => {
                     />
                   </div>
                   <span
-                    className={`text-sm font-medium ${
+                    className={`sm:text-sm text-[12px] font-medium ${
                       selectedAcType === "Split AC"
                         ? "text-black"
                         : "text-white"
@@ -278,7 +286,7 @@ const AcCalculatorForm = () => {
         </div>
       </div>
 
-      <div className="flex justify-end mt-3">
+      <div className="flex justify-end mt-1">
         <Button
           className="bg-[#0067F4] hover:bg-[#0067F4] p-[11px] sm:w-[134px] w-full h-[44px] rounded-[12px]"
           onClick={() => {
@@ -306,7 +314,7 @@ const AcCalculatorForm = () => {
         </p>
       )}
       {isMobile ? (
-        <DrawerDemo
+        <BottomLeadDrawer
           open={open}
           setOpen={setOpen}
           fetchPrediction={fetchPrediction}

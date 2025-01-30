@@ -56,7 +56,7 @@ export function HeroSection() {
 
   return (
     <>
-      <div className="w-full h-full overflow-hidden mt-8 rounded-md">
+      <div className="w-full h-full overflow-hidden mt-4 rounded-md">
         <Carousel
           setApi={setApi}
           plugins={[plugin.current]}
@@ -68,7 +68,7 @@ export function HeroSection() {
           <CarouselContent className="flex w-full h-full rounded-md">
             {images?.map((image, index) => (
               <CarouselItem key={index} className="rounded-md">
-                <div className="w-full h-full relative rounded-md">
+                <div className="w-full h-[320px] relative rounded-md">
                   <img
                     src={image}
                     alt={`hero-img-${index}`}

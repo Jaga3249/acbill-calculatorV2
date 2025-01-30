@@ -45,20 +45,15 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
       navigate("/browse-ac");
     }
   };
-  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setIsMenuOpen(false);
-    setTimeout(() => {
-      const footerSection = document.getElementById("footer");
-      if (footerSection) {
-        window.scrollTo({ top: footerSection.offsetTop, behavior: "smooth" });
-      }
-    }, 300);
+  const handleScrollToForm = () => {
+    const footerSection = document.getElementById("footer");
+    if (footerSection) {
+      footerSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
-
   return (
     <>
-      <header className="mt-6 hidden md:flex md:items-center md:justify-between w-full">
+      <header className="mt-2 hidden md:flex md:items-center md:justify-between w-full">
         <img
           src={imagePath?.headerLogo}
           alt="Company Logo"
@@ -130,12 +125,12 @@ const Header = ({ setIsMenuOpen }: HeaderProps) => {
             </div>
           ))}
         </div>
-        <a href="#footer" onClick={handleContactClick}>
+        <span onClick={handleScrollToForm}>
           {" "}
           <Button className="bg-[#0067F4] hover:bg-[#0067F4] p-[11px] w-[134px] h-[44px] rounded-[12px]">
             Contact Us
           </Button>
-        </a>
+        </span>
       </header>
       {/* mobile view */}
       <header className="md:hidden flex mt-5">

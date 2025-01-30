@@ -23,7 +23,10 @@ const AcRecomendation = ({ products }: { products: Product[] }) => {
   };
 
   return (
-    <div className="flex flex-col md:justify-center justify-start md:mt-16 mt-6 md:mx-28">
+    <div
+      className="flex flex-col md:justify-center justify-start md:mt-16 mt-6 md:mx-28"
+      id="acRecomendation"
+    >
       {/* Top section */}
       <div className="flex md:justify-between items-center mb-4">
         <div className="flex items-center justify-between w-full">
