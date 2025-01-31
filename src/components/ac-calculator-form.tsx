@@ -99,7 +99,7 @@ const AcCalculatorForm = () => {
 
   useEffect(() => {
     if (predictRecomenedAc && predictRecomenedAc?.length > 0) {
-      const acRecomendation = document.getElementById("acRecomendation");
+      const acRecomendation = document.getElementById("acComparision");
       if (acRecomendation) {
         acRecomendation.scrollIntoView({
           behavior: "smooth",
@@ -112,11 +112,11 @@ const AcCalculatorForm = () => {
   return (
     <>
       <div
-        className="w-full flex flex-col sm:gap-3 gap-1 lg:flex-row mt-2"
+        className="w-full flex flex-col sm:gap-3 gap-1 lg:flex-row mt-4"
         id="calculatorForm"
       >
         {/* left section */}
-        <div className="sm:w-[386px]  flex flex-col justify-center sm:gap-[11px] gap-[2px]">
+        <div className="sm:w-[386px]  flex flex-col justify-center sm:gap-[11px] gap-[4px]">
           <h1 className="text-[#081747] sm:font-semibold font-bold sm:text-[29px] text-[18px]  sm:leading-[43px] leading-[30px]">
             Calculate Your AC’s Energy Costs in Seconds!
           </h1>
