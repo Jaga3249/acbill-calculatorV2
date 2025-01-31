@@ -24,7 +24,7 @@ export function MobileHeroSection() {
 
   return (
     <>
-      <div className=" overflow-hidden mt-2 rounded-md">
+      <div className=" overflow-hidden mt-4 rounded-md">
         <Carousel
           // setApi={setApi}
           plugins={[plugin.current]}
@@ -33,10 +33,10 @@ export function MobileHeroSection() {
             loop: true,
           }}
         >
-          <CarouselContent className="flex w-full h-[150px] rounded-md">
+          <CarouselContent className="flex w-full h-full rounded-md">
             {images?.map((image, index) => (
               <CarouselItem key={index} className="rounded-md">
-                <div className="w-full h-full relative rounded-md">
+                <div className="w-full h-[120px] relative rounded-md">
                   <img
                     src={image}
                     alt={`hero-img-${index}`}

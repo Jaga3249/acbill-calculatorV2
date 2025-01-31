@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import useContactSubmit from "@/hooks/use-contact-submit";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { imagePath } from "@/constants/imagePath";
 import { Loader2 } from "lucide-react";
 import { CustomDrawer } from "./custom-drawer";
@@ -20,6 +20,7 @@ export function BottomLeadDrawer({ fetchPrediction, open, setOpen }: Props) {
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
   const { handleContactSubmit, isLoading } = useContactSubmit({
     name,
     contact,
@@ -66,6 +67,13 @@ export function BottomLeadDrawer({ fetchPrediction, open, setOpen }: Props) {
     setOpen(false);
     fetchPrediction();
   };
+  useEffect(() => {
+    if (open && inputRef.current) {
+      setTimeout(() => {
+        inputRef.current?.blur(); // Ensure the blur happens after rendering
+      }, 100); // Delay to avoid race conditions
+    }
+  }, [open]);
 
   return (
     <CustomDrawer open={open} setOpen={setOpen}>
@@ -108,6 +116,8 @@ export function BottomLeadDrawer({ fetchPrediction, open, setOpen }: Props) {
                 value={name}
                 onChange={handleNameChange}
                 className="w-full"
+                autoFocus={false}
+                ref={inputRef}
               />
             </div>
           </div>
@@ -120,7 +130,8 @@ export function BottomLeadDrawer({ fetchPrediction, open, setOpen }: Props) {
                 id="email"
                 value={email}
                 onChange={handleEmailChange}
-                className="w-full"
+                className="w-full "
+                autoFocus={false}
               />
             </div>
           </div>
@@ -134,6 +145,7 @@ export function BottomLeadDrawer({ fetchPrediction, open, setOpen }: Props) {
                 value={contact}
                 onChange={handleContactChange}
                 className="w-full"
+                autoFocus={false}
               />
             </div>
           </div>
