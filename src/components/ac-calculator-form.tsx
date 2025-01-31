@@ -112,7 +112,7 @@ const AcCalculatorForm = () => {
   return (
     <>
       <div
-        className="w-full flex flex-col sm:gap-3 gap-1 lg:flex-row mt-4"
+        className="w-full flex flex-col sm:gap-3 gap-1 lg:flex-row mt-1"
         id="calculatorForm"
       >
         {/* left section */}
